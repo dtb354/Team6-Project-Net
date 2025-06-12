@@ -1,5 +1,5 @@
 import { Actor, Animation, Keys, range, Vector } from "excalibur";
-import { PlayerWalkingNorthWest } from "./resources";
+import { PlayerWalkingNorthWest, Resources } from "./resources";
 
 
 export class Player extends Actor {
@@ -8,7 +8,7 @@ export class Player extends Actor {
         super({
         })
 
-        const northWest = Animation.fromSpriteSheet(PlayerWalkingNorthWest, range(0, 8), 100);
+        const northWest = Animation.fromSpriteSheet(PlayerWalkingNorthWest, range(0, 7), 100);
 
 
         this.graphics.add("northWest", northWest);
@@ -18,7 +18,7 @@ export class Player extends Actor {
 
     onInitialize() {
 
-        this.pos = new Vector(600, 300),
+        this.pos = new Vector(600, 300);
 
     }
 
