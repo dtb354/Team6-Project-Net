@@ -1,26 +1,25 @@
-import { TilesetResource } from '@excaliburjs/plugin-tiled'
-import { ImageSource, Sound, Resource, Loader, TileMap } from 'excalibur'
-import { TiledResource } from '@excaliburjs/plugin-tiled';
-
-
+import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
-    Fish: new ImageSource('images/fish.png'),
-    tileset: new ImageSource('wasteland-bg.png'),
-    Map: new TiledResource('maps/bg.tmx')
+    // Fish: new ImageSource('images/fish.png'),
+    WalkingNorthWest: new ImageSource('images/walk_NW_prototype_sprite.png'),
+
 }
 
-const ResourceLoader = new Loader([
-    Resources.Fish,
-    Resources.tileset,
-    Resources.Map // optioneel
-]);
-
+const PlayerWalkingNorthWest = SpriteSheet.fromImageSource({
+    image: Resources.WalkingNorthWest,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
 
 
 for (let res of Object.values(Resources)) {
     ResourceLoader.addResource(res)
 }
 
-export { Resources, ResourceLoader }
+export { Resources, ResourceLoader, PlayerWalkingNorthWest }
