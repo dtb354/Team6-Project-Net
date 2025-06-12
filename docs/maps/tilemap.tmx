@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32" tilecount="0" columns="7">
+  <image source="wasteland bg.png" width="255" height="224"/>
+ </tileset>
+ <tileset firstgid="47" source="../../../map/craftpix-net-695666-free-undead-tileset-top-down-pixel-art/Tiled_files/Water_detilazation2.tsx"/>
+ <tileset firstgid="2933" name="map" tilewidth="32" tileheight="32" tilecount="49" columns="7">
+  <image source="wasteland bg.png" width="255" height="224"/>
+ </tileset>
+ <layer id="1" name="Tilelaag 1" width="10" height="10">
+  <data encoding="csv">
+2946,2946,2946,2946,2946,2946,2946,2946,2946,2946,
+2935,2935,2968,2970,2970,2970,2970,2970,2970,2970,
+2935,2935,2966,2935,2935,2935,2935,2935,2935,2935,
+2935,2935,2966,2935,2935,2935,2935,2935,2935,2935,
+2935,2935,2966,2935,2935,2935,2935,2935,2935,2935,
+2970,2970,2969,2970,2970,2970,2970,2970,2970,2970,
+2935,2942,2966,2935,2935,2935,2935,2935,2935,2935,
+2935,2935,2966,2935,2935,2935,2935,2935,2935,2935,
+2935,2935,2966,2935,2935,2935,2935,2935,2935,2935,
+2935,2935,2975,2970,2970,2970,2970,2970,2970,2970
+</data>
+ </layer>
+</map>
