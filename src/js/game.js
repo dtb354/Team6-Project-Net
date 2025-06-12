@@ -1,5 +1,7 @@
+
 import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode } from "excalibur"
+import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource } from "excalibur"
+import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 
@@ -14,6 +16,12 @@ export class Game extends Engine {
             maxFps: 60,
             displayMode: DisplayMode.FitScreen
         })
+
+        // Create the tilemap resource
+        this.tileMap = new TiledResource("/maps/bg.tmx")
+        // Add it to the resource loader
+        ResourceLoader.addResource(this.tileMap)
+
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
@@ -23,9 +31,14 @@ export class Game extends Engine {
             console.log("gamepad detected")
             this.mygamepad = connectevent.gamepad
         })
+        // Add the tilemap to the scene
+        this.tileMap.addToScene(this.currentScene);
+
         const player = new Player();
         this.add(player);
     }
 }
 
-new Game()
+const game = new Game();
+
+

@@ -98,16 +98,19 @@ const playerWalkingNorthWest = SpriteSheet.fromImageSource({
     image: Resources.walkingNorthWest,
     grid: {
         rows: 1,
+        rows: 1,
         columns: 8,
         spriteHeight: 64,
         spriteWidth: 64
     }
 })
 
+// Create a new loader instance
+const resourceLoader = new Loader()
 
-const ResourceLoader = new Loader()
+// Add all resources to the loader
 for (let res of Object.values(Resources)) {
-    ResourceLoader.addResource(res)
+    resourceLoader.addResource(res)
 }
 
 export { Resources, ResourceLoader, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
