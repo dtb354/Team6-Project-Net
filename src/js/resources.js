@@ -2,9 +2,7 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
-    // Fish: new ImageSource('images/fish.png'),
     WalkingNorthWest: new ImageSource('images/walk_NW_prototype_sprite.png'),
-
 }
 
 const PlayerWalkingNorthWest = SpriteSheet.fromImageSource({
@@ -17,9 +15,12 @@ const PlayerWalkingNorthWest = SpriteSheet.fromImageSource({
     }
 })
 
+// Create a new loader instance
+const resourceLoader = new Loader()
 
+// Add all resources to the loader
 for (let res of Object.values(Resources)) {
-    ResourceLoader.addResource(res)
+    resourceLoader.addResource(res)
 }
 
-export { Resources, ResourceLoader, PlayerWalkingNorthWest }
+export { Resources, resourceLoader as ResourceLoader, PlayerWalkingNorthWest }
