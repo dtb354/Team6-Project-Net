@@ -5,6 +5,8 @@ import { Player } from './player.js'
 
 export class Game extends Engine {
 
+    mygamepad
+
     constructor() {
         super({
             width: 1280,
@@ -16,20 +18,14 @@ export class Game extends Engine {
     }
 
     startGame() {
-        // console.log("start de game!")
-        // const fish = new Actor()
-        // fish.graphics.use(Resources.Fish.toSprite())
-        // fish.pos = new Vector(500, 300)
-        // fish.vel = new Vector(-10,0)
-        // fish.events.on("exitviewport", (e) => this.fishLeft(e))
-        // this.add(fish)
+        this.input.gamepads.enabled = true
+        this.input.gamepads.on('connect', (connectevent) => {
+            console.log("gamepad detected")
+            this.mygamepad = connectevent.gamepad
+        })
         const player = new Player();
         this.add(player);
     }
-
-    // fishLeft(e) {
-    //     e.target.pos = new Vector(1350, 300)
-    // }
 }
 
 new Game()
