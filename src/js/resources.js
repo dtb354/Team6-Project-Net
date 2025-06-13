@@ -32,8 +32,89 @@ const waterEnemyIdle = SpriteSheet.fromImageSource({
     grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
 })
 
+const playerWalkingNorth = SpriteSheet.fromImageSource({
+    image: Resources.walkingNorth,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
 
-const ResourceLoader = new Loader()
+const playerWalkingNorthEast = SpriteSheet.fromImageSource({
+    image: Resources.walkingNorthEast,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingEast = SpriteSheet.fromImageSource({
+    image: Resources.walkingEast,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingSouthEast = SpriteSheet.fromImageSource({
+    image: Resources.walkingSouthEast,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingSouth = SpriteSheet.fromImageSource({
+    image: Resources.walkingSouth,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingSouthWest = SpriteSheet.fromImageSource({
+    image: Resources.walkingSouthWest,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingWest = SpriteSheet.fromImageSource({
+    image: Resources.walkingWest,
+    grid: {
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+const playerWalkingNorthWest = SpriteSheet.fromImageSource({
+    image: Resources.walkingNorthWest,
+    grid: {
+        rows: 1,
+        rows: 1,
+        columns: 8,
+        spriteHeight: 64,
+        spriteWidth: 64
+    }
+})
+
+
+const resourceLoader = new Loader()
 for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
