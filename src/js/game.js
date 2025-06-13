@@ -48,4 +48,4 @@ export class Game extends Engine {
 
 const game = new Game();
 
-
+// new Game()

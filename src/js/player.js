@@ -4,7 +4,7 @@ import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingNo
 
 export class Player extends Actor {
     constructor() {
-        super({})
+        super({ width: 20, height: 33 })
         this.scale = new Vector(1.5, 1.5);
     }
 
@@ -115,4 +115,5 @@ export class Player extends Actor {
         // this.graphics.flipHorizontal = (this.vel.x < 0);
 
     }
+
 }

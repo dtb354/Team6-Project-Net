@@ -5,6 +5,7 @@ const Resources = {
 
 
     waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
+    waterEnemyAttack: new ImageSource('images/water_enemy/corrupt_water_attack_front.png'),
 
     idleSouth: new ImageSource('images/idle_full_sprite_South.png'),
 
@@ -23,6 +24,10 @@ const waterEnemyIdle = SpriteSheet.fromImageSource({
     grid: { rows: 1, columns: 8, spriteHeight: 96, spriteWidth: 96 }
 })
 
+const waterAttacke = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyAttack,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
     image: Resources.idleSouth,
@@ -121,4 +126,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
+export { Resources, resourceLoader as ResourceLoader, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
