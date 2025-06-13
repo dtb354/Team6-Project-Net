@@ -4,8 +4,16 @@ import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingNo
 
 export class Player extends Actor {
     constructor() {
-        super({})
-        this.scale = new Vector(1.5, 1.5);
+        super({
+            pos: new Vector(100, 100),
+            width: 64,
+            height: 64
+        })
+        
+        // Create animation from spritesheet
+        const idleAnim = Animation.fromSpriteSheet(playerIdleSouth, [0,1,2,3,4,5,6,7], 100)
+        // Use the animation
+        this.graphics.use(idleAnim)
     }
 
     onInitialize() {
