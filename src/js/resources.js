@@ -2,13 +2,7 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
-<<<<<<< HEAD
-    // Fish: new ImageSource('images/fish.png'),
-    WalkingNorthWest: new ImageSource('images/walk_NW_prototype_sprite.png'),
-    waterEnemyIdle: new ImageSource('images/water_enemy/corrupt_water_idle.png')
-=======
     idleSouth: new ImageSource('images/idle_full_sprite_South.png'),
->>>>>>> 08c0a9b452664e9d74b0a93e4386ce54dc445607
 
     walkingNorth: new ImageSource('images/walk_complete_sprite_North.png'),
     walkingNorthEast: new ImageSource('images/walk_complete_sprite_North-East.png'),
@@ -30,15 +24,6 @@ const playerIdleSouth = SpriteSheet.fromImageSource({
     }
 })
 
-<<<<<<< HEAD
-const waterEnemyIdle = SpriteSheet.fromImageSource({
-    image: Resources.waterEnemyIdle,
-    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
-})
-
-
-const ResourceLoader = new Loader()
-=======
 const playerWalkingNorth = SpriteSheet.fromImageSource({
     image: Resources.walkingNorth,
     grid: {
@@ -124,14 +109,8 @@ const playerWalkingNorthWest = SpriteSheet.fromImageSource({
 const resourceLoader = new Loader()
 
 // Add all resources to the loader
->>>>>>> 08c0a9b452664e9d74b0a93e4386ce54dc445607
 for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-<<<<<<< HEAD
-
-export { Resources, ResourceLoader, PlayerWalkingNorthWest, waterEnemyIdle }
-=======
 export { Resources, resourceLoader as ResourceLoader, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
->>>>>>> 08c0a9b452664e9d74b0a93e4386ce54dc445607

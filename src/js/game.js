@@ -4,7 +4,7 @@ import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource } from "excalib
 import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
-import { Enemy } from './enemy.js'
+// import { Enemy } from './enemy.js'
 
 export class Game extends Engine {
 
@@ -38,8 +38,8 @@ export class Game extends Engine {
         const player = new Player();
         this.add(player);
 
-        const waterEnemy = new Enemy();
-        this.add(waterEnemy)
+        // const waterEnemy = new Enemy();
+        // this.add(waterEnemy)
     }
 }
 
