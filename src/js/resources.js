@@ -30,7 +30,6 @@ const playerIdleSouth = SpriteSheet.fromImageSource({
     }
 })
 
-<<<<<<< HEAD
 const waterEnemyIdle = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyIdle,
     grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
@@ -38,100 +37,8 @@ const waterEnemyIdle = SpriteSheet.fromImageSource({
 
 
 const ResourceLoader = new Loader()
-=======
-const playerWalkingNorth = SpriteSheet.fromImageSource({
-    image: Resources.walkingNorth,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingNorthEast = SpriteSheet.fromImageSource({
-    image: Resources.walkingNorthEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingEast = SpriteSheet.fromImageSource({
-    image: Resources.walkingEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingSouthEast = SpriteSheet.fromImageSource({
-    image: Resources.walkingSouthEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingSouth = SpriteSheet.fromImageSource({
-    image: Resources.walkingSouth,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingSouthWest = SpriteSheet.fromImageSource({
-    image: Resources.walkingSouthWest,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingWest = SpriteSheet.fromImageSource({
-    image: Resources.walkingWest,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingNorthWest = SpriteSheet.fromImageSource({
-    image: Resources.walkingNorthWest,
-    grid: {
-        rows: 1,
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-// Create a new loader instance
-const resourceLoader = new Loader()
-
-// Add all resources to the loader
->>>>>>> 08c0a9b452664e9d74b0a93e4386ce54dc445607
 for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-<<<<<<< HEAD
-
-export { Resources, ResourceLoader, PlayerWalkingNorthWest, waterEnemyIdle }
-=======
-export { Resources, resourceLoader as ResourceLoader, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
->>>>>>> 08c0a9b452664e9d74b0a93e4386ce54dc445607
+export { Resources, resourceLoader as ResourceLoader, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
