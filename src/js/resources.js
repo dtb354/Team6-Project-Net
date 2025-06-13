@@ -2,6 +2,10 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
+
+
+    waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
+
     idleSouth: new ImageSource('images/idle_full_sprite_South.png'),
 
     walkingNorth: new ImageSource('images/walk_complete_sprite_North.png'),
@@ -13,6 +17,12 @@ const Resources = {
     walkingWest: new ImageSource('images/walk_complete_sprite_West.png'),
     walkingNorthWest: new ImageSource('images/walk_complete_sprite_North-West.png'),
 }
+
+const waterEnemyIdle = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyidle,
+    grid: { rows: 1, columns: 8, spriteHeight: 96, spriteWidth: 96 }
+})
+
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
     image: Resources.idleSouth,
@@ -111,4 +121,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
+export { Resources, resourceLoader as ResourceLoader, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
