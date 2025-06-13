@@ -4,7 +4,7 @@ import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource, Axis } from "e
 import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
-// import { Enemy } from './enemy.js'
+import { Enemy } from './enemy.js'
 
 export class Game extends Engine {
 
@@ -43,8 +43,8 @@ export class Game extends Engine {
         this.currentScene.camera.strategy.lockToActorAxis(player, Axis.Y);
         this.currentScene.camera.zoom = 1.5;
 
-        // const waterEnemy = new Enemy();
-        // this.add(waterEnemy)
+        const waterEnemy = new Enemy();
+        this.add(waterEnemy)
     }
 }
 
