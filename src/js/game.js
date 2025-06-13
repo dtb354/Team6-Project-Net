@@ -8,8 +8,9 @@ import { Enemy } from './enemy.js'
 
 export class Game extends Engine {
 
-    mygamepad
-
+    mygamepad;
+    player;
+    waterEnemy;
 
     constructor() {
         super({
@@ -36,16 +37,19 @@ export class Game extends Engine {
         // Add the tilemap to the scene
         this.tileMap.addToScene(this.currentScene);
 
-        const player = new Player();
-        this.add(player);
+        this.player = new Player({ x: 200, y: 100 });
+        this.add(this.player);
 
-        this.currentScene.camera.strategy.lockToActorAxis(player, Axis.X);
-        this.currentScene.camera.strategy.lockToActorAxis(player, Axis.Y);
+
+        this.currentScene.camera.strategy.lockToActorAxis(this.player, Axis.X);
+        this.currentScene.camera.strategy.lockToActorAxis(this.player, Axis.Y);
         this.currentScene.camera.zoom = 1.5;
 
         const waterEnemy = new Enemy();
         this.add(waterEnemy)
     }
+
+
 }
 
 const game = new Game();
