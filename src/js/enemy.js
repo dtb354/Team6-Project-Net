@@ -1,9 +1,5 @@
 // import { Actor, Animation, range, Vector } from "excalibur";
-<<<<<<< HEAD
-// import { waterEnemyIdle } from "./resources";
-=======
 // // import { waterEnemyIdle } from "./resources";
->>>>>>> 34f5616e8b3a9a272338cb8f8d98025467144efb
 
 // export class Enemy extends Actor {
 
