@@ -3,6 +3,7 @@ import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
+import { Enemy } from './enemy.js'
 
 export class Game extends Engine {
 
@@ -26,6 +27,9 @@ export class Game extends Engine {
         // this.add(fish)
         const player = new Player();
         this.add(player);
+
+        const waterEnemy = new Enemy();
+        this.add(waterEnemy)
     }
 
 
@@ -35,8 +39,5 @@ export class Game extends Engine {
 }
 
 const game = new Game();
-game.start(ResourceLoader).then(() => {
-    game.startGame();
-});
 
 

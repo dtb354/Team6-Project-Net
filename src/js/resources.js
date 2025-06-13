@@ -4,6 +4,7 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 const Resources = {
     // Fish: new ImageSource('images/fish.png'),
     WalkingNorthWest: new ImageSource('images/walk_NW_prototype_sprite.png'),
+    waterEnemyIdle: new ImageSource('images/water_enemy/corrupt_water_idle.png')
 
 }
 
@@ -17,9 +18,16 @@ const PlayerWalkingNorthWest = SpriteSheet.fromImageSource({
     }
 })
 
+const waterEnemyIdle = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyIdle,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
 
+
+const ResourceLoader = new Loader()
 for (let res of Object.values(Resources)) {
     ResourceLoader.addResource(res)
 }
 
-export { Resources, ResourceLoader, PlayerWalkingNorthWest }
+
+export { Resources, ResourceLoader, PlayerWalkingNorthWest, waterEnemyIdle }
