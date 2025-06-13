@@ -9,6 +9,7 @@ export class Game extends Engine {
 
     mygamepad
 
+
     constructor() {
         super({
             width: 1280,
@@ -42,6 +43,11 @@ export class Game extends Engine {
         const player = new Player();
         this.add(player);
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 34f5616e8b3a9a272338cb8f8d98025467144efb
         // const waterEnemy = new Enemy();
         // this.add(waterEnemy)
     }
