@@ -39,6 +39,12 @@ export class Player extends Actor {
         const playerWalkingNW = Animation.fromSpriteSheet(playerWalkingNorthWest, range(0, 7), 70);
         this.graphics.add("playerWalkingNW", playerWalkingNW);
 
+        // Zet a higher z value for the player to appear on top
+        this.z = 10;
+
+        // Background layers: 0-9
+        // Game objects: 10-99
+        // UI elements: 100+
     }
 
     onPreUpdate(engine) {
