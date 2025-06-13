@@ -105,9 +105,7 @@ const playerWalkingNorthWest = SpriteSheet.fromImageSource({
     }
 })
 
-// Create a new loader instance
 const resourceLoader = new Loader()
-
 // Add all resources to the loader
 for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
