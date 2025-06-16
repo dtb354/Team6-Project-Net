@@ -7,7 +7,7 @@ export class Net extends Actor {
         super({
             width: Resources.Net.width, height: Resources.Net.height,
             anchor: new Vector(0.5, 1),
-            pos: new Vector(26, 20),
+            pos: new Vector(18, 16.5),
         });
         this.on('collisionstart', (event) => this.hitSomething(event));
         this.graphics.use(Resources.Net.toSprite());
@@ -23,4 +23,12 @@ export class Net extends Actor {
             console.log("huh")
         }
     }
+
+    // checkFlipped() {
+    //     const poly = this.collider.get();
+    //     if (!poly._isCounterClockwiseWinding(poly.getTransformedPoints())) {
+    //         poly.points.reverse();
+    //         poly.flagDirty();
+    //     }
+    // }
 }   
