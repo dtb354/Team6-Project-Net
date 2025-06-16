@@ -24,10 +24,10 @@ export class Game extends Engine {
     }
 
     async start() {
-        await super.start(ResourceLoader)
-        const tutorialScene = new TutorialScene()
-        this.addScene('tutorial', tutorialScene)
-        this.goToScene('tutorial')
+        await super.start(ResourceLoader);
+        const tutorialScene = new TutorialScene();
+        this.addScene('tutorial', tutorialScene);
+        this.goToScene('tutorial');
 
         
     }
