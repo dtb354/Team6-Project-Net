@@ -1,11 +1,16 @@
 import { Actor, Animation, Axes, Keys, range, Vector } from "excalibur";
 import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingNorthEast, playerWalkingNorthWest, playerWalkingSouth, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingWest } from "./resources";
+import { Net } from "./net";
 
 
 export class Player extends Actor {
     constructor() {
         super({ width: 20, height: 33 })
         this.scale = new Vector(1.5, 1.5);
+
+        this.net = new Net();
+        this.addChild(this.net)
+
     }
 
     onInitialize() {
@@ -88,6 +93,11 @@ export class Player extends Actor {
             // Keyboard fallback
             this.playerMovement(engine);
         }
+        if (engine.input.keyboard.wasPressed(Keys.Space)) {
+            this.net.attack();
+            // console.log("it works")
+        }
+        // this.net.checkFlipped();
     }
 
     playerMovement(engine) {

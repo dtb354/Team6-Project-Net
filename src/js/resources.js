@@ -17,6 +17,9 @@ const Resources = {
     walkingWest: new ImageSource('images/walk_complete_sprite_West.png'),
     walkingNorthWest: new ImageSource('images/walk_complete_sprite_North-West.png'),
 
+    Net: new ImageSource('images/net.png'),
+
+
 
     //Sound
     //PlayerWalkSound: new Sound('sounds/player-sound.mp3'),
