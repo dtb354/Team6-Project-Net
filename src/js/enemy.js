@@ -1,6 +1,7 @@
 import { Actor, Animation, Color, Engine, range, Vector } from "excalibur";
 import { waterAttacke, waterEnemyIdle } from "./resources";
 import { Player } from "./player";
+import { Net } from "./net";
 
 export class Enemy extends Actor {
 
@@ -141,7 +142,7 @@ export class Enemy extends Actor {
 
     handleCollision(event) {
 
-        if (event.other.owner instanceof Player) {
+        if (event.other.owner instanceof Net) {
             this.reduceHealth()
             this.attack()
             // console.log('collission')
