@@ -9,11 +9,9 @@ export class Player extends Actor {
         super({
             width: 20,
             height: 33,
-            //collisionType: CollisionType.Active,
+            collisionType: CollisionType.Active,
         })
         this.scale = new Vector(1.5, 1.5);
-
-        this.CollisionType = CollisionType.Active;
 
         this.net = new Net();
         this.addChild(this.net)
@@ -21,7 +19,7 @@ export class Player extends Actor {
     }
 
     onInitialize() {
-        this.pos = new Vector(226, 460); // Spawn point for player
+        this.pos = new Vector(226, 450); // Spawn point for player
 
         const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 7), 70);
         this.graphics.add("playerIdleS", playerIdleS);
