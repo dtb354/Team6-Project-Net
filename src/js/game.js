@@ -4,7 +4,7 @@ import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
-// import { TutorialScene } from './TutorialScene.js'
+import { TutorialScene } from './TutorialScene.js'
 
 export class Game extends Engine {
     mygamepad;

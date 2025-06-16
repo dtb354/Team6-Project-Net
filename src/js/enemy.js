@@ -49,7 +49,7 @@ export class Enemy extends Actor {
 
         // Get player from current scene instead of engine
         const player = engine.currentScene.actors.find(actor => actor instanceof Player)
-        
+
         if (!player) return // Guard clause if player not found
 
         // Calculate distance using player reference
