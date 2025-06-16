@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="3">
  <tileset firstgid="1" name="wasteland bg" tilewidth="32" tileheight="32" tilecount="49" columns="7">
-  <image source="wasteland bg.png" width="255" height="224"/>
+  <image source="wasteland-bg.png" width="255" height="224"/>
  </tileset>
  <tileset firstgid="50" name="Overworld Tileset" tilewidth="32" tileheight="32" tilecount="234" columns="18">
   <image source="resized-image.png" width="576" height="416"/>
