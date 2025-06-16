@@ -21,7 +21,7 @@ export class Game extends Engine {
         })
 
         // Create the tilemap resource
-        this.tileMap = new TiledResource("/maps/starting_area.tmx")
+        this.tileMap = new TiledResource("/maps/tutorial_area_v1.tmx")
         // Add it to the resource loader
         ResourceLoader.addResource(this.tileMap)
 
