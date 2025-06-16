@@ -22,7 +22,7 @@ export class Enemy extends Actor {
     onInitialize(engine) {
         this.counter = 0;
 
-        this.on("collisionstart", (event) => this.handleCollision(event));
+        // this.on("collisionstart", (event) => this.handleCollision(event));
 
         this.pos = new Vector(500, 600)
 
@@ -136,14 +136,16 @@ export class Enemy extends Actor {
         this.graphics.use(waterAttack)
     }
 
-    handleCollision(event) {
+    // handleCollision(event) {
 
-        if (event.other.owner instanceof Net) {
-            this.reduceHealth()
-            this.attack()
-            // console.log('collission')
-        }
-    }
+    //     if (event.other.owner instanceof Net) {
+    //         this.reduceHealth()
+    //         this.attack()
+    //         // console.log('collission')
+
+
+    //     }
+    // }
 
 
 

@@ -1,4 +1,4 @@
-import { Actor, CollisionType, Vector } from "excalibur";
+import { Actor, Scene, Vector } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 
@@ -20,7 +20,9 @@ export class Net extends Actor {
     hitSomething(event) {
         if (event.other.owner instanceof Enemy && this.rotation !== 0) {
             // event.other.kill();
+            event.other.owner.reduceHealth()
             console.log("huh")
+
         }
     }
 

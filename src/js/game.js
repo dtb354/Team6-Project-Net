@@ -6,11 +6,13 @@ import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './TutorialScene.js'
 
+
 export class Game extends Engine {
     mygamepad;
     player;
     waterEnemy;
     ui;
+    lowtaperfade;
 
     constructor() {
         super({
