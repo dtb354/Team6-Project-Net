@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="3">
  <tileset firstgid="1" name="wasteland bg" tilewidth="32" tileheight="32" tilecount="49" columns="7">
-  <image source="../../../../../../Danie/Downloads/wasteland bg.png" width="255" height="224"/>
+  <image source="wasteland bg.png" width="255" height="224"/>
  </tileset>
  <tileset firstgid="50" name="Overworld Tileset" tilewidth="32" tileheight="32" tilecount="234" columns="18">
-  <image source="../../../../../../Danie/Downloads/resized-image.png" width="576" height="416"/>
+  <image source="resized-image.png" width="576" height="416"/>
  </tileset>
  <tileset firstgid="284" name="Overworld_Tileset" tilewidth="16" tileheight="16" tilecount="234" columns="18">
-  <image source="../../../../../../Danie/Downloads/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Overworld_Tileset.png" width="288" height="208"/>
+  <image source="Overworld_Tileset.png" width="288" height="208"/>
  </tileset>
  <layer id="1" name="Tile Layer 1" width="15" height="15">
   <data encoding="csv">
@@ -50,6 +50,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="6" name="Object Layer 1">
+  <object id="2" name="Player" type="Player" x="226" y="450" width="26" height="28"/>
+ </objectgroup>
  <layer id="2" name="Tile Layer 2" width="15" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,
