@@ -47,55 +47,39 @@ export class Enemy extends Actor {
 
     onPreUpdate(engine) {
 
-        // Get player from current scene instead of engine
+        // Get player from current scene
         const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        if (!player) return
 
-        if (!player) return // Guard clause if player not found
+        const distance = this.pos.distance(player.pos)
 
-        // Calculate distance using player reference
-        const distance = Vector.distance(player.pos, this.pos)
-
-        if (distance < 200) {
-            let direction = player.pos.sub(this.pos).normalize()
-            this.vel = direction.scale(80)
-            // ...rest of your code...
-        }
-
-
-        // different states different actions
+        // Handle movement based on state
         switch (this.state) {
-            case ("idle"): {
-                // console.log("pom pi dom")
+            case "idle": {
                 this.moveInSquare()
-                // console.log('im moving ina squarw')
+                break
             }
-            case ("angry"): {
-                // console.log("im attacking the bitchass")
+            case "angry": {
+                if (distance < 200) {
+                    // Move towards player
+                    const direction = player.pos.sub(this.pos).normalize()
+                    this.vel = direction.scale(80)
+
+                    // Change animation to attack mode
+                    const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
+                    this.graphics.add("attack", waterAttack)
+                    this.graphics.use(waterAttack)
+                }
+                break
             }
         }
 
-
+        // Change state based on distance
         if (distance < 200) {
-
-            // follow the player
-            let direction = engine.player.pos.sub(this.pos).normalize();
-            this.vel = direction.scale(80)
-
-            // change spritesheet to attack mode
-            const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
-            this.graphics.add("attack", waterAttack)
-            this.graphics.use(waterAttack)
-
             this.state = "angry"
-
+        } else {
+            this.state = "idle"
         }
-        else if (distance < 1) {
-            const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
-            this.graphics.add("attack", waterAttack)
-            this.graphics.use(waterAttack)
-        }
-
-        // this.moveInSquare()
 
     }
 
