@@ -21,7 +21,7 @@ export class Enemy extends Actor {
         this.on("collisionstart", (event) => this.handleCollision(event));
 
         this.pos = new Vector(500, 600)
-
+        // this.pos = this.moveInSquare()
         this.state = "idle"
 
         // milan zegt doe dit
@@ -30,28 +30,45 @@ export class Enemy extends Actor {
 
 
     onPreUpdate(engine) {
-        // let direction = this.sub(this.enemy.pos).normalize()
-        // this.vel = direction.scale(200)
 
-        // let direction = this.sub(engine.player.pos).normalize()
+
+        // different states different actions
+        // switch (this.state) {
+        //     case ("idle"): {
+        //         console.log("pom pi dom")
+        //     }
+        //     case ("angry"): {
+        //         console.log("yarrrr!")
+        //     }
+        // }
+
+        // calculate the distance between player & enemy
         const distance = Vector.distance(engine.player.pos, this.pos)
+
         if (distance < 200) {
 
 
+
+            // follow the player
             let direction = engine.player.pos.sub(this.pos).normalize();
             this.vel = direction.scale(80)
 
-            // this.state = "angry"
-        } else {
-            // this.pos = new Vector(500, 600)
+            // change spritesheet to attack mode
+            const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
+            this.graphics.add("attack", waterAttack)
+            this.graphics.use(waterAttack)
+
+            this.state = "angry"
+
         }
-
-
 
     }
 
     // moveInSquare() {
-    //     this.vel = new Vector(0, 0)
+    //     new Vector(0, -1),  // omhoog
+    //         new Vector(1, 0),   // rechts
+    //         new Vector(0, 1),   // omlaag
+    //         new Vector(-1, 0),  // links
 
     // }
 
