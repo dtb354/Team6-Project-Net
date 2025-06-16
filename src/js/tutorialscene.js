@@ -7,6 +7,7 @@ export class TutorialScene extends Scene {
     player;
 
     onInitialize(engine) {
+
         // Create player only once
         const player = new Player();
         this.add(player);
@@ -21,11 +22,12 @@ export class TutorialScene extends Scene {
         // Get the boundaries layer from tilemap
         const boundariesLayer = engine.tileMap.getTileLayer('boundaries');
 
+
         // Make boundaries solid
         if (boundariesLayer) {
             boundariesLayer.data.forEach((tile) => {
                 if (tile) {
-                    tile.collisionType = CollisionType.Fixed;
+                    tile.collisionType = collisionType.Fixed;
                 }
             });
         }
