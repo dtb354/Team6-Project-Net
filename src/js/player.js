@@ -1,12 +1,17 @@
-import { Actor, Animation, Axes, Keys, range, Vector } from "excalibur";
+import { Actor, Animation, Axes, CollisionType, Keys, range, Vector } from "excalibur";
 import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingNorthEast, playerWalkingNorthWest, playerWalkingSouth, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingWest } from "./resources";
 import { Net } from "./net";
 
 
 export class Player extends Actor {
     constructor() {
-        super({ width: 20, height: 33 })
+        super({ width: 20, 
+                height: 33,
+                //collisionType: CollisionType.Active,
+                 })
         this.scale = new Vector(1.5, 1.5);
+
+        this.CollisionType = CollisionType.Active;
 
         this.net = new Net();
         this.addChild(this.net)
@@ -14,7 +19,7 @@ export class Player extends Actor {
     }
 
     onInitialize() {
-        this.pos = new Vector(226, 460);
+        this.pos = new Vector(226, 460); // Spawn point for player
 
         const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 7), 70);
         this.graphics.add("playerIdleS", playerIdleS);

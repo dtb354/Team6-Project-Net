@@ -47,6 +47,20 @@ export class Enemy extends Actor {
 
     onPreUpdate(engine) {
 
+        // Get player from current scene instead of engine
+        const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        
+        if (!player) return // Guard clause if player not found
+
+        // Calculate distance using player reference
+        const distance = Vector.distance(player.pos, this.pos)
+
+        if (distance < 200) {
+            let direction = player.pos.sub(this.pos).normalize()
+            this.vel = direction.scale(80)
+            // ...rest of your code...
+        }
+
 
         // different states different actions
         switch (this.state) {
@@ -60,8 +74,6 @@ export class Enemy extends Actor {
             }
         }
 
-        // calculate the distance between player & enemy
-        const distance = Vector.distance(engine.player.pos, this.pos)
 
         if (distance < 200) {
 
