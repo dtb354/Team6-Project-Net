@@ -142,8 +142,6 @@ export class Enemy extends Actor {
             this.reduceHealth()
             this.attack()
             // console.log('collission')
-
-
         }
     }
 
