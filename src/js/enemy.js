@@ -7,6 +7,7 @@ export class Enemy extends Actor {
     state;
     hitpoints;
     healthbar;
+    counter;
 
     constructor() {
         super({ width: 20, height: 33 })
@@ -18,11 +19,12 @@ export class Enemy extends Actor {
     }
 
     onInitialize(engine) {
+        this.counter = 0;
 
         this.on("collisionstart", (event) => this.handleCollision(event));
 
         this.pos = new Vector(500, 600)
-        // this.pos = this.moveInSquare()
+
         this.state = "idle"
 
         this.hitpoints = 10
@@ -46,14 +48,16 @@ export class Enemy extends Actor {
 
 
         // different states different actions
-        // switch (this.state) {
-        //     case ("idle"): {
-        //         console.log("pom pi dom")
-        //     }
-        //     case ("angry"): {
-        //         console.log("yarrrr!")
-        //     }
-        // }
+        switch (this.state) {
+            case ("idle"): {
+                // console.log("pom pi dom")
+                this.moveInSquare()
+                // console.log('im moving ina squarw')
+            }
+            case ("angry"): {
+                // console.log("im attacking the bitchass")
+            }
+        }
 
         // calculate the distance between player & enemy
         const distance = Vector.distance(engine.player.pos, this.pos)
@@ -78,17 +82,31 @@ export class Enemy extends Actor {
             this.graphics.use(waterAttack)
         }
 
-
+        // this.moveInSquare()
 
     }
 
-    // moveInSquare() {
-    //     new Vector(0, -1),  // omhoog
-    //         new Vector(1, 0),   // rechts
-    //         new Vector(0, 1),   // omlaag
-    //         new Vector(-1, 0),  // links
+    moveInSquare() {
+        this.counter++;
+        if (this.counter < 10) {
+            this.vel = new Vector(0, -1).scale(30);  // omhoog
+        }
+        else if (this.counter < 30) {
+            this.vel = new Vector(1, 0).scale(30);   // rechts
+        }
+        else if (this.counter < 50) {
+            this.vel = new Vector(0, 1).scale(30);   // omlaag
+        }
+        else if (this.counter < 70) {
+            this.vel = new Vector(-1, 0).scale(30);  // links
+        }
+        else {
+            this.counter = 0; // reset counter na rondje
+        }
 
-    // }
+        // console.log(this.counter)
+
+    }
 
 
     // onPreUpdate(engine) {
@@ -102,7 +120,7 @@ export class Enemy extends Actor {
 
         if (this.hitpoints <= 0) {
             this.death()
-            console.log("enemy is death")
+            console.log("enemy is dead")
         }
 
         else if (percent < 0.5) {
