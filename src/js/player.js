@@ -4,11 +4,13 @@ import { Net } from "./net";
 
 
 export class Player extends Actor {
+
     constructor() {
-        super({ width: 20, 
-                height: 33,
-                //collisionType: CollisionType.Active,
-                 })
+        super({
+            width: 20,
+            height: 33,
+            //collisionType: CollisionType.Active,
+        })
         this.scale = new Vector(1.5, 1.5);
 
         this.CollisionType = CollisionType.Active;
@@ -51,6 +53,8 @@ export class Player extends Actor {
 
         // Zet a higher z value for the player to appear on top
         this.z = 10;
+
+
 
         // Background layers: 0-9
         // Game objects: 10-99
