@@ -8,6 +8,13 @@ export class TutorialScene extends Scene {
 
     onInitialize(engine) {
 
+        this.input.gamepads.enabled = true
+        this.input.gamepads.on('connect', (connectevent) => {
+            console.log("gamepad detected")
+            engine.mygamepad = connectevent.gamepad
+        })
+
+
         // Create player only once
         const player = new Player();
         this.add(player);
@@ -18,6 +25,8 @@ export class TutorialScene extends Scene {
 
         // Add tilemap
         engine.tileMap.addToScene(this);
+
+
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
