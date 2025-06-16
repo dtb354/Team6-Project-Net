@@ -14,7 +14,7 @@ export class Player extends Actor {
     }
 
     onInitialize() {
-        this.pos = new Vector(640, 360);
+        this.pos = new Vector(226, 460);
 
         const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 7), 70);
         this.graphics.add("playerIdleS", playerIdleS);
