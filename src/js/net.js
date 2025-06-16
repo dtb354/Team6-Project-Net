@@ -1,4 +1,4 @@
-import { Actor, Vector } from "excalibur";
+import { Actor, CollisionType, Vector } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 

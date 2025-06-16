@@ -1,4 +1,4 @@
-import { Actor, Animation, Color, Engine, range, Vector } from "excalibur";
+import { Actor, Animation, CollisionType, Color, Engine, range, Vector } from "excalibur";
 import { waterAttacke, waterEnemyIdle } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
