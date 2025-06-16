@@ -60,6 +60,7 @@ export class Enemy extends Actor {
                 break
             }
             case "angry": {
+
                 if (distance < 200) {
                     // Move towards player
                     const direction = player.pos.sub(this.pos).normalize()
@@ -70,6 +71,7 @@ export class Enemy extends Actor {
                     this.graphics.add("attack", waterAttack)
                     this.graphics.use(waterAttack)
                 }
+
                 break
             }
         }
