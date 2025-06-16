@@ -1,11 +1,12 @@
-import { Actor, Animation, Engine, range, Vector } from "excalibur";
+import { Actor, Animation, Color, Engine, range, Vector } from "excalibur";
 import { waterAttacke, waterEnemyIdle } from "./resources";
 import { Player } from "./player";
 
 export class Enemy extends Actor {
 
-    state
-
+    state;
+    hitpoints;
+    healthbar;
 
     constructor() {
         super({ width: 20, height: 33 })
@@ -24,8 +25,20 @@ export class Enemy extends Actor {
         // this.pos = this.moveInSquare()
         this.state = "idle"
 
+        this.hitpoints = 10
         // milan zegt doe dit
         this.z = 10;
+
+
+        this.healthbar = new Actor({
+            pos: new Vector(0, -45), // 25 pixels boven zijn hoofd
+            color: Color.Green,
+            width: 20,
+            height: 4,
+            anchor: new Vector(0.5, 0.5),
+        });
+
+        this.addChild(this.healthbar);
     }
 
 
@@ -47,8 +60,6 @@ export class Enemy extends Actor {
 
         if (distance < 200) {
 
-
-
             // follow the player
             let direction = engine.player.pos.sub(this.pos).normalize();
             this.vel = direction.scale(80)
@@ -61,6 +72,13 @@ export class Enemy extends Actor {
             this.state = "angry"
 
         }
+        else if (distance < 1) {
+            const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
+            this.graphics.add("attack", waterAttack)
+            this.graphics.use(waterAttack)
+        }
+
+
 
     }
 
@@ -77,6 +95,26 @@ export class Enemy extends Actor {
 
     // }
 
+    reduceHealth() {
+        this.hitpoints--;
+        const percent = Math.max(this.hitpoints / 10, 0);
+        this.healthbar.scale = new Vector(percent, 1);
+
+        if (this.hitpoints <= 0) {
+            this.death()
+            console.log("enemy is death")
+        }
+
+        else if (percent < 0.5) {
+            this.healthbar.color = Color.Red;
+        }
+
+    }
+
+    death() {
+        this.kill()
+    }
+
     attack() {
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
         this.graphics.add("attack", waterAttack)
@@ -86,9 +124,10 @@ export class Enemy extends Actor {
     handleCollision(event) {
 
         if (event.other.owner instanceof Player) {
-
+            this.reduceHealth()
             this.attack()
             // console.log('collission')
+
 
         }
     }
