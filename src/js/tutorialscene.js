@@ -5,18 +5,30 @@ import { Enemy } from "./enemy";
 export class TutorialScene extends Scene {
     game;
     player;
-    
+
     onInitialize(engine) {
         // Create player only once
         const player = new Player();
         this.add(player);
 
         // Create an Enemy only once
-        const enemy = new Enemy();
-        this.add(enemy);
+        // const enemy = new Enemy();
+        // this.add(enemy);
 
         // Add tilemap
         engine.tileMap.addToScene(this);
+
+        // Get the boundaries layer from tilemap
+        const boundariesLayer = engine.tileMap.getTileLayer('boundaries');
+        
+        // Make boundaries solid
+        if (boundariesLayer) {
+            boundariesLayer.data.forEach((tile) => {
+                if (tile) {
+                    tile.collisionType = CollisionType.Fixed;
+                }
+            });
+        }
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
