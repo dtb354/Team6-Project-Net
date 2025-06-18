@@ -1,14 +1,24 @@
-// import { Actor, Color, Vector } from "excalibur";
+import { Actor, Color, Font, Label, Vector } from "excalibur";
 
-// export class UI extends Actor {
-//     healthbar;
+export class UI extends Actor {
+    label;
 
-//     onInitialize(engine) {
-//         this.healthbar = new Actor({ x: 10, y: 40, color: Color.Green, width: 200, height: 20, anchor: new Vector(0, 0) })
-//         this.addChild(this.healthbar)
-//     }
+    onInitialize(engine) {
+        this.label = new Label({
 
-//     showHealth(percent) {
-//         this.healthbar.scale = new Vector(percent, 1)
-//     }
-// }
+            pos: new Vector(620, 30),
+            font: new Font({
+                size: 20,
+                family: 'Open Sans',
+                color: Color.White
+
+            })
+        })
+
+        this.addChild(this.label);
+    }
+
+    updateScore(score) {
+        this.label.text = `Score: ${score}`;
+    }
+}

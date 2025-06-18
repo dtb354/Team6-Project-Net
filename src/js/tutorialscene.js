@@ -26,7 +26,7 @@ export class TutorialScene extends Scene {
         // Add tilemap
         engine.tileMap.addToScene(this);
 
-        
+
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);

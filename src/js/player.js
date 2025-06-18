@@ -4,6 +4,7 @@ import { Net } from "./net";
 
 
 export class Player extends Actor {
+
     constructor() {
         super({
             width: 20,
@@ -50,6 +51,8 @@ export class Player extends Actor {
 
         // Zet a higher z value for the player to appear on top
         this.z = 10;
+
+
 
         // Background layers: 0-9
         // Game objects: 10-99
