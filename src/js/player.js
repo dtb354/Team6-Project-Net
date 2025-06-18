@@ -1,5 +1,5 @@
 import { Actor, Animation, Axes, CollisionType, Keys, range, Vector } from "excalibur";
-import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingNorthEast, playerWalkingNorthWest, playerWalkingSouth, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingWest } from "./resources";
+import { playerIdleSouth, playerWalkingEast, playerWalkingNorth, playerWalkingSouth, playerWalkingWest } from "./resources";
 import { Net } from "./net";
 
 
@@ -28,31 +28,17 @@ export class Player extends Actor {
         const playerWalkingN = Animation.fromSpriteSheet(playerWalkingNorth, range(0, 7), 70);
         this.graphics.add("playerWalkingN", playerWalkingN);
 
-        const playerWalkingNE = Animation.fromSpriteSheet(playerWalkingNorthEast, range(0, 7), 70);
-        this.graphics.add("playerWalkingNE", playerWalkingNE);
-
         const playerWalkingE = Animation.fromSpriteSheet(playerWalkingEast, range(0, 7), 70);
         this.graphics.add("playerWalkingE", playerWalkingE);
-
-        const playerWalkingSE = Animation.fromSpriteSheet(playerWalkingSouthEast, range(0, 7), 70);
-        this.graphics.add("playerWalkingSE", playerWalkingSE);
 
         const playerWalkingS = Animation.fromSpriteSheet(playerWalkingSouth, range(0, 7), 70);
         this.graphics.add("playerWalkingS", playerWalkingS);
 
-        const playerWalkingSW = Animation.fromSpriteSheet(playerWalkingSouthWest, range(0, 7), 70);
-        this.graphics.add("playerWalkingSW", playerWalkingSW);
-
         const playerWalkingW = Animation.fromSpriteSheet(playerWalkingWest, range(0, 7), 70);
         this.graphics.add("playerWalkingW", playerWalkingW);
 
-        const playerWalkingNW = Animation.fromSpriteSheet(playerWalkingNorthWest, range(0, 7), 70);
-        this.graphics.add("playerWalkingNW", playerWalkingNW);
-
         // Zet a higher z value for the player to appear on top
         this.z = 10;
-
-
 
         // Background layers: 0-9
         // Game objects: 10-99
@@ -69,20 +55,9 @@ export class Player extends Actor {
             // Deadzone threshold
             const threshold = 0.2;
 
-            // Choose animation based on stick direction, including diagonals
+            // Choose animation based on stick direction
             if (Math.abs(x) < threshold && Math.abs(y) < threshold) {
                 this.graphics.use("playerIdleS");
-            } else if (Math.abs(x) >= threshold && Math.abs(y) >= threshold) {
-                // Diagonal movement
-                if (x > 0 && y < 0) {
-                    this.graphics.use("playerWalkingNE"); // up-right
-                } else if (x > 0 && y > 0) {
-                    this.graphics.use("playerWalkingSE"); // down-right
-                } else if (x < 0 && y > 0) {
-                    this.graphics.use("playerWalkingSW"); // down-left
-                } else if (x < 0 && y < 0) {
-                    this.graphics.use("playerWalkingNW"); // up-left
-                }
             } else if (Math.abs(x) > Math.abs(y)) {
                 if (x > 0) {
                     this.graphics.use("playerWalkingE");
@@ -104,7 +79,6 @@ export class Player extends Actor {
             this.net.attack();
             // console.log("it works")
         }
-        // this.net.checkFlipped();
     }
 
     playerMovement(engine) {
@@ -138,5 +112,4 @@ export class Player extends Actor {
         // this.graphics.flipHorizontal = (this.vel.x < 0);
 
     }
-
 }
