@@ -88,8 +88,9 @@ export class Enemy extends Actor {
                     this.graphics.use('attack')
 
                     if (this.shootCooldown <= 0) {
+                        this.shootCooldown = 0;
                         this.shoot(engine);
-                        this.shootCooldown = 60;
+                        this.shootCooldown = 40;
                     }
 
                     // const timer = new Timer({
