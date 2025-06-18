@@ -19,18 +19,8 @@ export class Net extends Actor {
 
     hitSomething(event) {
         if (event.other.owner instanceof Enemy && this.rotation !== 0) {
-            // event.other.kill();
             event.other.owner.reduceHealth()
             console.log("huh")
-
         }
     }
-
-    // checkFlipped() {
-    //     const poly = this.collider.get();
-    //     if (!poly._isCounterClockwiseWinding(poly.getTransformedPoints())) {
-    //         poly.points.reverse();
-    //         poly.flagDirty();
-    //     }
-    // }
 }   

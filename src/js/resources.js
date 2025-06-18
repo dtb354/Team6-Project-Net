@@ -7,19 +7,14 @@ const Resources = {
     waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
     waterEnemyAttack: new ImageSource('images/water_enemy/corrupt_water_attack_front.png'),
 
-    idleSouth: new ImageSource('images/idle_full_sprite_South.png'),
-    walkingNorth: new ImageSource('images/walk_complete_sprite_North.png'),
-    walkingNorthEast: new ImageSource('images/walk_complete_sprite_North-East.png'),
-    walkingEast: new ImageSource('images/walk_complete_sprite_East.png'),
-    walkingSouthEast: new ImageSource('images/walk_complete_sprite_South-East.png'),
-    walkingSouth: new ImageSource('images/walk_complete_sprite_South.png'),
-    walkingSouthWest: new ImageSource('images/walk_complete_sprite_South-West.png'),
-    walkingWest: new ImageSource('images/walk_complete_sprite_West.png'),
-    walkingNorthWest: new ImageSource('images/walk_complete_sprite_North-West.png'),
+    idleSouth: new ImageSource('images/player_idle/idle_full_sprite_South.png'),
+
+    walkingNorth: new ImageSource('images/player_walking/walk_complete_sprite_North.png'),
+    walkingEast: new ImageSource('images/player_walking/walk_complete_sprite_East.png'),
+    walkingSouth: new ImageSource('images/player_walking/walk_complete_sprite_South.png'),
+    walkingWest: new ImageSource('images/player_walking/walk_complete_sprite_West.png'),
 
     Net: new ImageSource('images/net.png'),
-
-
 
     //Sound
     //PlayerWalkSound: new Sound('sounds/player-sound.mp3'),
@@ -37,93 +32,27 @@ const waterAttacke = SpriteSheet.fromImageSource({
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
     image: Resources.idleSouth,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerWalkingNorth = SpriteSheet.fromImageSource({
     image: Resources.walkingNorth,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingNorthEast = SpriteSheet.fromImageSource({
-    image: Resources.walkingNorthEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerWalkingEast = SpriteSheet.fromImageSource({
     image: Resources.walkingEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingSouthEast = SpriteSheet.fromImageSource({
-    image: Resources.walkingSouthEast,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerWalkingSouth = SpriteSheet.fromImageSource({
     image: Resources.walkingSouth,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingSouthWest = SpriteSheet.fromImageSource({
-    image: Resources.walkingSouthWest,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerWalkingWest = SpriteSheet.fromImageSource({
     image: Resources.walkingWest,
-    grid: {
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
-})
-
-const playerWalkingNorthWest = SpriteSheet.fromImageSource({
-    image: Resources.walkingNorthWest,
-    grid: {
-        rows: 1,
-        rows: 1,
-        columns: 8,
-        spriteHeight: 64,
-        spriteWidth: 64
-    }
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const resourceLoader = new Loader()
@@ -132,4 +61,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
+export { Resources, resourceLoader as ResourceLoader, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest }
