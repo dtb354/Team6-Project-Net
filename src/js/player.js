@@ -5,10 +5,11 @@ import { Net } from "./net";
 
 export class Player extends Actor {
     constructor() {
-        super({ width: 20, 
-                height: 33,
-                collisionType: CollisionType.Active,
-                 })
+        super({
+            width: 20,
+            height: 33,
+            collisionType: CollisionType.Active,
+        })
         this.scale = new Vector(1.5, 1.5);
 
         this.net = new Net();
