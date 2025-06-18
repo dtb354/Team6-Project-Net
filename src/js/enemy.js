@@ -1,5 +1,5 @@
-import { Actor, Animation, CollisionType, Color, Engine, range, Vector } from "excalibur";
-import { waterAttacke, waterEnemyIdle } from "./resources";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Vector } from "excalibur";
+import { purifiedWater, waterAttacke, waterEnemyIdle, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
 
@@ -9,6 +9,7 @@ export class Enemy extends Actor {
     hitpoints;
     healthbar;
     counter;
+    isPurified = false;
 
     constructor() {
         super({ width: 20, height: 33 })
@@ -16,6 +17,13 @@ export class Enemy extends Actor {
         const waterEnemy = Animation.fromSpriteSheet(waterEnemyIdle, range(0, 3), 100)
         this.graphics.add("idle", waterEnemy)
         this.graphics.use(waterEnemy)
+
+        const purifiedWaterEnemy = Animation.fromSpriteSheet(purifiedWater, range(0, 3), 100)
+        this.graphics.add("purified", purifiedWaterEnemy)
+
+
+        const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
+        this.graphics.add("attack", waterAttack)
 
     }
 
@@ -25,9 +33,7 @@ export class Enemy extends Actor {
         // this.on("collisionstart", (event) => this.handleCollision(event));
 
         this.pos = new Vector(500, 600)
-
         this.state = "idle"
-
         this.hitpoints = 10
         // milan zegt doe dit
         this.z = 10;
@@ -55,38 +61,46 @@ export class Enemy extends Actor {
 
         // Handle movement based on state
         switch (this.state) {
+
+            case "purified": {
+
+                this.moveInSquare()
+                this.graphics.use('purified')
+                break
+
+            }
             case "idle": {
                 this.moveInSquare()
                 break
             }
             case "angry": {
 
-                if (distance < 200) {
-                    // Move towards player
+                if (distance > 100 || distance < 10) {
                     const direction = player.pos.sub(this.pos).normalize()
                     this.vel = direction.scale(80)
 
-                    // Change animation to attack mode
-                    const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
-                    this.graphics.add("attack", waterAttack)
-                    this.graphics.use(waterAttack)
+                    this.graphics.use('attack')
                 }
-
                 break
             }
         }
 
-        // Change state based on distance
-        if (distance < 200) {
-            this.state = "angry"
-        } else {
-            this.state = "idle"
+        if (this.isPurified === false) {
+            if (distance < 200) {
+                this.state = "angry"
+            } else {
+                this.state = "idle"
+            }
+        } else if (this.isPurified === true) {
+            this.purification()
         }
 
     }
 
     moveInSquare() {
+
         this.counter++;
+
         if (this.counter < 10) {
             this.vel = new Vector(0, -1).scale(30);  // omhoog
         }
@@ -103,14 +117,8 @@ export class Enemy extends Actor {
             this.counter = 0; // reset counter na rondje
         }
 
-        // console.log(this.counter)
-
     }
 
-
-    // onPreUpdate(engine) {
-
-    // }
 
     reduceHealth() {
         this.hitpoints--;
@@ -118,39 +126,26 @@ export class Enemy extends Actor {
         this.healthbar.scale = new Vector(percent, 1);
 
         if (this.hitpoints <= 0) {
-            this.death()
-            console.log("enemy is dead")
-        }
-
-        else if (percent < 0.5) {
-            this.healthbar.color = Color.Red;
+            this.purification()
         }
 
     }
 
-    death() {
-        this.kill()
+
+    purification() {
+
+        this.healthbar.kill()
+        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100,);
+        this.graphics.add("purifying", waterPurify)
+
+        this.graphics.use('purifying')
+
+        this.graphics.use('purified')
+
+        this.state = "purified"
+
+        this.isPurified = true;
+
     }
-
-    attack() {
-        const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 100)
-        this.graphics.add("attack", waterAttack)
-        this.graphics.use(waterAttack)
-    }
-
-    // handleCollision(event) {
-
-    //     if (event.other.owner instanceof Net) {
-    //         this.reduceHealth()
-    //         this.attack()
-    //         // console.log('collission')
-
-
-    //     }
-    // }
-
-
-
-
 
 }

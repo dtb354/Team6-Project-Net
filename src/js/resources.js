@@ -6,6 +6,9 @@ const Resources = {
     //Sprites
     waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
     waterEnemyAttack: new ImageSource('images/water_enemy/corrupt_water_attack_front.png'),
+    waterEnemyPurification: new ImageSource('images/water_enemy/corrupt_water_purification.png'),
+    waterEnemyProjectile: new ImageSource('images/water_enemy/corrupt_water_projectile.png'),
+    purifiedwater: new ImageSource('images/water_enemy/purified_water.png'),
 
     idleSouth: new ImageSource('images/idle_full_sprite_South.png'),
     walkingNorth: new ImageSource('images/walk_complete_sprite_North.png'),
@@ -33,6 +36,21 @@ const waterEnemyIdle = SpriteSheet.fromImageSource({
 const waterAttacke = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyAttack,
     grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const waterpurification = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyPurification,
+    grid: { rows: 1, columns: 6, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const purifiedWater = SpriteSheet.fromImageSource({
+    image: Resources.purifiedwater,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const waterprojectile = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyPurification,
+    grid: { rows: 1, columns: 2, spriteHeight: 96, spriteWidth: 96 }
 })
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
@@ -132,4 +150,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
+export { Resources, resourceLoader as ResourceLoader, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerWalkingNorthEast, playerWalkingSouthEast, playerWalkingSouthWest, playerWalkingNorthWest }
