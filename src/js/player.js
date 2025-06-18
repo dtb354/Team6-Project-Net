@@ -68,6 +68,7 @@ export class Player extends Actor {
         // Zet a higher z value for the player to appear on top
         this.z = 3;
 
+        this.hitpoints = 10
         //healthbar
         this.healthbar = new Actor({
             pos: new Vector(0, -25), // 25 pixels boven zijn hoofd
