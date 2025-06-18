@@ -45,8 +45,6 @@ export class Enemy extends Actor {
         //this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
-        // milan zegt doe dit
-        this.z = 10;
 
 
         this.healthbar = new Actor({
