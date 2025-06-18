@@ -38,7 +38,7 @@ export class Player extends Actor {
         this.graphics.add("playerWalkingW", playerWalkingW);
 
         // Zet a higher z value for the player to appear on top
-        this.z = 10;
+        this.z = 3;
 
         // Background layers: 0-9
         // Game objects: 10-99

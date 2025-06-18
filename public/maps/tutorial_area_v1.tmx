@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="3">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="6">
  <tileset firstgid="1" name="wasteland bg" tilewidth="32" tileheight="32" tilecount="49" columns="7">
   <image source="wasteland-bg.png" width="255" height="224"/>
  </tileset>
@@ -139,8 +139,10 @@
  </layer>
  <objectgroup id="6" name="Object Layer 1">
   <object id="2" name="Player" type="Player" x="226" y="450" width="26" height="28"/>
+  <object id="3" name="Enemy 1" type="Enemy" x="72.6667" y="106" width="44" height="54.6667"/>
+  <object id="4" name="Enemy 2" type="Enemy" x="349.333" y="106" width="41.3333" height="57.3333"/>
  </objectgroup>
- <layer id="4" name="decorations :3" width="15" height="15">
+ <layer id="7" name="decorations collisions" width="15" height="15">
   <properties>
    <property name="solid" type="bool" value="true"/>
   </properties>
@@ -149,7 +151,29 @@
 0,0,0,0,0,0,0,579,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,595,0,612,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,612,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,611,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,721,722,611,0,0,0,0,
+0,0,0,0,0,698,0,0,610,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,735,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,743,0,743,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="4" name="decorations :3" width="15" height="15">
+  <properties>
+   <property name="solid" type="bool" value="false"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,579,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,612,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,611,0,0,685,686,0,0,0,0,0,
 0,0,0,0,0,0,0,0,703,704,0,0,0,0,0,
