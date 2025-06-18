@@ -9,6 +9,74 @@
  <tileset firstgid="284" name="Overworld_Tileset" tilewidth="16" tileheight="16" tilecount="234" columns="18">
   <image source="Overworld_Tileset.png" width="288" height="208"/>
  </tileset>
+ <tileset firstgid="518" name="Overworld_tileset_32x32" tilewidth="32" tileheight="32" tilecount="234" columns="18">
+  <image source="Overworld_tileset_32x32.png" width="576" height="416"/>
+  <tile id="92">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="93">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="94">
+   <properties>
+    <property name="solid" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="180">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.181818" y="18" width="15.8182" height="13.6364">
+     <properties>
+      <property name="solid" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="201">
+   <objectgroup draworder="index" id="4">
+    <object id="3" x="12.3636" y="4" width="19.6364" height="17.8182"/>
+   </objectgroup>
+  </tile>
+  <tile id="203">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="12" y="4" width="19.8182" height="18">
+     <properties>
+      <property name="solid" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="204">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.363636" y="3.81818" width="19.6364" height="17.8182">
+     <properties>
+      <property name="solid" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="217">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="16.3636" y="18.3636" width="15.2727" height="13.2727">
+     <properties>
+      <property name="solid" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="225">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="2" y="0" width="27.8182" height="23.6364">
+     <properties>
+      <property name="solid" type="bool" value="true"/>
+     </properties>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
  <layer id="1" name="Tile Layer 1" width="15" height="15">
   <data encoding="csv">
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
@@ -53,7 +121,7 @@
  <layer id="2" name="Tile Layer 2" width="15" height="15">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,
-0,0,0,0,0,0,0,111,34,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,34,0,0,0,0,0,0,
 0,0,0,21,0,0,0,0,34,0,0,42,0,0,0,
 0,0,0,0,0,0,0,36,45,39,24,24,24,0,0,
 0,0,0,0,0,0,0,34,0,34,24,24,24,0,0,
@@ -73,22 +141,25 @@
   <object id="2" name="Player" type="Player" x="226" y="450" width="26" height="28"/>
  </objectgroup>
  <layer id="4" name="decorations :3" width="15" height="15">
+  <properties>
+   <property name="solid" type="bool" value="false"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,579,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,612,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,144,0,0,0,0,0,0,
+0,0,0,0,0,611,0,0,685,686,0,0,0,0,0,
+0,0,0,0,0,0,0,0,703,704,0,0,0,0,0,
+0,0,0,0,0,680,681,0,721,722,611,0,0,0,0,
+0,0,0,0,0,698,699,0,610,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,143,0,0,217,218,0,0,0,0,0,
-0,0,0,0,0,0,0,0,235,236,0,0,0,0,0,
-0,0,0,0,0,212,213,0,253,254,143,0,0,0,0,
-0,0,0,0,0,230,231,0,142,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,248,249,0,0,0,0,0,
-0,0,0,0,0,0,0,0,266,267,0,0,0,0,0,
-0,0,0,0,0,0,257,0,257,0,0,0,0,0,0,
-0,0,0,0,0,0,275,0,275,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,716,717,0,0,0,0,0,
+0,0,0,0,0,0,0,0,734,735,0,0,0,0,0,
+0,0,0,0,0,0,725,0,725,0,0,0,0,0,0,
+0,0,0,0,0,0,743,0,743,0,0,0,0,0,0
 </data>
  </layer>
 </map>
