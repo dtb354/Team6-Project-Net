@@ -38,7 +38,7 @@ export class Enemy extends Actor {
 
         // this.on("collisionstart", (event) => this.handleCollision(event));
         this.shootCooldown = 0;
-        this.pos = new Vector(500, 600)
+        //this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
         // milan zegt doe dit

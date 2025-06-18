@@ -22,6 +22,7 @@ export class TutorialScene extends Scene {
 
         // Create an Enemy only once
         const enemy = new Enemy();
+        enemy.pos = new Vector(365, 115);
         this.add(enemy);
 
         // Add tilemap
