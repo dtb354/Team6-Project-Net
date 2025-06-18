@@ -1,7 +1,8 @@
-import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Vector } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
 import { purifiedWater, waterAttacke, waterEnemyIdle, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
+import { waterball } from "./waterball";
 
 export class Enemy extends Actor {
 
@@ -11,6 +12,7 @@ export class Enemy extends Actor {
     counter;
     isPurified = false;
 
+    shootingTimer = 0;
     purificationTimer = 0;
 
     constructor() {
@@ -35,7 +37,7 @@ export class Enemy extends Actor {
         this.counter = 0;
 
         // this.on("collisionstart", (event) => this.handleCollision(event));
-
+        this.shootCooldown = 0;
         this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
@@ -84,6 +86,26 @@ export class Enemy extends Actor {
                     this.vel = direction.scale(80)
 
                     this.graphics.use('attack')
+
+                    if (this.shootCooldown <= 0) {
+                        this.shoot(engine);
+                        this.shootCooldown = 60;
+                    }
+
+                    // const timer = new Timer({
+                    //     interval: 200,
+                    //     action: () => this.shoot(engine)
+                    // })
+
+                    // this.timer.add();
+                    // timer.start();
+
+
+                    // timerfinished() {
+                    //     // this.engine.goToScene('startscreen ')
+                    // }
+
+
                 }
                 break
             }
@@ -114,6 +136,9 @@ export class Enemy extends Actor {
 
         }
 
+        if (this.shootCooldown > 0) {
+            this.shootCooldown--;
+        }
 
     }
 
@@ -163,6 +188,14 @@ export class Enemy extends Actor {
 
     }
 
+    shoot(engine) {
+
+        for (let i = 0; i < 1; i++) {
+            let waterWeapon = new waterball(this.pos.x, this.pos.y)
+            engine.currentScene.add(waterWeapon);
+        }
+
+    }
 
 
 }

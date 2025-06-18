@@ -1,6 +1,7 @@
 import { Scene, Vector, Axis } from "excalibur";
 import { Player } from "./player";
 import { Enemy } from "./enemy";
+import { waterball } from "./waterball";
 
 export class TutorialScene extends Scene {
     game;
