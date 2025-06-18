@@ -1,4 +1,4 @@
-import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Vector } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Vector } from "excalibur";
 import { purifiedWater, waterAttacke, waterEnemyIdle, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
@@ -11,6 +11,8 @@ export class Enemy extends Actor {
     counter;
     isPurified = false;
 
+    purificationTimer = 0;
+
     constructor() {
         super({ width: 20, height: 33 })
 
@@ -21,6 +23,8 @@ export class Enemy extends Actor {
         const purifiedWaterEnemy = Animation.fromSpriteSheet(purifiedWater, range(0, 3), 100)
         this.graphics.add("purified", purifiedWaterEnemy)
 
+        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100);
+        this.graphics.add("purifying", waterPurify)
 
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
         this.graphics.add("attack", waterAttack)
@@ -85,15 +89,31 @@ export class Enemy extends Actor {
             }
         }
 
+
         if (this.isPurified === false) {
+
             if (distance < 200) {
                 this.state = "angry"
             } else {
                 this.state = "idle"
             }
-        } else if (this.isPurified === true) {
-            this.purification()
+
         }
+
+        else if (this.isPurified === true) {
+
+            this.purification()
+            this.purificationTimer++;
+
+            if (this.purificationTimer > 10) {
+
+                this.state = "purified"
+                this.isPurifying = false
+                this.graphics.use('purified')
+            }
+
+        }
+
 
     }
 
@@ -121,12 +141,14 @@ export class Enemy extends Actor {
 
 
     reduceHealth() {
+
         this.hitpoints--;
         const percent = Math.max(this.hitpoints / 10, 0);
         this.healthbar.scale = new Vector(percent, 1);
 
-        if (this.hitpoints <= 0) {
+        if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
+            this.healthbar.kill()
         }
 
     }
@@ -134,18 +156,13 @@ export class Enemy extends Actor {
 
     purification() {
 
-        this.healthbar.kill()
-        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100,);
-        this.graphics.add("purifying", waterPurify)
-
+        // this.healthbar.kill()
+        this.state = "purified"
+        this.isPurified = true;
         this.graphics.use('purifying')
 
-        this.graphics.use('purified')
-
-        this.state = "purified"
-
-        this.isPurified = true;
-
     }
+
+
 
 }
