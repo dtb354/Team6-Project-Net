@@ -10,12 +10,21 @@ const Resources = {
     waterEnemyProjectile: new ImageSource('images/water_enemy/corrupt_water_projectile.png'),
     purifiedwater: new ImageSource('images/water_enemy/purified_water.png'),
 
+    idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
+    idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
     idleSouth: new ImageSource('images/player_idle/idle_full_sprite_South.png'),
+    idleWest: new ImageSource('images/player_idle/idle_full_sprite_West.png'),
 
     walkingNorth: new ImageSource('images/player_walking/walk_complete_sprite_North.png'),
     walkingEast: new ImageSource('images/player_walking/walk_complete_sprite_East.png'),
     walkingSouth: new ImageSource('images/player_walking/walk_complete_sprite_South.png'),
     walkingWest: new ImageSource('images/player_walking/walk_complete_sprite_West.png'),
+
+    attackingNorth: new ImageSource('images/player_attack/attack_full_sprite_North.png'),
+    attackingEast: new ImageSource('images/player_attack/attack_full_sprite_East.png'),
+    attackingSouth: new ImageSource('images/player_attack/attack_full_sprite_South.png'),
+    attackingWest: new ImageSource('images/player_attack/attack_full_sprite_West.png'),
+
 
     Net: new ImageSource('images/net.png'),
 
@@ -47,12 +56,27 @@ const waterprojectile = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyProjectile, // It used to be waterEnemyPurification, make sure to use the right image :))
     grid: { rows: 1, columns: 2, spriteHeight: 96, spriteWidth: 96 }
 })
+//idle spritesheets
+const playerIdleNorth = SpriteSheet.fromImageSource({
+    image: Resources.idleNorth,
+    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+})
+
+const playerIdleEast = SpriteSheet.fromImageSource({
+    image: Resources.idleEast,
+    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+})
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
     image: Resources.idleSouth,
-    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
 })
 
+const playerIdleWest = SpriteSheet.fromImageSource({
+    image: Resources.idleWest,
+    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+})
+//walking spritesheets
 const playerWalkingNorth = SpriteSheet.fromImageSource({
     image: Resources.walkingNorth,
     grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
@@ -72,6 +96,26 @@ const playerWalkingWest = SpriteSheet.fromImageSource({
     image: Resources.walkingWest,
     grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
 })
+//attack spritesheets
+const playerAttackingNorth = SpriteSheet.fromImageSource({
+    image: Resources.attackingNorth,
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+})
+
+const playerAttackingEast = SpriteSheet.fromImageSource({
+    image: Resources.attackingEast,
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+})
+
+const playerAttackingSouth = SpriteSheet.fromImageSource({
+    image: Resources.attackingSouth,
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+})
+
+const playerAttackingWest = SpriteSheet.fromImageSource({
+    image: Resources.attackingWest,
+    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+})
 
 const resourceLoader = new Loader()
 // Add all resources to the loader
@@ -79,4 +123,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleSouth, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest }
+export { Resources, resourceLoader as ResourceLoader, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }
