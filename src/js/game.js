@@ -43,12 +43,12 @@ export class Game extends Engine {
 
         //     // Create player and enemy
         //     this.player = new Player()
-        this.waterEnemy = new Enemy()
+        //this.waterEnemy = new Enemy()
 
         //     // Add actors to the scene
         //     const currentScene = this.scenes['tutorial']
         //     currentScene.add(this.player)
-        currentScene.add(this.waterEnemy)
+        //currentScene.add(this.waterEnemy)
 
         //     // Add tilemap to the scene
         //     this.tileMap.addToScene(currentScene)
