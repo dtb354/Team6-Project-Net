@@ -8,6 +8,7 @@ export class Player extends Actor {
     hitpoints
     healthbar
     lastDirection
+    attackDirection
 
     constructor() {
         super({
@@ -106,22 +107,26 @@ export class Player extends Actor {
                 if (x > 0) {
                     this.graphics.use("playerWalkingE");
                     this.lastDirection = "East"
+                    this.attackDirection = "East"
                 }
 
                 if (x < 0) {
                     this.graphics.use("playerWalkingW");
                     this.lastDirection = "West"
+                    this.attackDirection = "West"
                 }
 
             } else {
                 if (y > 0) {
                     this.graphics.use("playerWalkingS");
                     this.lastDirection = "South"
+                    this.attackDirection = "South"
                 }
 
                 if (y < 0) {
                     this.graphics.use("playerWalkingN");
                     this.lastDirection = "North"
+                    this.attackDirection = "North"
                 }
             }
         } else {
@@ -130,6 +135,7 @@ export class Player extends Actor {
         }
         if (engine.input.keyboard.wasPressed(Keys.Space)) {
             this.net.attack();
+            this.attackDirectionHandler()
             // console.log("it works")
         }
 
@@ -149,6 +155,23 @@ export class Player extends Actor {
         }
         if (this.lastDirection === "West") {
             this.graphics.use("playerIdleW")
+        }
+    }
+
+    attackDirectionHandler() {
+        if (this.attackDirection === "North") {
+            this.graphics.use("playerAttackingN")
+        }
+
+        if (this.attackDirection === "East") {
+            this.graphics.use("playerAttackingE")
+        }
+
+        if (this.attackDirection === "South") {
+            this.graphics.use("playerAttackingS")
+        }
+        if (this.attackDirection === "West") {
+            this.graphics.use("playerAttackingW")
         }
     }
 
