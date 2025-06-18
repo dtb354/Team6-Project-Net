@@ -16,7 +16,9 @@ export class Enemy extends Actor {
     purificationTimer = 0;
 
     constructor() {
-        super({ width: 20, height: 33 })
+        super({ width: 20, 
+                height: 33,
+                collisionType: CollisionType.Active, })
 
         const waterEnemy = Animation.fromSpriteSheet(waterEnemyIdle, range(0, 3), 100)
         this.graphics.add("idle", waterEnemy)
@@ -31,11 +33,13 @@ export class Enemy extends Actor {
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
         this.graphics.add("attack", waterAttack)
 
+        
+
     }
 
     onInitialize(engine) {
         this.counter = 0;
-
+        this.z = 3;
         // this.on("collisionstart", (event) => this.handleCollision(event));
         this.shootCooldown = 0;
         //this.pos = new Vector(500, 600)

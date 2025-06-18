@@ -19,6 +19,7 @@ export class waterball extends Actor {
             event.other.owner.reduceHealthOfPlayer()
             console.log("huh")
         }
+        this.z = 3;
     }
 
 }
