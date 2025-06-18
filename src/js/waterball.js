@@ -9,5 +9,6 @@ export class waterball extends Actor {
         this.graphics.use('weapon')
         this.vel = new Vector(100, 0)
         this.pos = new Vector(x, y)
+        this.z = 3; 
     }
 }
