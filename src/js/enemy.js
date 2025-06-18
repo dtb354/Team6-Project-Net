@@ -1,7 +1,8 @@
-import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Vector } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
 import { purifiedWater, waterAttacke, waterEnemyIdle, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
+import { waterball } from "./waterball";
 
 export class Enemy extends Actor {
 
@@ -10,6 +11,9 @@ export class Enemy extends Actor {
     healthbar;
     counter;
     isPurified = false;
+
+    shootingTimer = 0;
+    purificationTimer = 0;
 
     constructor() {
         super({ width: 20, height: 33 })
@@ -21,6 +25,8 @@ export class Enemy extends Actor {
         const purifiedWaterEnemy = Animation.fromSpriteSheet(purifiedWater, range(0, 3), 100)
         this.graphics.add("purified", purifiedWaterEnemy)
 
+        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100);
+        this.graphics.add("purifying", waterPurify)
 
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
         this.graphics.add("attack", waterAttack)
@@ -31,8 +37,8 @@ export class Enemy extends Actor {
         this.counter = 0;
 
         // this.on("collisionstart", (event) => this.handleCollision(event));
-
-        this.pos = new Vector(500, 600)
+        this.shootCooldown = 0;
+        //this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
         // milan zegt doe dit
@@ -80,19 +86,58 @@ export class Enemy extends Actor {
                     this.vel = direction.scale(80)
 
                     this.graphics.use('attack')
+
+                    if (this.shootCooldown <= 0) {
+                        this.shoot(engine);
+                        this.shootCooldown = 60;
+                    }
+
+                    // const timer = new Timer({
+                    //     interval: 200,
+                    //     action: () => this.shoot(engine)
+                    // })
+
+                    // this.timer.add();
+                    // timer.start();
+
+
+                    // timerfinished() {
+                    //     // this.engine.goToScene('startscreen ')
+                    // }
+
+
                 }
                 break
             }
         }
 
+
         if (this.isPurified === false) {
+
             if (distance < 200) {
                 this.state = "angry"
             } else {
                 this.state = "idle"
             }
-        } else if (this.isPurified === true) {
+
+        }
+
+        else if (this.isPurified === true) {
+
             this.purification()
+            this.purificationTimer++;
+
+            if (this.purificationTimer > 10) {
+
+                this.state = "purified"
+                this.isPurifying = false
+                this.graphics.use('purified')
+            }
+
+        }
+
+        if (this.shootCooldown > 0) {
+            this.shootCooldown--;
         }
 
     }
@@ -121,12 +166,14 @@ export class Enemy extends Actor {
 
 
     reduceHealth() {
+
         this.hitpoints--;
         const percent = Math.max(this.hitpoints / 10, 0);
         this.healthbar.scale = new Vector(percent, 1);
 
-        if (this.hitpoints <= 0) {
+        if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
+            this.healthbar.kill()
         }
 
     }
@@ -134,18 +181,21 @@ export class Enemy extends Actor {
 
     purification() {
 
-        this.healthbar.kill()
-        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100,);
-        this.graphics.add("purifying", waterPurify)
-
+        // this.healthbar.kill()
+        this.state = "purified"
+        this.isPurified = true;
         this.graphics.use('purifying')
 
-        this.graphics.use('purified')
+    }
 
-        this.state = "purified"
+    shoot(engine) {
 
-        this.isPurified = true;
+        for (let i = 0; i < 1; i++) {
+            let waterWeapon = new waterball(this.pos.x, this.pos.y)
+            engine.currentScene.add(waterWeapon);
+        }
 
     }
+
 
 }

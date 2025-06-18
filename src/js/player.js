@@ -65,7 +65,7 @@ export class Player extends Actor {
         this.graphics.add("playerAttackingW", playerAttackingW);
 
         // Zet a higher z value for the player to appear on top
-        this.z = 10;
+        this.z = 3;
 
         //healthbar
         this.healthbar = new Actor({

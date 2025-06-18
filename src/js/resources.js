@@ -53,7 +53,7 @@ const purifiedWater = SpriteSheet.fromImageSource({
 })
 
 const waterprojectile = SpriteSheet.fromImageSource({
-    image: Resources.waterEnemyPurification,
+    image: Resources.waterEnemyProjectile, // It used to be waterEnemyPurification, make sure to use the right image :))
     grid: { rows: 1, columns: 2, spriteHeight: 96, spriteWidth: 96 }
 })
 //idle spritesheets
