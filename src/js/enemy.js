@@ -16,9 +16,11 @@ export class Enemy extends Actor {
     purificationTimer = 0;
 
     constructor() {
-        super({ width: 20, 
-                height: 33,
-                collisionType: CollisionType.Active, })
+        super({
+            width: 20,
+            height: 33,
+            collisionType: CollisionType.Active,
+        })
 
         const waterEnemy = Animation.fromSpriteSheet(waterEnemyIdle, range(0, 3), 100)
         this.graphics.add("idle", waterEnemy)
@@ -33,7 +35,7 @@ export class Enemy extends Actor {
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
         this.graphics.add("attack", waterAttack)
 
-        
+
 
     }
 
@@ -94,20 +96,6 @@ export class Enemy extends Actor {
                         this.shoot(engine);
                         this.shootCooldown = 40;
                     }
-
-                    // const timer = new Timer({
-                    //     interval: 200,
-                    //     action: () => this.shoot(engine)
-                    // })
-
-                    // this.timer.add();
-                    // timer.start();
-
-
-                    // timerfinished() {
-                    //     // this.engine.goToScene('startscreen ')
-                    // }
-
 
                 }
                 break
@@ -194,7 +182,7 @@ export class Enemy extends Actor {
     shoot(engine) {
 
         for (let i = 0; i < 1; i++) {
-            let waterWeapon = new waterball(this.pos.x, this.pos.y)
+            let waterWeapon = new waterball(this.pos.x, this.pos.y, Player)
             engine.currentScene.add(waterWeapon);
         }
 
