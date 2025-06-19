@@ -1,14 +1,16 @@
-import { Actor, Animation, Axes, CollisionType, Color, Keys, range, Vector } from "excalibur";
+import { Actor, Animation, Axes, Buttons, CollisionType, Color, Keys, range, Vector } from "excalibur";
 import { playerAttackingEast, playerAttackingNorth, playerAttackingSouth, playerAttackingWest, playerIdleEast, playerIdleNorth, playerIdleSouth, playerIdleWest, playerWalkingEast, playerWalkingNorth, playerWalkingSouth, playerWalkingWest } from "./resources";
 import { Net } from "./net";
 
 
 export class Player extends Actor {
 
+    state
     hitpoints
     healthbar
     lastDirection
     attackDirection
+    isAttacking = false
 
     constructor() {
         super({
@@ -18,13 +20,14 @@ export class Player extends Actor {
         })
         this.scale = new Vector(1.5, 1.5);
 
-        this.net = new Net();
-        this.addChild(this.net)
+        // this.net = new Net();
+        // this.addChild(this.net)
 
     }
 
     onInitialize() {
 
+        this.pos = new Vector(226, 450); // Spawn point for player
 
         //Idle
         const playerIdleN = Animation.fromSpriteSheet(playerIdleNorth, range(0, 10), 70);
@@ -35,6 +38,7 @@ export class Player extends Actor {
 
         const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 10), 70);
         this.graphics.add("playerIdleS", playerIdleS);
+        this.graphics.use("playerIdleS")
 
         const playerIdleW = Animation.fromSpriteSheet(playerIdleWest, range(0, 10), 70);
         this.graphics.add("playerIdleW", playerIdleW);
@@ -53,23 +57,23 @@ export class Player extends Actor {
         this.graphics.add("playerWalkingW", playerWalkingW);
 
         //Attacking
-        const playerAttackingN = Animation.fromSpriteSheet(playerAttackingNorth, range(0, 7), 70);
+        const playerAttackingN = Animation.fromSpriteSheet(playerAttackingNorth, range(0, 6), 70);
         this.graphics.add("playerAttackingN", playerAttackingN);
 
-        const playerAttackingE = Animation.fromSpriteSheet(playerAttackingEast, range(0, 7), 70);
+        const playerAttackingE = Animation.fromSpriteSheet(playerAttackingEast, range(0, 6), 70);
         this.graphics.add("playerAttackingE", playerAttackingE);
 
-        const playerAttackingS = Animation.fromSpriteSheet(playerAttackingSouth, range(0, 7), 70);
+        const playerAttackingS = Animation.fromSpriteSheet(playerAttackingSouth, range(0, 6), 70);
         this.graphics.add("playerAttackingS", playerAttackingS);
 
-        const playerAttackingW = Animation.fromSpriteSheet(playerAttackingWest, range(0, 7), 70);
+        const playerAttackingW = Animation.fromSpriteSheet(playerAttackingWest, range(0, 6), 70);
         this.graphics.add("playerAttackingW", playerAttackingW);
 
         // Zet a higher z value for the player to appear on top
         this.z = 3;
 
-        this.hitpoints = 10
         //healthbar
+        this.hitpoints = 10
         this.healthbar = new Actor({
             pos: new Vector(0, -25), // 25 pixels boven zijn hoofd
             color: Color.Green,
@@ -86,22 +90,55 @@ export class Player extends Actor {
     }
 
     onPreUpdate(engine) {
-        // Gamepad movement
-        this.graphics.use("playerIdleS")
 
         this.lastDirectionHandler()
 
+        //handle attack direction
+        switch (this.state) {
+            case "attackingNorth": {
+                this.graphics.use("playerAttackingN")
+                break
+            }
+            case "attackingEast": {
+                this.graphics.use("playerAttackingE")
+                break
+            }
+            case "attackingSouth": {
+                this.graphics.use("playerAttackingS")
+                break
+            }
+            case "attackingWest": {
+                this.graphics.use("playerAttackingW")
+                break
+            }
+            case "idleNorth": {
+                this.graphics.use("playerIdleN")
+                break
+            }
+            case "idleEast": {
+                this.graphics.use("playerIdleE")
+                break
+            }
+            case "idleSouth": {
+                this.graphics.use("playerIdleS")
+                break
+            }
+            case "idleWest": {
+                this.graphics.use("playerIdleW")
+                break
+            }
+        }
+
+        if (this.isAttacking === true) {
+            this.vel = new Vector(0, 0)
+            return
+        }
+
+        // Gamepad movement
         if (engine.mygamepad) {
             const x = engine.mygamepad.getAxes(Axes.LeftStickX);
             const y = engine.mygamepad.getAxes(Axes.LeftStickY);
             this.vel = new Vector(x * 200, y * 200);
-
-            // Deadzone threshold
-            // const threshold = 0.2;
-
-            // Choose animation based on stick direction
-            // if (Math.abs(x) < threshold && Math.abs(y) < threshold) {
-            // this.graphics.use("playerIdleW");
 
             if (Math.abs(x) > Math.abs(y)) {
 
@@ -130,16 +167,26 @@ export class Player extends Actor {
                     this.attackDirection = "North"
                 }
             }
+
+            if (engine.mygamepad.wasButtonPressed(Buttons.Face1)) {
+                console.log('YIPPIE!')
+                this.attackDirectionHandler()
+            }
+
+            // If not moving, show idle animation based on lastDirection
+            // if (x === 0 && y === 0) {
+            //     this.lastDirectionHandler();
+            // }
+
         } else {
             // Keyboard fallback
             this.playerMovement(engine);
         }
+
         if (engine.input.keyboard.wasPressed(Keys.Space)) {
-            this.net.attack();
             this.attackDirectionHandler()
             // console.log("it works")
         }
-
     }
 
     lastDirectionHandler() {
@@ -159,22 +206,79 @@ export class Player extends Actor {
         }
     }
 
+    createNet() {
+        if (this.net && this.net.scene) {
+            this.net.kill();
+        }
+        this.net = new Net(this);
+
+        let offset = new Vector(0, 0);
+        if (this.attackDirection === "North") offset = new Vector(0, -30);
+        if (this.attackDirection === "East") offset = new Vector(30, 0);
+        if (this.attackDirection === "South") offset = new Vector(0, 50);
+        if (this.attackDirection === "West") offset = new Vector(-30, 0);
+
+        this.net.pos = offset;
+        this.addChild(this.net)
+    }
+
     attackDirectionHandler() {
+
+        this.isAttacking = true
+
         if (this.attackDirection === "North") {
-            this.graphics.use("playerAttackingN")
+            this.state = "attackingNorth"
+            this.createNet()
+            this.net.attack();
+            setTimeout(() => {
+                // this.returnToIdle();
+                this.state = null
+                this.net.kill()
+                this.isAttacking = false
+            }, 500); // 1000 ms = 1 second pause 
         }
 
         if (this.attackDirection === "East") {
-            this.graphics.use("playerAttackingE")
+            this.state = "attackingEast"
+            this.createNet()
+            this.net.attack();
+            setTimeout(() => {
+                // this.returnToIdle();
+                this.state = null
+                this.net.kill()
+                this.isAttacking = false
+            }, 500); // 1000 ms = 1 second pause 
+
         }
 
         if (this.attackDirection === "South") {
-            this.graphics.use("playerAttackingS")
+            this.state = "attackingSouth"
+            this.createNet()
+            this.net.attack();
+            setTimeout(() => {
+                // this.returnToIdle();
+                this.state = null
+                this.net.kill()
+                this.isAttacking = false
+            }, 500); // 1000 ms = 1 second pause 
+
         }
         if (this.attackDirection === "West") {
-            this.graphics.use("playerAttackingW")
+            this.state = "attackingWest"
+            this.createNet()
+            this.net.attack();
+            setTimeout(() => {
+                // this.returnToIdle();
+                this.state = null
+                this.net.kill()
+                this.isAttacking = false
+            }, 500); // 1000 ms = 1 second pause 
         }
     }
+
+    // returnToIdle() {
+    //     this.state = "idleEast"
+    // }
 
     reduceHealthOfPlayer() {
         this.hitpoints--;
@@ -184,7 +288,6 @@ export class Player extends Actor {
         if (this.hitpoints <= 0) {
             // this.idkDie?()
         }
-
     }
 
     playerMovement(engine) {
