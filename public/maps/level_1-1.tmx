@@ -244,7 +244,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="2" name="boundaries" width="15" height="15" visible="0">
+ <layer id="2" name="boundaries" width="15" height="15">
   <data encoding="csv">
    <chunk x="-32" y="-32" width="16" height="16">
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
@@ -464,7 +464,7 @@
 </chunk>
   </data>
  </layer>
- <layer id="3" name="Tile Layer 3" width="15" height="15" visible="0">
+ <layer id="3" name="Tile Layer 3" width="15" height="15">
   <data encoding="csv">
    <chunk x="-16" y="-32" width="16" height="16">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -576,7 +576,7 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="6" name="Object Layer 1" visible="0">
+ <objectgroup id="6" name="Object Layer 1">
   <object id="1" name="Player" type="Player" x="-24" y="435" width="46" height="72"/>
  </objectgroup>
  <layer id="5" name="decorations collision" width="15" height="15">
