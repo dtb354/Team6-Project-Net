@@ -3,6 +3,7 @@ import { Player } from "./player.js";
 import { Enemy } from "./enemy";
 import { waterball } from "./waterball";
 import { windEnemy } from "./wind_enemy";
+import { Portal } from "./portal.js";
 
 export class TutorialScene extends Scene {
     game;
@@ -32,27 +33,16 @@ export class TutorialScene extends Scene {
         wenemy.pos = new Vector(350, 100)
         this.add(wenemy);
 
+        // Create portal rectangle
+        const portal = new Portal("next", new Vector(270, -33));
+        this.add(portal);
+        
         // Add tilemap
         engine.tutorialMap.addToScene(this);
 
-        // Create portal rectangle
-        const portal = new Actor({
-            pos: new Vector(270, -33), // set portal position
-            width: 80,
-            height: 40,
-            color: Color.Magenta,
-            collisionType: CollisionType.Passive
-        })
-        portal.z = 20;
-        this.add(portal)
-
-        // Switch to NextScene on collision with player
-        portal.on("collisionstart", (evt) => {
-            if (evt.other instanceof Player) {
-                console.log("portal entered to middle level")
-                engine.goToScene("next")
-            }
-        })
+        
+        
+        
 
 
 
