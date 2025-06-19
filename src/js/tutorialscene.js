@@ -19,6 +19,7 @@ export class TutorialScene extends Scene {
 
         // Create player only once
         const player = new Player();
+        player.pos = new Vector(226, 450);
         this.add(player);
 
         // Create an Enemy only once
