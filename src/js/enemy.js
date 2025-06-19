@@ -180,13 +180,13 @@ export class Enemy extends Actor {
     }
 
     shoot(engine) {
+        const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        if (!player) return
 
-        for (let i = 0; i < 1; i++) {
-            let waterWeapon = new waterball(this.pos.x, this.pos.y, Player)
-            engine.currentScene.add(waterWeapon);
-        }
-
+        const waterWeapon = new waterball(this.pos.x, this.pos.y, player)
+        engine.currentScene.add(waterWeapon)
     }
+
 
 
 }
