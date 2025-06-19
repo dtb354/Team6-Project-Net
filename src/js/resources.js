@@ -9,6 +9,16 @@ const Resources = {
     waterEnemyPurification: new ImageSource('images/water_enemy/corrupt_water_purification.png'),
     waterEnemyProjectile: new ImageSource('images/water_enemy/corrupt_water_projectile.png'),
     purifiedwater: new ImageSource('images/water_enemy/purified_water.png'),
+    waterEnemyidleBack: new ImageSource('images/water_enemy/corrupt_water_idle_back.png'),
+    waterEnemyAttackBack: new ImageSource('images/water_enemy/corrupt_water_attack_back.png'),
+
+    windEnemyAttackBack: new ImageSource('images/wind_enemy/wind_enemy_attack_back.png'),
+    windEnemyAttack: new ImageSource('images/wind_enemy/wind_enemy_attack.png'),
+    windEnemyIdle: new ImageSource('images/wind_enemy/wind_enemy_idle.png'),
+    windEnemyIdleBack: new ImageSource('images/wind_enemy/wind_enemy_idle_back.png'),
+    windEnemyPurification: new ImageSource('images/wind_enemy/wind_enemy_purification.png'),
+    purifiedWind: new ImageSource('images/wind_enemy/wind_enemy_purified_idle.png'),
+
 
     idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
@@ -32,13 +42,24 @@ const Resources = {
     //PlayerWalkSound: new Sound('sounds/player-sound.mp3'),
 }
 
+// water spritesheets
 const waterEnemyIdle = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyidle,
     grid: { rows: 1, columns: 8, spriteHeight: 96, spriteWidth: 96 }
 })
 
+const waterEnemyIdleBack = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyidleBack,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
 const waterAttacke = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyAttack,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const waterAttackBack = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyAttackBack,
     grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
 })
 
@@ -56,6 +77,39 @@ const waterprojectile = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyProjectile, // It used to be waterEnemyPurification, make sure to use the right image :))
     grid: { rows: 1, columns: 2, spriteHeight: 96, spriteWidth: 96 }
 })
+
+// wind enemy sprites
+const windEnemyBackwardsAttack = SpriteSheet.fromImageSource({
+    image: Resources.windEnemyAttackBack,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const windAttackEnemy = SpriteSheet.fromImageSource({
+    image: Resources.windEnemyAttack,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const windIdle = SpriteSheet.fromImageSource({
+    image: Resources.windEnemyIdle,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const windIdleBack = SpriteSheet.fromImageSource({
+    image: Resources.windEnemyIdleBack,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const windPurification = SpriteSheet.fromImageSource({
+    image: Resources.windEnemyPurification,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const windEnemyPurified = SpriteSheet.fromImageSource({
+    image: Resources.purifiedWind,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+
 //idle spritesheets
 const playerIdleNorth = SpriteSheet.fromImageSource({
     image: Resources.idleNorth,
@@ -123,4 +177,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }
+export { Resources, resourceLoader as ResourceLoader, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }

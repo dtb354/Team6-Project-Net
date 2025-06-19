@@ -1,7 +1,8 @@
-import { Scene, Vector, Axis } from "excalibur";
-import { Player } from "./player";
+import { Scene, Vector, Axis, Actor, Color, CollisionType } from "excalibur";
+import { Player } from "./player.js";
 import { Enemy } from "./enemy";
 import { waterball } from "./waterball";
+import { windEnemy } from "./wind_enemy";
 
 export class TutorialScene extends Scene {
     game;
@@ -18,6 +19,7 @@ export class TutorialScene extends Scene {
 
         // Create player only once
         const player = new Player();
+        player.pos = new Vector(226, 450);
         this.add(player);
 
         // Create an Enemy only once
@@ -25,8 +27,32 @@ export class TutorialScene extends Scene {
         enemy.pos = new Vector(365, 115);
         this.add(enemy);
 
+        // create wind enemy only once
+        const wenemy = new windEnemy();
+        wenemy.pos = new Vector(350, 100)
+        this.add(wenemy);
+
         // Add tilemap
-        engine.tileMap.addToScene(this);
+        engine.tutorialMap.addToScene(this);
+
+        // Create portal rectangle
+        const portal = new Actor({
+            pos: new Vector(270, -33), // set portal position
+            width: 80,
+            height: 40,
+            color: Color.Magenta,
+            collisionType: CollisionType.Passive
+        })
+        portal.z = 20;
+        this.add(portal)
+
+        // Switch to NextScene on collision with player
+        portal.on("collisionstart", (evt) => {
+            if (evt.other instanceof Player) {
+                console.log("portal entered to middle level")
+                engine.goToScene("next")
+            }
+        })
 
 
 

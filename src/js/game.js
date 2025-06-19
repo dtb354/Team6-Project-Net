@@ -5,6 +5,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './TutorialScene.js'
+import { Next } from './middle_stage_left.js'
 
 
 export class Game extends Engine {
@@ -21,14 +22,19 @@ export class Game extends Engine {
             maxFps: 60,
             displayMode: DisplayMode.FitScreen,
         })
-        this.tileMap = new TiledResource("/maps/tutorial_area_v1.tmx")
-        ResourceLoader.addResource(this.tileMap)
+        this.tutorialMap = new TiledResource("/maps/tutorial_area_v1.tmx");
+        ResourceLoader.addResource(this.tutorialMap);
+
+        this.middleLevelMap = new TiledResource("/maps/level_1-1.tmx");
+        ResourceLoader.addResource(this.middleLevelMap);
     }
 
     async start() {
         await super.start(ResourceLoader);
         const tutorialScene = new TutorialScene();
         this.addScene('tutorial', tutorialScene);
+        const next = new Next();
+        this.addScene("next", next);
         this.goToScene('tutorial');
 
 

@@ -1,10 +1,9 @@
 import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
-import { purifiedWater, waterAttackBack, waterAttacke, waterEnemyIdle, waterEnemyIdleBack, waterpurification } from "./resources";
+import { windAttackEnemy, windEnemyBackwardsAttack, windEnemyPurified, windIdle, windIdleBack, windPurification } from "./resources";
 import { Player } from "./player";
-import { Net } from "./net";
-import { waterball } from "./waterball";
+import { Enemy } from "./enemy";
 
-export class Enemy extends Actor {
+export class windEnemy extends Enemy {
 
     state;
     hitpoints;
@@ -22,24 +21,24 @@ export class Enemy extends Actor {
             collisionType: CollisionType.Active,
         })
 
-        const waterEnemy = Animation.fromSpriteSheet(waterEnemyIdle, range(0, 3), 100)
-        this.graphics.add("idle", waterEnemy)
-        this.graphics.use(waterEnemy)
+        const windEnemy = Animation.fromSpriteSheet(windIdle, range(0, 3), 100)
+        this.graphics.add("idle", windEnemy)
+        this.graphics.use(windIdle)
 
-        const purifiedWaterEnemy = Animation.fromSpriteSheet(purifiedWater, range(0, 3), 100)
-        this.graphics.add("purified", purifiedWaterEnemy)
+        const purifiedWindEnemy = Animation.fromSpriteSheet(windEnemyPurified, range(0, 3), 100)
+        this.graphics.add("purified", purifiedWindEnemy)
 
-        const waterPurify = Animation.fromSpriteSheet(waterpurification, range(0, 5), 100);
-        this.graphics.add("purifying", waterPurify)
+        const windTransformation = Animation.fromSpriteSheet(windPurification, range(0, 4), 100);
+        this.graphics.add("purifying", windTransformation)
 
-        const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
-        this.graphics.add("attack", waterAttack)
+        const windAttack = Animation.fromSpriteSheet(windAttackEnemy, range(0, 4), 200)
+        this.graphics.add("attack", windAttack)
 
-        const waterattackBack = Animation.fromSpriteSheet(waterAttackBack, range(0, 4), 200)
-        this.graphics.add('backAttack', waterattackBack)
+        const windBackAttack = Animation.fromSpriteSheet(windEnemyBackwardsAttack, range(0, 4), 200)
+        this.graphics.add('backAttack', windBackAttack)
 
-        const idleBack = Animation.fromSpriteSheet(waterEnemyIdleBack, range(0, 3), 100)
-        this.graphics.add("idleBack", idleBack)
+        const windEnemyBack = Animation.fromSpriteSheet(windIdleBack, range(0, 3), 100)
+        this.graphics.add("idleBack", windEnemyBack)
 
     }
 
@@ -67,11 +66,8 @@ export class Enemy extends Actor {
 
     onPreUpdate(engine) {
 
-
-
-
         // Get player from current scene
-        const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        const player = engine.currentScene.actors.find(actor => actor instanceof Player);
         if (!player) return
 
         const distance = this.pos.distance(player.pos)
@@ -102,7 +98,6 @@ export class Enemy extends Actor {
             }
             case "angry": {
 
-
                 if (distance > 100 || distance < 10) {
                     const direction = player.pos.sub(this.pos).normalize();
                     this.vel = direction.scale(80);
@@ -113,11 +108,11 @@ export class Enemy extends Actor {
                         this.graphics.use("attack");
                     }
 
-                    if (this.shootCooldown <= 0) {
-                        this.shootCooldown = 0;
-                        this.shoot(engine);
-                        this.shootCooldown = 40;
-                    }
+                    // if (this.shootCooldown <= 0) {
+                    //     this.shootCooldown = 0;
+                    //     this.shoot(engine);
+                    //     this.shootCooldown = 40;
+                    // }
                 }
                 break;
             }
@@ -148,9 +143,9 @@ export class Enemy extends Actor {
 
         }
 
-        if (this.shootCooldown > 0) {
-            this.shootCooldown--;
-        }
+        // if (this.shootCooldown > 0) {
+        //     this.shootCooldown--;
+        // }
 
     }
 
@@ -199,14 +194,13 @@ export class Enemy extends Actor {
         this.graphics.use('purifying')
     }
 
-    shoot(engine) {
-        const player = engine.currentScene.actors.find(actor => actor instanceof Player)
-        if (!player) return
+    // shoot(engine) {
+    //     const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+    //     if (!player) return
 
-        const waterWeapon = new waterball(this.pos.x, this.pos.y, player)
-        engine.currentScene.add(waterWeapon)
-    }
-
+    //     const waterWeapon = new waterball(this.pos.x, this.pos.y, player)
+    //     engine.currentScene.add(waterWeapon)
+    // }
 
 
 }
