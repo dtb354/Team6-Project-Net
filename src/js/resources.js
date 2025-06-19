@@ -26,7 +26,7 @@ const Resources = {
     attackingWest: new ImageSource('images/player_attack/attack_full_sprite_West.png'),
 
 
-    Net: new ImageSource('images/net.png'),
+    net: new ImageSource('images/net.png'),
 
     //Sound
     //PlayerWalkSound: new Sound('sounds/player-sound.mp3'),
@@ -99,22 +99,22 @@ const playerWalkingWest = SpriteSheet.fromImageSource({
 //attack spritesheets
 const playerAttackingNorth = SpriteSheet.fromImageSource({
     image: Resources.attackingNorth,
-    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 7, spriteHeight: 93, spriteWidth: 96 }
 })
 
 const playerAttackingEast = SpriteSheet.fromImageSource({
     image: Resources.attackingEast,
-    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 7, spriteHeight: 93, spriteWidth: 96 }
 })
 
 const playerAttackingSouth = SpriteSheet.fromImageSource({
     image: Resources.attackingSouth,
-    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 7, spriteHeight: 101, spriteWidth: 96 }
 })
 
 const playerAttackingWest = SpriteSheet.fromImageSource({
     image: Resources.attackingWest,
-    grid: { rows: 1, columns: 8, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 7, spriteHeight: 80, spriteWidth: 96 }
 })
 
 const resourceLoader = new Loader()

@@ -3,18 +3,38 @@ import { Resources } from "./resources";
 import { Enemy } from "./enemy";
 
 export class Net extends Actor {
-    constructor() {
+    constructor(player) {
         super({
-            width: Resources.Net.width, height: Resources.Net.height,
+            width: Resources.net.width, height: Resources.net.height,
             anchor: new Vector(0.5, 1),
-            pos: new Vector(18, 16.5),
+            // pos: new Vector(18, 16.5),
         });
         this.on('collisionstart', (event) => this.hitSomething(event));
-        this.graphics.use(Resources.Net.toSprite());
+        // this.graphics.use(Resources.Net.toSprite());
+        this.player = player
+        // console.log(this.player.attackDirection)
     }
 
     attack() {
-        this.actions.rotateBy(Math.PI / 2, 20).rotateTo(0, 20);
+        this.graphics.use(Resources.net.toSprite());
+
+        this.graphics.flipHorizontal = false
+        this.graphics.flipVertical = false
+
+        if (this.player.attackDirection === "East" || this.player.attackDirection === "North") {
+
+            this.actions.rotateBy(Math.PI / 2, 20).rotateTo(0, 20);
+        }
+
+        if (this.player.attackDirection === "West") {
+            this.graphics.flipHorizontal = true;
+            this.actions.rotateBy(-Math.PI / 2, 20).rotateTo(0, 20);
+        }
+
+        if (this.player.attackDirection === "South") {
+            this.graphics.flipHorizontal = true;
+            this.actions.rotateBy(-Math.PI / 2, 20).rotateTo(0, 20);
+        }
     }
 
     hitSomething(event) {
