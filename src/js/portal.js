@@ -10,20 +10,21 @@ export class Portal extends Actor {
             color: Color.Magenta,
             collisionType: CollisionType.Passive
         })
-        this.destination = destination // scene key to go to
-        this.z = 3 // draw above most layers
+        this.destination = destination; // scene key to go to
+        this.z = 3; // draw above most layers
     }
 
     onInitialize(engine) {
-        this.engine = engine
+        this.engine = engine;
+        this.graphics.opacity = 0;
         // Listen for collision events
-        this.on("collisionstart", (event) => this.hitSomething(event))
+        this.on("collisionstart", (event) => this.hitSomething(event));
     }
 
     hitSomething(event) {
         if (event.other.owner instanceof Player) {
             console.log("Portaal geraakt");
-            this.engine.goToScene(this.destination)
+            this.engine.goToScene(this.destination);
         }
     }
 }
