@@ -5,6 +5,7 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './TutorialScene.js'
+import { Next } from './middle_stage_left.js'
 
 
 export class Game extends Engine {
@@ -32,6 +33,8 @@ export class Game extends Engine {
         await super.start(ResourceLoader);
         const tutorialScene = new TutorialScene();
         this.addScene('tutorial', tutorialScene);
+        const next = new Next();
+        this.addScene("next", next);
         this.goToScene('tutorial');
 
 

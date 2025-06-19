@@ -1,6 +1,6 @@
 import { Scene } from "excalibur";
 
-export class MiddleStageLeft extends Scene {
+export class Next extends Scene {
     game; 
     player;
 
