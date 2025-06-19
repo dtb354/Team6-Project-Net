@@ -27,8 +27,6 @@ export class Player extends Actor {
 
     onInitialize() {
 
-        this.pos = new Vector(226, 450); // Spawn point for player
-
         //Idle
         const playerIdleN = Animation.fromSpriteSheet(playerIdleNorth, range(0, 10), 70);
         this.graphics.add("playerIdleN", playerIdleN);
