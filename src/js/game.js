@@ -21,8 +21,8 @@ export class Game extends Engine {
             maxFps: 60,
             displayMode: DisplayMode.FitScreen,
         })
-        this.tileMap = new TiledResource("/maps/tutorial_area_v1.tmx")
-        ResourceLoader.addResource(this.tileMap)
+        this.tutorialMap = new TiledResource("/maps/tutorial_area_v1.tmx")
+        ResourceLoader.addResource(this.tutorialMap)
     }
 
     async start() {

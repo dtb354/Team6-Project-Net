@@ -33,7 +33,7 @@ export class TutorialScene extends Scene {
         this.add(wenemy);
 
         // Add tilemap
-        engine.tileMap.addToScene(this);
+        engine.tutorialMap.addToScene(this);
 
 
 
