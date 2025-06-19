@@ -1,7 +1,9 @@
 import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
 import { windAttackEnemy, windEnemyBackwardsAttack, windEnemyPurified, windIdle, windIdleBack, windPurification } from "./resources";
+import { Player } from "./player";
+import { Enemy } from "./enemy";
 
-export class windEnemy extends Actor {
+export class windEnemy extends Enemy {
 
     state;
     hitpoints;
@@ -65,7 +67,7 @@ export class windEnemy extends Actor {
     onPreUpdate(engine) {
 
         // Get player from current scene
-        const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        const player = engine.currentScene.actors.find(actor => actor instanceof Player);
         if (!player) return
 
         const distance = this.pos.distance(player.pos)
