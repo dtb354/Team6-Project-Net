@@ -1,5 +1,5 @@
 import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
-import { purifiedWater, waterAttacke, waterEnemyIdle, waterpurification } from "./resources";
+import { purifiedWater, waterAttackBack, waterAttacke, waterEnemyIdle, waterEnemyIdleBack, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
 import { waterball } from "./waterball";
@@ -35,7 +35,11 @@ export class Enemy extends Actor {
         const waterAttack = Animation.fromSpriteSheet(waterAttacke, range(0, 4), 200)
         this.graphics.add("attack", waterAttack)
 
+        const waterattackBack = Animation.fromSpriteSheet(waterAttackBack, range(0, 4), 200)
+        this.graphics.add('backAttack', waterattackBack)
 
+        const idleBack = Animation.fromSpriteSheet(waterEnemyIdleBack, range(0, 3), 100)
+        this.graphics.add("idleBack", idleBack)
 
     }
 
@@ -63,11 +67,16 @@ export class Enemy extends Actor {
 
     onPreUpdate(engine) {
 
+
+
+
         // Get player from current scene
         const player = engine.currentScene.actors.find(actor => actor instanceof Player)
         if (!player) return
 
         const distance = this.pos.distance(player.pos)
+
+        const isPlayerBehind = player.pos.y < this.pos.y;
 
         // Handle movement based on state
         switch (this.state) {
@@ -80,25 +89,51 @@ export class Enemy extends Actor {
 
             }
             case "idle": {
-                this.moveInSquare()
-                break
+                // this.moveInSquare()
+                // break
+
+                this.moveInSquare();
+                if (isPlayerBehind) {
+                    this.graphics.use("idleBack");
+                } else {
+                    this.graphics.use("idle");
+                }
+                break;
             }
             case "angry": {
 
-                if (distance > 100 || distance < 10) {
-                    const direction = player.pos.sub(this.pos).normalize()
-                    this.vel = direction.scale(80)
+                // if (distance > 100 || distance < 10) {
+                //     const direction = player.pos.sub(this.pos).normalize()
+                //     this.vel = direction.scale(80)
 
-                    this.graphics.use('attack')
+                //     this.graphics.use('attack')
+
+                //     if (this.shootCooldown <= 0) {
+                //         this.shootCooldown = 0;
+                //         this.shoot(engine);
+                //         this.shootCooldown = 40;
+                //     }
+
+                // }
+                // break
+
+                if (distance > 100 || distance < 10) {
+                    const direction = player.pos.sub(this.pos).normalize();
+                    this.vel = direction.scale(80);
+
+                    if (isPlayerBehind) {
+                        this.graphics.use("backAttack");
+                    } else {
+                        this.graphics.use("attack");
+                    }
 
                     if (this.shootCooldown <= 0) {
                         this.shootCooldown = 0;
                         this.shoot(engine);
                         this.shootCooldown = 40;
                     }
-
                 }
-                break
+                break;
             }
         }
 
@@ -176,7 +211,6 @@ export class Enemy extends Actor {
         this.state = "purified"
         this.isPurified = true;
         this.graphics.use('purifying')
-
     }
 
     shoot(engine) {
