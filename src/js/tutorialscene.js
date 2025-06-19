@@ -2,6 +2,7 @@ import { Scene, Vector, Axis } from "excalibur";
 import { Player } from "./player";
 import { Enemy } from "./enemy";
 import { waterball } from "./waterball";
+import { windEnemy } from "./wind_enemy";
 
 export class TutorialScene extends Scene {
     game;
@@ -24,6 +25,11 @@ export class TutorialScene extends Scene {
         const enemy = new Enemy();
         enemy.pos = new Vector(365, 115);
         this.add(enemy);
+
+        // create wind enemy only once
+        const wenemy = new windEnemy();
+        wenemy.pos = new Vector(350, 100)
+        this.add(wenemy);
 
         // Add tilemap
         engine.tileMap.addToScene(this);

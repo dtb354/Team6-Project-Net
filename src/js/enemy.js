@@ -102,20 +102,6 @@ export class Enemy extends Actor {
             }
             case "angry": {
 
-                // if (distance > 100 || distance < 10) {
-                //     const direction = player.pos.sub(this.pos).normalize()
-                //     this.vel = direction.scale(80)
-
-                //     this.graphics.use('attack')
-
-                //     if (this.shootCooldown <= 0) {
-                //         this.shootCooldown = 0;
-                //         this.shoot(engine);
-                //         this.shootCooldown = 40;
-                //     }
-
-                // }
-                // break
 
                 if (distance > 100 || distance < 10) {
                     const direction = player.pos.sub(this.pos).normalize();
