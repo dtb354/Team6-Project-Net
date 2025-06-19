@@ -295,21 +295,29 @@ export class Player extends Actor {
         if (engine.input.keyboard.isHeld(Keys.W)) {
             yspeed = -200;
             this.graphics.use("playerWalkingN")
+            this.lastDirection = "North"
+            this.attackDirection = "North"
         }
 
         if (engine.input.keyboard.isHeld(Keys.S)) {
             yspeed = 200;
             this.graphics.use("playerWalkingS")
+            this.lastDirection = "South"
+            this.attackDirection = "South"
         }
 
         if (engine.input.keyboard.isHeld(Keys.A)) {
             xspeed = -200;
             this.graphics.use("playerWalkingW")
+            this.lastDirection = "West"
+            this.attackDirection = "West"
         }
 
         if (engine.input.keyboard.isHeld(Keys.D)) {
             xspeed = 200;
             this.graphics.use("playerWalkingE")
+            this.lastDirection = "East"
+            this.attackDirection = "East"
         }
 
         this.vel = new Vector(xspeed, yspeed);
