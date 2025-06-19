@@ -9,6 +9,8 @@ const Resources = {
     waterEnemyPurification: new ImageSource('images/water_enemy/corrupt_water_purification.png'),
     waterEnemyProjectile: new ImageSource('images/water_enemy/corrupt_water_projectile.png'),
     purifiedwater: new ImageSource('images/water_enemy/purified_water.png'),
+    waterEnemyidleBack: new ImageSource('images/water_enemy/corrupt_water_idle_back.png'),
+    waterEnemyAttackBack: new ImageSource('images/water_enemy/corrupt_water_attack_back.png'),
 
     idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
@@ -37,8 +39,18 @@ const waterEnemyIdle = SpriteSheet.fromImageSource({
     grid: { rows: 1, columns: 8, spriteHeight: 96, spriteWidth: 96 }
 })
 
+const waterEnemyIdleBack = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyidleBack,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
 const waterAttacke = SpriteSheet.fromImageSource({
     image: Resources.waterEnemyAttack,
+    grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const waterAttackBack = SpriteSheet.fromImageSource({
+    image: Resources.waterEnemyAttackBack,
     grid: { rows: 1, columns: 5, spriteHeight: 96, spriteWidth: 96 }
 })
 
@@ -123,4 +135,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }
+export { Resources, resourceLoader as ResourceLoader, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }
