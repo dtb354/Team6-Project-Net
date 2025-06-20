@@ -4,6 +4,7 @@ import { Enemy } from "./enemy";
 import { waterball } from "./waterball";
 import { windEnemy } from "./wind_enemy";
 import { Portal } from "./portal.js";
+import { UI } from "./ui.js";
 
 export class TutorialScene extends Scene {
     game;
@@ -40,11 +41,8 @@ export class TutorialScene extends Scene {
         // Add tilemap
         engine.tutorialMap.addToScene(this);
 
-
-
-
-
-
+        const ui = new UI();
+        this.add(ui)
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
