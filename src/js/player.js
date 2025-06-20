@@ -14,6 +14,7 @@ export class Player extends Actor {
     attackDirection
     isAttacking = false
 
+
     score = 0;
 
     constructor() {
@@ -74,6 +75,8 @@ export class Player extends Actor {
         // Zet a higher z value for the player to appear on top
         this.z = 3;
 
+
+
         //healthbar
         this.hitpoints = 10
         this.healthbar = new Actor({
@@ -89,6 +92,8 @@ export class Player extends Actor {
         // Background layers: 0-9
         // Game objects: 10-99
         // UI elements: 100+
+        this.on("collisionstart", (event) => this.handleCollision(event));
+
     }
 
     onPreUpdate(engine) {
@@ -342,14 +347,39 @@ export class Player extends Actor {
 
     handleCollision(event) {
 
-        if (event.other.owner.purification() && Enemy) {
-            this.score++
-            this.scene?.engine.ui.updateScore(this.score)
+        if (event.other.owner instanceof Enemy) {
+            this.score = this.score + 1;
+            console.log('killed water enemy')
+        } else if (event.other.owner instanceof windEnemy) {
 
-        }
-        else if (event.other.owner instanceof windEnemy) {
+            this.score += 1;
+            console.log('Player score:', this.score);
 
+
+            this.score = this.score + 3;
+            console.log('killed wind enemy')
         }
+
+        if (this.scene?.engine?.ui?.updateScore) {
+            this.scene.engine.ui.updateScore();
+        }
+
+        console.log(this.score)
+
+        // if (event.other.owner instanceof Enemy && event.other.owner.purification()) {
+        //     this.score++
+        //     this.engine.ui.updateScore()
+        //     console.log('punt erbij')
+
+        // }
+
+        // else if (event.other.owner instanceof windEnemy) {
+        //     this.score = this.score + 3;
+
+        //     this.scene?.engine.ui.updateScore();
+        //     console.log('3 punten voor windEnemy');
+        // }
+
     }
 
 }

@@ -48,9 +48,16 @@ export class Game extends Engine {
             this.mygamepad = connectevent.gamepad
         })
 
+        const player = new Player()
+
+
         // add score
-        this.ui = new UI();
-        this.add(this.ui)
+        const ui = new UI(player);
+        this.add(ui)
+        console.log(ui)
+        console.log('hello world')
+
+
         //     // Create player and enemy
         //     this.player = new Player()
         //this.waterEnemy = new Enemy()

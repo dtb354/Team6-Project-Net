@@ -47,10 +47,6 @@ export class windEnemy extends Enemy {
         this.state = "idle"
         this.hitpoints = 10
 
-        // //hitbox setup
-        // const hitbox = Shape.Box(16, 32, Vector.Half, new Vector(0, -8));
-        // this.collider.set(hitbox);
-
         const hitbox = Shape.Box(40, 80, Vector.Half, new Vector(0, 8));
         this.collider.set(hitbox)
 
@@ -189,10 +185,14 @@ export class windEnemy extends Enemy {
 
     handleCollision(event) {
 
-        if (event.other.owner instanceof Player) {
-            event.other.owner.reduceHealthOfPlayer()
-            console.log("Speler geraakt")
+        if (!this.isPurified) {
+            if (event.other.owner instanceof Player) {
+                event.other.owner.reduceHealthOfPlayer()
+                console.log("Speler geraakt")
+            }
         }
+
+
         this.z = 3
     }
 
