@@ -5,6 +5,7 @@ import { waterball } from "./waterball";
 import { windEnemy } from "./wind_enemy";
 import { Portal } from "./portal.js";
 import { UI } from "./ui.js";
+import { Resources } from "./resources.js";
 
 export class TutorialScene extends Scene {
     game;
@@ -43,6 +44,8 @@ export class TutorialScene extends Scene {
 
         // Add tilemap
         engine.tutorialMap.addToScene(this);
+
+        Resources.tutorialBackgroundMusic.play();
 
 
 
