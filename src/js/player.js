@@ -352,4 +352,13 @@ export class Player extends Actor {
         }
     }
 
+    getPoints(points) {
+        this.score = score + points;
+
+        const ui = this.scene.actors.find(actor => actor instanceof UI)
+        if (ui) {
+            ui.updateScore();
+        }
+    }
+
 }
