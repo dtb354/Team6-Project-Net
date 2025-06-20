@@ -10,6 +10,7 @@ export class Enemy extends Actor {
     hitpoints;
     healthbar;
     counter;
+    value = 100; 
     isPurified = false;
 
     shootingTimer = 0;
@@ -193,7 +194,10 @@ export class Enemy extends Actor {
     }
 
     addPoint() {
-
+        const player = this.scene.actors.find(actor => actor instanceof Player);
+        if (player) {
+            player.getPoints(this.value);
+        }
     }
 
     purification() {

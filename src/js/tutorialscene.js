@@ -36,7 +36,7 @@ export class TutorialScene extends Scene {
         wenemy.pos = new Vector(113, 56)
         this.add(wenemy);
         wenemy.pos = new Vector(100, 400);
-        
+
 
         // Create portal rectangle
         const portal = new Portal("next", new Vector(270, -33));
@@ -47,6 +47,12 @@ export class TutorialScene extends Scene {
 
         Resources.tutorialBackgroundMusic.play();
 
+        
+
+
+        this.ui = new UI(player);
+        this.add(this.ui)
+        console.log(this.ui)
 
 
         // Setup camera
@@ -54,4 +60,5 @@ export class TutorialScene extends Scene {
         this.camera.strategy.lockToActorAxis(player, Axis.Y);
         this.camera.zoom = 1.5;
     }
+
 }

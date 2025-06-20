@@ -4,7 +4,7 @@ import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
-import { TutorialScene } from './TutorialScene.js'
+import { TutorialScene } from './tutorialscene.js'
 import { Next } from './middle_stage_left.js'
 import { UI } from './ui.js'
 
@@ -48,9 +48,14 @@ export class Game extends Engine {
             this.mygamepad = connectevent.gamepad
         })
 
+        const player = new Player()
+
+
         // add score
-        this.ui = new UI();
-        this.add(this.ui)
+        // const ui = new UI(player);
+        // this.add(ui)
+
+
         //     // Create player and enemy
         //     this.player = new Player()
         //this.waterEnemy = new Enemy()

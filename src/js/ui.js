@@ -2,24 +2,36 @@ import { Actor, Color, Font, Label, ScreenElement, Vector } from "excalibur";
 
 export class UI extends ScreenElement {
     label;
+    player;
 
+    constructor(player) {
+        super()
+
+        this.player = player
+    }
     onInitialize(engine) {
         this.label = new Label({
 
+            text: `score: 0`,
             pos: new Vector(47, 30),
             font: new Font({
-                size: 20,
+                size: 50,
                 family: 'Open Sans',
                 color: Color.White
 
             })
 
         })
-        this.z = 90;
+        this.z = 20;
         this.addChild(this.label);
     }
 
-    updateScore(score) {
-        this.label.text = `Score: ${score}`;
+    updateScore() {
+        console.log(this.player);
+        this.label.text = `Score: ${this.player.score}`;
+
+
+        // if (!this.label) return; // prevent crash
+        // this.label.text = `Score: ${this.player.score}`;
     }
 }
