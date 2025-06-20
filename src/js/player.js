@@ -171,6 +171,11 @@ export class Player extends Actor {
                 this.attackDirectionHandler()
             }
 
+            if (engine.mygamepad.wasButtonPressed(Buttons.Face2)) {
+                console.log('DODGE!')
+                this.dodgeDirection()
+            }
+
             // If not moving, show idle animation based on lastDirection
             // if (x === 0 && y === 0) {
             //     this.lastDirectionHandler();
@@ -229,11 +234,10 @@ export class Player extends Actor {
             this.createNet()
             this.net.attack();
             setTimeout(() => {
-                // this.returnToIdle();
                 this.state = null
                 this.net.kill()
                 this.isAttacking = false
-            }, 500); // 1000 ms = 1 second pause 
+            }, 500);
         }
 
         if (this.attackDirection === "East") {
@@ -241,11 +245,10 @@ export class Player extends Actor {
             this.createNet()
             this.net.attack();
             setTimeout(() => {
-                // this.returnToIdle();
                 this.state = null
                 this.net.kill()
                 this.isAttacking = false
-            }, 500); // 1000 ms = 1 second pause 
+            }, 500);
 
         }
 
@@ -254,11 +257,10 @@ export class Player extends Actor {
             this.createNet()
             this.net.attack();
             setTimeout(() => {
-                // this.returnToIdle();
                 this.state = null
                 this.net.kill()
                 this.isAttacking = false
-            }, 500); // 1000 ms = 1 second pause 
+            }, 500);
 
         }
         if (this.attackDirection === "West") {
@@ -266,17 +268,27 @@ export class Player extends Actor {
             this.createNet()
             this.net.attack();
             setTimeout(() => {
-                // this.returnToIdle();
                 this.state = null
                 this.net.kill()
                 this.isAttacking = false
-            }, 500); // 1000 ms = 1 second pause 
+            }, 500);
         }
     }
 
-    // returnToIdle() {
-    //     this.state = "idleEast"
-    // }
+    dodgeDirection() {
+        if (this.lastDirection === "North") {
+            this.vel = new Vector(0, -1000)
+        }
+        if (this.lastDirection === "East") {
+            this.vel = new Vector(1000, 0)
+        }
+        if (this.lastDirection === "South") {
+            this.vel = new Vector(0, 1000)
+        }
+        if (this.lastDirection === "West") {
+            this.vel = new Vector(-1000, 0)
+        }
+    }
 
     reduceHealthOfPlayer() {
         this.hitpoints--;
