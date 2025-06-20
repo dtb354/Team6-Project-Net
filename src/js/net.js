@@ -45,8 +45,6 @@ export class Net extends Actor {
     hitSomething(event) {
         if (event.other.owner instanceof Enemy && this.rotation !== 0) {
             event.other.owner.reduceHealth()
-
-            event.other.owner.handleCollision()
             console.log("huh")
         }
     }

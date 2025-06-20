@@ -347,24 +347,24 @@ export class Player extends Actor {
 
     handleCollision(event) {
 
-        if (event.other.owner instanceof Enemy) {
-            this.score = this.score + 1;
-            console.log('killed water enemy')
-        } else if (event.other.owner instanceof windEnemy) {
+        // if (event.other.owner instanceof Enemy) {
+        //     this.score = this.score + 1;
+        //     console.log('killed water enemy')
+        // } else if (event.other.owner instanceof windEnemy) {
 
-            this.score += 1;
-            console.log('Player score:', this.score);
+        //     this.score += 1;
+        //     console.log('Player score:', this.score);
 
 
-            this.score = this.score + 3;
-            console.log('killed wind enemy')
-        }
+        //     this.score = this.score + 3;
+        //     console.log('killed wind enemy')
+        // }
 
-        if (this.scene?.engine?.ui?.updateScore) {
-            this.scene.engine.ui.updateScore();
-        }
+        // if (this.scene?.engine?.ui?.updateScore) {
+        //     this.scene.engine.ui.updateScore();
+        // }
 
-        console.log(this.score)
+        // console.log(this.score)
 
         // if (event.other.owner instanceof Enemy && event.other.owner.purification()) {
         //     this.score++
