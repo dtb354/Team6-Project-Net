@@ -39,7 +39,8 @@ const Resources = {
     net: new ImageSource('images/net.png'),
 
     //Sound
-    //PlayerWalkSound: new Sound('sounds/player-sound.mp3'),
+    DodgeSound: new Sound('sounds/dbz-teleport-sound-thing-made-with-Voicemod.mp3'),
+    PlayerWalkSound: new Sound('sounds/Minecraft-Walking-Sound-Effect-ProSounds.mp3'),
 }
 
 // water spritesheets

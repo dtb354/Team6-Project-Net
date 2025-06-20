@@ -1,5 +1,5 @@
 import { Actor, Animation, Axes, Buttons, CollisionType, Color, Keys, range, Vector } from "excalibur";
-import { playerAttackingEast, playerAttackingNorth, playerAttackingSouth, playerAttackingWest, playerIdleEast, playerIdleNorth, playerIdleSouth, playerIdleWest, playerWalkingEast, playerWalkingNorth, playerWalkingSouth, playerWalkingWest } from "./resources";
+import { playerAttackingEast, playerAttackingNorth, playerAttackingSouth, playerAttackingWest, playerIdleEast, playerIdleNorth, playerIdleSouth, playerIdleWest, playerWalkingEast, playerWalkingNorth, playerWalkingSouth, playerWalkingWest, Resources } from "./resources";
 import { Net } from "./net";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
@@ -23,7 +23,6 @@ export class Player extends Actor {
             collisionType: CollisionType.Active,
         })
         this.scale = new Vector(1.5, 1.5);
-
         // this.net = new Net();
         // this.addChild(this.net)
 
@@ -177,6 +176,7 @@ export class Player extends Actor {
 
             if (engine.mygamepad.wasButtonPressed(Buttons.Face2)) {
                 console.log('DODGE!')
+                Resources.DodgeSound.play()
                 this.dodgeDirection()
             }
 
@@ -281,16 +281,16 @@ export class Player extends Actor {
 
     dodgeDirection() {
         if (this.lastDirection === "North") {
-            this.vel = new Vector(0, -1000)
+            this.vel = new Vector(0, -2000)
         }
         if (this.lastDirection === "East") {
-            this.vel = new Vector(1000, 0)
+            this.vel = new Vector(2000, 0)
         }
         if (this.lastDirection === "South") {
-            this.vel = new Vector(0, 1000)
+            this.vel = new Vector(0, 2000)
         }
         if (this.lastDirection === "West") {
-            this.vel = new Vector(-1000, 0)
+            this.vel = new Vector(-2000, 0)
         }
     }
 
