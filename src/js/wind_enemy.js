@@ -1,4 +1,4 @@
-import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Shape, TextureLoader, Timer, Vector } from "excalibur";
 import { windAttackEnemy, windEnemyBackwardsAttack, windEnemyPurified, windIdle, windIdleBack, windPurification } from "./resources";
 import { Player } from "./player";
 import { Enemy } from "./enemy";
@@ -11,13 +11,10 @@ export class windEnemy extends Enemy {
     counter;
     isPurified = false;
 
-    shootingTimer = 0;
-    purificationTimer = 0;
 
     constructor() {
         super({
-            width: 20,
-            height: 33,
+            width: 100, height: 100,
             collisionType: CollisionType.Active,
         })
 
@@ -45,11 +42,17 @@ export class windEnemy extends Enemy {
     onInitialize(engine) {
         this.counter = 0;
         this.z = 3;
-        // this.on("collisionstart", (event) => this.handleCollision(event));
-        this.shootCooldown = 0;
+        this.on("collisionstart", (event) => this.handleCollision(event));
         //this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
+
+        // //hitbox setup
+        // const hitbox = Shape.Box(16, 32, Vector.Half, new Vector(0, -8));
+        // this.collider.set(hitbox);
+
+        const hitbox = Shape.Box(40, 80, Vector.Half, new Vector(0, 8));
+        this.collider.set(hitbox)
 
 
         this.healthbar = new Actor({
@@ -85,8 +88,6 @@ export class windEnemy extends Enemy {
 
             }
             case "idle": {
-                // this.moveInSquare()
-                // break
 
                 this.moveInSquare();
                 if (isPlayerBehind) {
@@ -108,11 +109,6 @@ export class windEnemy extends Enemy {
                         this.graphics.use("attack");
                     }
 
-                    // if (this.shootCooldown <= 0) {
-                    //     this.shootCooldown = 0;
-                    //     this.shoot(engine);
-                    //     this.shootCooldown = 40;
-                    // }
                 }
                 break;
             }
@@ -143,9 +139,6 @@ export class windEnemy extends Enemy {
 
         }
 
-        // if (this.shootCooldown > 0) {
-        //     this.shootCooldown--;
-        // }
 
     }
 
@@ -194,13 +187,13 @@ export class windEnemy extends Enemy {
         this.graphics.use('purifying')
     }
 
-    // shoot(engine) {
-    //     const player = engine.currentScene.actors.find(actor => actor instanceof Player)
-    //     if (!player) return
+    handleCollision(event) {
 
-    //     const waterWeapon = new waterball(this.pos.x, this.pos.y, player)
-    //     engine.currentScene.add(waterWeapon)
-    // }
-
+        if (event.other.owner instanceof Player) {
+            event.other.owner.reduceHealthOfPlayer()
+            console.log("Speler geraakt")
+        }
+        this.z = 3
+    }
 
 }

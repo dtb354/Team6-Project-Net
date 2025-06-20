@@ -1,4 +1,4 @@
-import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Shape, TextureLoader, Timer, Vector } from "excalibur";
 import { purifiedWater, waterAttackBack, waterAttacke, waterEnemyIdle, waterEnemyIdleBack, waterpurification } from "./resources";
 import { Player } from "./player";
 import { Net } from "./net";
@@ -51,6 +51,9 @@ export class Enemy extends Actor {
         //this.pos = new Vector(500, 600)
         this.state = "idle"
         this.hitpoints = 10
+
+        const hitbox = Shape.Box(40, 80, Vector.Half, new Vector(0, 8));
+        this.collider.set(hitbox)
 
 
         this.healthbar = new Actor({
