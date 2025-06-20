@@ -1,6 +1,6 @@
 import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, TextureLoader, Timer, Vector } from "excalibur";
 import { windAttackEnemy, windEnemyBackwardsAttack, windEnemyPurified, windIdle, windIdleBack, windPurification } from "./resources";
-import { Player } from "./player";
+
 
 export class windEnemy extends Actor {
 
