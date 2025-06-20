@@ -1,9 +1,11 @@
 import { Scene, Vector, Axis, Actor, Color, CollisionType } from "excalibur";
 import { Player } from "./player";
+import { UI } from "./ui";
 
 export class Next extends Scene {
-    game; 
+    game;
     player;
+    ui;
 
     onInitialize(engine) {
         this.input.gamepads.enabled = true
@@ -20,6 +22,8 @@ export class Next extends Scene {
         // Add tilemap
         engine.middleLevelMap.addToScene(this);
 
+        this.ui = new UI()
+        this.add(this.ui)
 
 
 

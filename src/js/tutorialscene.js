@@ -9,6 +9,7 @@ import { UI } from "./ui.js";
 export class TutorialScene extends Scene {
     game;
     player;
+    ui;
 
     onInitialize(engine) {
 
@@ -41,8 +42,7 @@ export class TutorialScene extends Scene {
         // Add tilemap
         engine.tutorialMap.addToScene(this);
 
-        const ui = new UI();
-        this.add(ui)
+
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);

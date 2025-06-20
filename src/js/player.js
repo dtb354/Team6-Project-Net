@@ -1,6 +1,8 @@
 import { Actor, Animation, Axes, Buttons, CollisionType, Color, Keys, range, Vector } from "excalibur";
 import { playerAttackingEast, playerAttackingNorth, playerAttackingSouth, playerAttackingWest, playerIdleEast, playerIdleNorth, playerIdleSouth, playerIdleWest, playerWalkingEast, playerWalkingNorth, playerWalkingSouth, playerWalkingWest } from "./resources";
 import { Net } from "./net";
+import { Enemy } from "./enemy";
+import { windEnemy } from "./wind_enemy";
 
 
 export class Player extends Actor {
@@ -11,6 +13,8 @@ export class Player extends Actor {
     lastDirection
     attackDirection
     isAttacking = false
+
+    score = 0;
 
     constructor() {
         super({
@@ -335,4 +339,17 @@ export class Player extends Actor {
         this.vel = new Vector(xspeed, yspeed);
         // this.graphics.flipHorizontal = (this.vel.x < 0);
     }
+
+    handleCollision(event) {
+
+        if (event.other.owner.purification() && Enemy) {
+            this.score++
+            this.scene?.engine.ui.updateScore(this.score)
+
+        }
+        else if (event.other.owner instanceof windEnemy) {
+
+        }
+    }
+
 }

@@ -1,20 +1,21 @@
-import { Actor, Color, Font, Label, Vector } from "excalibur";
+import { Actor, Color, Font, Label, ScreenElement, Vector } from "excalibur";
 
-export class UI extends Actor {
+export class UI extends ScreenElement {
     label;
 
     onInitialize(engine) {
         this.label = new Label({
 
-            pos: new Vector(620, 30),
+            pos: new Vector(47, 30),
             font: new Font({
                 size: 20,
                 family: 'Open Sans',
                 color: Color.White
 
             })
-        })
 
+        })
+        this.z = 90;
         this.addChild(this.label);
     }
 

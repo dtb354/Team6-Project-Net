@@ -15,12 +15,13 @@ export class Enemy extends Actor {
     shootingTimer = 0;
     purificationTimer = 0;
 
-    constructor() {
+    constructor(player) {
         super({
             width: 20,
             height: 33,
             collisionType: CollisionType.Active,
         })
+
 
         const waterEnemy = Animation.fromSpriteSheet(waterEnemyIdle, range(0, 3), 100)
         this.graphics.add("idle", waterEnemy)
@@ -69,9 +70,6 @@ export class Enemy extends Actor {
 
 
     onPreUpdate(engine) {
-
-
-
 
         // Get player from current scene
         const player = engine.currentScene.actors.find(actor => actor instanceof Player)
@@ -188,11 +186,15 @@ export class Enemy extends Actor {
 
         if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
+            this.addPoint()
             this.healthbar.kill()
         }
 
     }
 
+    addPoint() {
+
+    }
 
     purification() {
 

@@ -6,6 +6,7 @@ import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './TutorialScene.js'
 import { Next } from './middle_stage_left.js'
+import { UI } from './ui.js'
 
 
 export class Game extends Engine {
@@ -47,6 +48,9 @@ export class Game extends Engine {
             this.mygamepad = connectevent.gamepad
         })
 
+        // add score
+        this.ui = new UI();
+        this.add(this.ui)
         //     // Create player and enemy
         //     this.player = new Player()
         //this.waterEnemy = new Enemy()
