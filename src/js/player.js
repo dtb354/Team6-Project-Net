@@ -301,6 +301,7 @@ export class Player extends Actor {
 
         if (this.hitpoints <= 0) {
             // this.idkDie?()
+            this.healthbar.kill()
         }
     }
 

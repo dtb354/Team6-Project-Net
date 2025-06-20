@@ -17,7 +17,7 @@ export class Net extends Actor {
 
     onInitialize(engine) {
         this.engine = engine;
-        //this.graphics.opacity = 0;
+        this.graphics.opacity = 0;
     }
 
     attack() {
