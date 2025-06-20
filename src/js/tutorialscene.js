@@ -30,8 +30,9 @@ export class TutorialScene extends Scene {
 
         // create wind enemy only once
         const wenemy = new windEnemy();
-        wenemy.pos = new Vector(350, 100)
         this.add(wenemy);
+        wenemy.pos = new Vector(100, 400);
+        
 
         // Create portal rectangle
         const portal = new Portal("next", new Vector(270, -33));
