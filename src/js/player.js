@@ -211,10 +211,10 @@ export class Player extends Actor {
         this.net = new Net(this);
 
         let offset = new Vector(0, 0);
-        if (this.attackDirection === "North") offset = new Vector(0, -30);
-        if (this.attackDirection === "East") offset = new Vector(30, 0);
-        if (this.attackDirection === "South") offset = new Vector(0, 50);
-        if (this.attackDirection === "West") offset = new Vector(-30, 0);
+        if (this.attackDirection === "North") offset = new Vector(0, -10);
+        if (this.attackDirection === "East") offset = new Vector(10, 0);
+        if (this.attackDirection === "South") offset = new Vector(0, 40);
+        if (this.attackDirection === "West") offset = new Vector(-10, 0);
 
         this.net.pos = offset;
         this.addChild(this.net)
