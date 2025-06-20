@@ -4,7 +4,7 @@ import { TiledResource } from '@excaliburjs/plugin-tiled'
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
-import { TutorialScene } from './TutorialScene.js'
+import { TutorialScene } from './tutorialscene.js'
 import { Next } from './middle_stage_left.js'
 import { UI } from './ui.js'
 
@@ -52,10 +52,8 @@ export class Game extends Engine {
 
 
         // add score
-        const ui = new UI(player);
-        this.add(ui)
-        console.log(ui)
-        console.log('hello world')
+        // const ui = new UI(player);
+        // this.add(ui)
 
 
         //     // Create player and enemy

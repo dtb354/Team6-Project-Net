@@ -27,6 +27,7 @@ export class UI extends ScreenElement {
     }
 
     updateScore() {
+        console.log(this.player);
         this.label.text = `Score: ${this.player.score}`;
 
 

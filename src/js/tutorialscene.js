@@ -47,8 +47,10 @@ export class TutorialScene extends Scene {
 
         Resources.tutorialBackgroundMusic.play();
 
+        
 
-        this.ui = new UI();
+
+        this.ui = new UI(player);
         this.add(this.ui)
         console.log(this.ui)
 
@@ -58,4 +60,5 @@ export class TutorialScene extends Scene {
         this.camera.strategy.lockToActorAxis(player, Axis.Y);
         this.camera.zoom = 1.5;
     }
+
 }

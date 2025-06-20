@@ -11,6 +11,8 @@ export class windEnemy extends Enemy {
     counter;
     isPurified = false;
 
+    value = 150;
+
 
     constructor() {
         super({
@@ -169,9 +171,17 @@ export class windEnemy extends Enemy {
 
         if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
+            this.addPoint();
             this.healthbar.kill()
         }
 
+    }
+
+    addPoint() {
+        const player = this.scene.actors.find(actor => actor instanceof Player);
+        if (player) {
+            player.getPoints(this.value);
+        }
     }
 
 

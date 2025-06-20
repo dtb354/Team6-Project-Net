@@ -3,6 +3,7 @@ import { playerAttackingEast, playerAttackingNorth, playerAttackingSouth, player
 import { Net } from "./net";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
+import { UI } from "./ui";
 
 
 export class Player extends Actor {
@@ -383,7 +384,7 @@ export class Player extends Actor {
     }
 
     getPoints(points) {
-        this.score = score + points;
+        this.score += points;
 
         const ui = this.scene.actors.find(actor => actor instanceof UI)
         if (ui) {
