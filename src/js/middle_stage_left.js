@@ -1,6 +1,7 @@
-import { Scene } from "excalibur";
+import { Scene, Vector, Axis, Actor, Color, CollisionType } from "excalibur";
+import { Player } from "./player";
 
-export class MiddleStageLeft extends Scene {
+export class Next extends Scene {
     game; 
     player;
 
@@ -10,5 +11,22 @@ export class MiddleStageLeft extends Scene {
             console.log("gamepad detected")
             engine.mygamepad = connectevent.gamepad
         })
+
+        // Create player only once
+        const player = new Player();
+        player.pos = new Vector(13, 440);
+        this.add(player);
+
+        // Add tilemap
+        engine.middleLevelMap.addToScene(this);
+
+
+
+
+
+        // Setup camera
+        this.camera.strategy.lockToActorAxis(player, Axis.X);
+        this.camera.strategy.lockToActorAxis(player, Axis.Y);
+        this.camera.zoom = 1.5;
     }
 }

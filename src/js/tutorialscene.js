@@ -1,8 +1,9 @@
-import { Scene, Vector, Axis } from "excalibur";
-import { Player } from "./player";
+import { Scene, Vector, Axis, Actor, Color, CollisionType } from "excalibur";
+import { Player } from "./player.js";
 import { Enemy } from "./enemy";
 import { waterball } from "./waterball";
 import { windEnemy } from "./wind_enemy";
+import { Portal } from "./portal.js";
 
 export class TutorialScene extends Scene {
     game;
@@ -19,6 +20,7 @@ export class TutorialScene extends Scene {
 
         // Create player only once
         const player = new Player();
+        player.pos = new Vector(226, 450);
         this.add(player);
 
         // Create an Enemy only once
@@ -31,8 +33,16 @@ export class TutorialScene extends Scene {
         wenemy.pos = new Vector(350, 100)
         this.add(wenemy);
 
+        // Create portal rectangle
+        const portal = new Portal("next", new Vector(270, -33));
+        this.add(portal);
+        
         // Add tilemap
-        engine.tileMap.addToScene(this);
+        engine.tutorialMap.addToScene(this);
+
+        
+        
+        
 
 
 

@@ -5,9 +5,93 @@
  </tileset>
  <tileset firstgid="50" name="Overworld_tileset_32x32" tilewidth="32" tileheight="32" tilecount="234" columns="18">
   <image source="Overworld_tileset_32x32.png" width="576" height="416"/>
+  <tile id="203">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="12.0909" y="4.09091" width="19.9091" height="17.5455"/>
+   </objectgroup>
+  </tile>
+  <tile id="204">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0909091" y="4.09091" width="20" height="17.8182"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <tileset firstgid="284" name="Objects_32x32" tilewidth="32" tileheight="32" tilecount="3600" columns="75">
   <image source="Objects_32x32.png" width="2400" height="1536"/>
+  <tile id="2666">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0722837" y="0" width="28.0461" height="31.8048"/>
+   </objectgroup>
+  </tile>
+  <tile id="2676">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="2.18182" y="27.8182" width="29.7273" height="4.36364"/>
+   </objectgroup>
+  </tile>
+  <tile id="2677">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="12.1818" y="22.0909" width="19.8182" height="9.90909"/>
+   </objectgroup>
+  </tile>
+  <tile id="2678">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0" y="18.0909" width="31.9091" height="14"/>
+   </objectgroup>
+  </tile>
+  <tile id="2679">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.289135" y="21.902" width="19.7335" height="10.0474"/>
+    <object id="2" x="0.0722837" y="14.0953" width="8.02349" height="7.73436"/>
+   </objectgroup>
+  </tile>
+  <tile id="2739">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="14.1676" y="0.0722837" width="17.7818" height="17.8541"/>
+   </objectgroup>
+  </tile>
+  <tile id="2740">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-1.77636e-15" y="-0.0722837" width="31.9494" height="29.9255"/>
+   </objectgroup>
+  </tile>
+  <tile id="2741">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0722837" y="0" width="25.8776" height="18.1432"/>
+    <object id="2" x="0" y="18.2878" width="19.9503" height="13.6616"/>
+   </objectgroup>
+  </tile>
+  <tile id="2751">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="4" y="0.0909091" width="28" height="13.8182"/>
+   </objectgroup>
+  </tile>
+  <tile id="2752">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="17.8182" y="0.181818" width="14.0909" height="19.7273"/>
+    <object id="2" x="0.0909091" y="0.0909091" width="17.6364" height="1.81818"/>
+   </objectgroup>
+  </tile>
+  <tile id="2753">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="1.77636e-15" y="1.77636e-15" width="32.1818" height="22.0909"/>
+   </objectgroup>
+  </tile>
+  <tile id="2754">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0722837" y="0.0722837" width="23.9259" height="23.9982"/>
+   </objectgroup>
+  </tile>
+  <tile id="2767">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="20" y="0.0909091" width="12" height="23.8182"/>
+    <object id="2" x="4" y="0.0909091" width="15.8182" height="15.8182"/>
+   </objectgroup>
+  </tile>
+  <tile id="2768">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.0909091" y="0" width="32" height="28"/>
+   </objectgroup>
+  </tile>
  </tileset>
  <tileset firstgid="3884" name="Water+_32x32" tilewidth="32" tileheight="32" tilecount="168" columns="12">
   <image source="Water+_32x32.png" width="384" height="448"/>
@@ -161,6 +245,9 @@
   </data>
  </layer>
  <layer id="2" name="boundaries" width="15" height="15">
+  <properties>
+   <property name="solid" type="bool" value="true"/>
+  </properties>
   <data encoding="csv">
    <chunk x="-32" y="-32" width="16" height="16">
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
@@ -195,7 +282,7 @@
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
-74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
+74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,0,
 87,87,87,87,87,87,87,87,87,87,87,87,87,87,87,0
 </chunk>
    <chunk x="0" y="-32" width="16" height="16">
@@ -213,7 +300,7 @@
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
 74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
-74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
+0,74,74,74,74,74,74,74,74,74,74,74,74,74,74,74,
 0,87,87,87,87,87,87,87,87,87,87,87,87,87,87,87
 </chunk>
    <chunk x="16" y="-32" width="16" height="16">
@@ -549,8 +636,8 @@
 0,0,0,0,0,0,0,0,253,254,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,4041,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,2975,0,0,0,0,0,0,0,0,0,
-0,0,0,0,3048,3049,3050,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,2950,0,0,0,0,0,0,0,0,0,
+0,0,0,0,3023,3024,3025,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,148,0
 </chunk>
@@ -566,8 +653,8 @@
 3943,3928,3951,0,0,0,0,0,0,0,0,0,0,0,0,0,
 3953,3928,3942,3942,0,0,0,0,0,0,0,0,0,0,0,0,
 3929,3927,3928,3943,3939,0,0,0,0,0,0,0,0,0,0,0,
-3940,3940,3939,3929,0,0,0,0,0,0,0,2910,2911,0,2913,0,
-0,0,0,0,0,0,0,0,0,0,0,2985,2986,2987,2988,0,
+3940,3940,3939,3929,0,0,0,0,0,0,0,2960,2961,2962,2963,0,
+0,0,0,0,0,0,0,0,0,0,0,3035,3036,3037,3038,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,3941,3927,3939,
 0,0,0,0,0,0,0,0,0,0,0,3929,3939,3928,3929,3953,
 0,148,0,0,0,0,0,0,0,0,3951,3929,3953,3929,3953,3927
