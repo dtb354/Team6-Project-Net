@@ -34,6 +34,8 @@ export class TutorialScene extends Scene {
         const wenemy = new windEnemy();
         wenemy.pos = new Vector(113, 56)
         this.add(wenemy);
+        wenemy.pos = new Vector(100, 400);
+        
 
         // Create portal rectangle
         const portal = new Portal("next", new Vector(270, -33));
