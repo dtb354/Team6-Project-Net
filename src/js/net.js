@@ -15,6 +15,11 @@ export class Net extends Actor {
         // console.log(this.player.attackDirection)
     }
 
+    onInitialize(engine) {
+        this.engine = engine;
+        //this.graphics.opacity = 0;
+    }
+
     attack() {
         this.graphics.use(Resources.net.toSprite());
 
