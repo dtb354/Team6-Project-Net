@@ -14,9 +14,10 @@ export class Player extends Actor {
     lastDirection
     attackDirection
     isAttacking = false
+    score
 
 
-    score = 0;
+    // score = 0;
 
     constructor() {
         super({
@@ -93,7 +94,7 @@ export class Player extends Actor {
         // Background layers: 0-9
         // Game objects: 10-99
         // UI elements: 100+
-        this.on("collisionstart", (event) => this.handleCollision(event));
+        // this.on("collisionstart", (event) => this.handleCollision(event));
 
     }
 
@@ -305,12 +306,14 @@ export class Player extends Actor {
         this.hitpoints--;
         const percent = Math.max(this.hitpoints / 10, 0);
         this.healthbar.scale = new Vector(percent, 1);
-
+        console.log("reduce the health ")
+        console.log("hitpoints ", this.hitpoints)
         if (this.hitpoints <= 0) {
             // this.idkDie?()
             this.healthbar.kill()
             this.gameOver()
         }
+        console.log(this.hitpoints)
     }
 
     increaseHealthOfPlayer() {
@@ -359,50 +362,17 @@ export class Player extends Actor {
         // this.graphics.flipHorizontal = (this.vel.x < 0);
     }
 
-    handleCollision(event) {
-
-        // if (event.other.owner instanceof Enemy) {
-        //     this.score = this.score + 1;
-        //     console.log('killed water enemy')
-        // } else if (event.other.owner instanceof windEnemy) {
-
-        //     this.score += 1;
-        //     console.log('Player score:', this.score);
-
-
-        //     this.score = this.score + 3;
-        //     console.log('killed wind enemy')
-        // }
-
-        // if (this.scene?.engine?.ui?.updateScore) {
-        //     this.scene.engine.ui.updateScore();
-        // }
-
-        // console.log(this.score)
-
-        // if (event.other.owner instanceof Enemy && event.other.owner.purification()) {
-        //     this.score++
-        //     this.engine.ui.updateScore()
-        //     console.log('punt erbij')
-
-        // }
-
-        // else if (event.other.owner instanceof windEnemy) {
-        //     this.score = this.score + 3;
-
-        //     this.scene?.engine.ui.updateScore();
-        //     console.log('3 punten voor windEnemy');
-        // }
-
-    }
-
     getPoints(points) {
-        this.score += points;
+
+        this.scene.engine.playerProgress += points;
+        this.scene.engine.playerProgress += this.hitpoints;
 
         const ui = this.scene.actors.find(actor => actor instanceof UI)
         if (ui) {
             ui.updateScore();
         }
+
+        console.log(this.score)
     }
 
     gameOver() {

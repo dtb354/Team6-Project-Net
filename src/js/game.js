@@ -21,62 +21,68 @@ export class Game extends Engine {
         super({
             width: 1280,
             height: 720,
-            maxFps: 60,
+            maxFps: 30,
+            pixelRatio: 1,
             displayMode: DisplayMode.FitScreen,
         })
+        // todo deze code hoort in resources.js
         this.tutorialMap = new TiledResource("/maps/tutorial_area_v1.tmx");
         ResourceLoader.addResource(this.tutorialMap);
 
         this.middleLevelMap = new TiledResource("/maps/level_1-1.tmx");
         ResourceLoader.addResource(this.middleLevelMap);
+
+        this.start(ResourceLoader).then(() => this.startGame())
     }
 
-    async start() {
-        await super.start(ResourceLoader);
-        const tutorialScene = new TutorialScene();
-        this.addScene('tutorial', tutorialScene);
-        const next = new Next();
-        this.addScene("next", next);
+    startGame() {
+        this.playerProgress = {
+            score: 0,
+            health: 10
+        }
+
+
+        this.addScene('tutorial', new TutorialScene());
+        this.addScene("next", new Next());
+        this.addScene('game-over', new GameOver());
+
         this.goToScene('tutorial');
 
-        const gameOver = new GameOver();
-        this.add('game-over', gameOver);
 
     }
 
-    initializeGame() {
-        this.input.gamepads.enabled = true
-        this.input.gamepads.on('connect', (connectevent) => {
-            console.log("gamepad detected")
-            this.mygamepad = connectevent.gamepad
-        })
+    // initializeGame() {
+    // this.input.gamepads.enabled = true
+    // this.input.gamepads.on('connect', (connectevent) => {
+    //     console.log("gamepad detected")
+    //     this.mygamepad = connectevent.gamepad
+    // })
 
-        const player = new Player()
-
-
-        // add score
-        // const ui = new UI(player);
-        // this.add(ui)
+    // const player = new Player()
 
 
-        //     // Create player and enemy
-        //     this.player = new Player()
-        //this.waterEnemy = new Enemy()
+    // add score
+    // const ui = new UI(player);
+    // this.add(ui)
 
-        //     // Add actors to the scene
-        //     const currentScene = this.scenes['tutorial']
-        //     currentScene.add(this.player)
-        //currentScene.add(this.waterEnemy)
 
-        //     // Add tilemap to the scene
-        //     this.tileMap.addToScene(currentScene)
+    //     // Create player and enemy
+    //     this.player = new Player()
+    //this.waterEnemy = new Enemy()
 
-        //     // Setup camera
-        //     currentScene.camera.strategy.lockToActorAxis(this.player, Axis.X)
-        //     currentScene.camera.strategy.lockToActorAxis(this.player, Axis.Y)
-        //     currentScene.camera.zoom = 1.5
-    }
+    //     // Add actors to the scene
+    //     const currentScene = this.scenes['tutorial']
+    //     currentScene.add(this.player)
+    //currentScene.add(this.waterEnemy)
+
+    //     // Add tilemap to the scene
+    //     this.tileMap.addToScene(currentScene)
+
+    //     // Setup camera
+    //     currentScene.camera.strategy.lockToActorAxis(this.player, Axis.X)
+    //     currentScene.camera.strategy.lockToActorAxis(this.player, Axis.Y)
+    //     currentScene.camera.zoom = 1.5
+    // }
 }
 
 const game = new Game()
-game.start()

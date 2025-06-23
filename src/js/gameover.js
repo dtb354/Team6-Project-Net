@@ -34,9 +34,15 @@ export class GameOver extends Scene {
 
     onPreUpdate(engine) {
         if (engine.input.keyboard.wasPressed(Keys.Enter)) {
-            engine.goToScene('tutorial', { restart: true });
+            console.log("terug naar tutorial")
+            engine.goToScene('tutorial');
+
 
         }
+    }
+
+    onActivate(ctx) {
+        // this.resetGame()
     }
 
     // onActivate() {
