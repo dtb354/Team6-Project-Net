@@ -21,6 +21,22 @@ export class TutorialScene extends Scene {
         })
 
 
+
+
+        Resources.tutorialBackgroundMusic.play();
+
+
+        this.camera.zoom = 1.5;
+    }
+
+    onActivate(ctx) {
+        this.clear()
+        this.addActorsToScene()
+    }
+
+    addActorsToScene() {
+        // Add tilemap
+        this.engine.tutorialMap.addToScene(this);
         // Create player only once
         const player = new Player();
         player.pos = new Vector(226, 450);
@@ -42,23 +58,19 @@ export class TutorialScene extends Scene {
         const portal = new Portal("next", new Vector(270, -33));
         this.add(portal);
 
-        // Add tilemap
-        engine.tutorialMap.addToScene(this);
 
-        Resources.tutorialBackgroundMusic.play();
 
-        
+
 
 
         this.ui = new UI(player);
         this.add(this.ui)
         console.log(this.ui)
 
-
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
         this.camera.strategy.lockToActorAxis(player, Axis.Y);
-        this.camera.zoom = 1.5;
+
     }
 
 }

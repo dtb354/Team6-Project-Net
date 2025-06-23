@@ -305,7 +305,8 @@ export class Player extends Actor {
         this.hitpoints--;
         const percent = Math.max(this.hitpoints / 10, 0);
         this.healthbar.scale = new Vector(percent, 1);
-
+        console.log("reduce the health ")
+        console.log("hitpoints ", this.hitpoints)
         if (this.hitpoints <= 0) {
             // this.idkDie?()
             this.healthbar.kill()
@@ -387,7 +388,8 @@ export class Player extends Actor {
     }
 
     getPoints(points) {
-        this.score += points;
+        this.scene.engine.playerProgress += points;
+        this.scene.engine.playerProgress += health;
 
         const ui = this.scene.actors.find(actor => actor instanceof UI)
         if (ui) {
