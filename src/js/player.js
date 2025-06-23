@@ -30,7 +30,8 @@ export class Player extends Actor {
 
     }
 
-    onInitialize() {
+    onInitialize(engine) {
+        this.engine = engine;
 
         //Idle
         const playerIdleN = Animation.fromSpriteSheet(playerIdleNorth, range(0, 10), 70);
@@ -308,6 +309,7 @@ export class Player extends Actor {
         if (this.hitpoints <= 0) {
             // this.idkDie?()
             this.healthbar.kill()
+            this.gameOver()
         }
     }
 
@@ -401,6 +403,10 @@ export class Player extends Actor {
         if (ui) {
             ui.updateScore();
         }
+    }
+
+    gameOver() {
+        this.engine.goToScene('game-over')
     }
 
 }
