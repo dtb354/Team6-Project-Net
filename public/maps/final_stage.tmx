@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" infinite="1" nextlayerid="7" nextobjectid="1">
  <tileset firstgid="1" name="props and items x3" tilewidth="32" tileheight="32" tilecount="4752" columns="72">
-  <image source="props-and-items x3.png" width="2304" height="2112"/>
+  <image source="props-and-items-x3.png" width="2304" height="2112"/>
  </tileset>
  <tileset firstgid="4753" name="props and items x1" tilewidth="32" tileheight="32" tilecount="528" columns="24">
-  <image source="props-and-items x1.png" width="768" height="704"/>
+  <image source="props-and-items-x1.png" width="768" height="704"/>
  </tileset>
  <tileset firstgid="5281" name="tileset x1" tilewidth="32" tileheight="32" tilecount="851" columns="37">
   <image source="tileset-x1.png" width="1184" height="736"/>

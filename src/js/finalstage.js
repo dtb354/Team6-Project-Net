@@ -18,6 +18,6 @@ export class FinalStage extends Scene {
         // })
 
         // Add tilemap
-        engine.finalLevelMap.addToScene(this);
+        engine.middleLevelMap.addToScene(this);
     }
 }
