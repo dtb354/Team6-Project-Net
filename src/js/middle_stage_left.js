@@ -17,6 +17,9 @@ export class Next extends Scene {
             engine.mygamepad = connectevent.gamepad
         })
 
+
+        console.log('Score bij start Next scene:', this.engine.playerProgress.score);
+
         // Create player only once
         const player = new Player();
         player.pos = new Vector(13, 440);
@@ -51,8 +54,13 @@ export class Next extends Scene {
         // Add tilemap
         engine.middleLevelMap.addToScene(this);
 
-        this.ui = new UI(player)
+        this.ui = new UI()
         this.add(this.ui)
+
+        // const ui = this.scene.actors.find(actor => actor instanceof UI)
+        // if (ui) {
+        //     ui.updateScore();
+        // }
 
 
 

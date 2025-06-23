@@ -40,6 +40,7 @@ export class Game extends Engine {
     }
 
     startGame() {
+
         this.playerProgress = {
             score: 0,
             health: 10

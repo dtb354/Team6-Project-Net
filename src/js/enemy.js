@@ -208,9 +208,6 @@ export class Enemy extends Actor {
             player.getPoints(this.value);
         }
 
-
-        // this.scene.engine.playerProgress.getPoints(this.value);
-        // console.log(this.value)
     }
 
     purification() {
