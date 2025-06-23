@@ -23,8 +23,7 @@ export class Waterbottle extends Actor {
     handleCollisionForHealth(event) {
         if (event.other.owner instanceof Player) {
             event.other.owner.increaseHealthOfPlayer()
+            this.kill()
         }
-        this.kill()
-
     }
 }
