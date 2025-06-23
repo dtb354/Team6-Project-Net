@@ -3,6 +3,7 @@ import { Player } from "./player";
 import { UI } from "./ui";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
+import { Portal } from "./portal";
 
 export class Next extends Scene {
     game;
@@ -42,6 +43,10 @@ export class Next extends Scene {
         const enemy5 = new windEnemy();
         enemy5.pos = new Vector(81, -42);
         this.add(enemy5);
+
+        // Create portal rectangle
+        const portal = new Portal("final", new Vector(0, -538));
+        this.add(portal);
 
         // Add tilemap
         engine.middleLevelMap.addToScene(this);

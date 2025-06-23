@@ -8,6 +8,7 @@ import { TutorialScene } from './tutorialscene.js'
 import { Next } from './middle_stage_left.js'
 import { UI } from './ui.js'
 import { GameOver } from './gameover.js'
+import { FinalStage } from './finalstage.js'
 
 
 export class Game extends Engine {
@@ -32,6 +33,9 @@ export class Game extends Engine {
         this.middleLevelMap = new TiledResource("/maps/level_1-1.tmx");
         ResourceLoader.addResource(this.middleLevelMap);
 
+        this.finalLevelMap = new TiledResource("/maps/final_stage.tmx");
+        ResourceLoader.addResource(this.finalLevelMap);
+
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
@@ -44,6 +48,7 @@ export class Game extends Engine {
 
         this.addScene('tutorial', new TutorialScene());
         this.addScene("next", new Next());
+        this.addScene("final", new FinalStage());
         this.addScene('game-over', new GameOver());
 
         this.goToScene('tutorial');
