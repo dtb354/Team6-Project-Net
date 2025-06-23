@@ -19,7 +19,6 @@ const Resources = {
     windEnemyPurification: new ImageSource('images/wind_enemy/wind_enemy_purification.png'),
     purifiedWind: new ImageSource('images/wind_enemy/wind_enemy_purified_idle.png'),
 
-
     idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
     idleSouth: new ImageSource('images/player_idle/idle_full_sprite_South.png'),
@@ -35,8 +34,9 @@ const Resources = {
     attackingSouth: new ImageSource('images/player_attack/attack_full_sprite_South.png'),
     attackingWest: new ImageSource('images/player_attack/attack_full_sprite_West.png'),
 
-
     net: new ImageSource('images/net.png'),
+
+    waterBottle: new ImageSource('images/water_bottle_spritesheet.png'),
 
     //Sound
     DodgeSound: new Sound('sounds/dbz-teleport-sound-thing-made-with-Voicemod.mp3'),
@@ -173,10 +173,17 @@ const playerAttackingWest = SpriteSheet.fromImageSource({
     grid: { rows: 1, columns: 7, spriteHeight: 80, spriteWidth: 96 }
 })
 
+//waterBottle spritesheet
+
+const WaterBottleHealthPack = SpriteSheet.fromImageSource({
+    image: Resources.waterBottle,
+    grid: { rows: 1, columns: 3, spriteHeight: 64, spriteWidth: 64 }
+})
+
 const resourceLoader = new Loader()
 // Add all resources to the loader
 for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest }
+export { Resources, resourceLoader as ResourceLoader, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
