@@ -14,7 +14,6 @@ export class Player extends Actor {
     lastDirection
     attackDirection
     isAttacking = false
-    score
 
 
     // score = 0;
@@ -371,19 +370,22 @@ export class Player extends Actor {
 
     getPoints(points) {
 
-        this.scene.engine.playerProgress += points;
-        this.scene.engine.playerProgress += this.hitpoints;
+        this.scene.engine.playerProgress.score += points;
+
+        this.scene.engine.playerProgress.health += this.hitpoints;
 
         const ui = this.scene.actors.find(actor => actor instanceof UI)
         if (ui) {
             ui.updateScore();
         }
 
-        console.log(this.score)
+        // console.log(this.score)
+        console.log(this.scene.engine.playerProgress.score);
     }
 
     gameOver() {
         this.engine.goToScene('game-over')
+        this.scene.engine.playerProgress.score = this.scene.engine.playerProgress.score = 0;
     }
 
 }

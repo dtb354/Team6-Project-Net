@@ -12,7 +12,7 @@ export class UI extends ScreenElement {
     onInitialize(engine) {
         this.label = new Label({
 
-            text: `score: 0`,
+            text: `Score: ${this.scene.engine.playerProgress.score}`,
             pos: new Vector(47, 30),
             font: new Font({
                 size: 50,
@@ -28,7 +28,7 @@ export class UI extends ScreenElement {
 
     updateScore() {
         console.log(this.player);
-        this.label.text = `Score: ${this.player.score}`;
+        this.label.text = `Score: ${this.scene.engine.playerProgress.score}`;
 
 
         // if (!this.label) return; // prevent crash

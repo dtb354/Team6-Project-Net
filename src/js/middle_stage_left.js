@@ -3,6 +3,7 @@ import { Player } from "./player";
 import { UI } from "./ui";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
+import { Portal } from "./portal";
 
 export class Next extends Scene {
     game;
@@ -15,6 +16,9 @@ export class Next extends Scene {
             console.log("gamepad detected")
             engine.mygamepad = connectevent.gamepad
         })
+
+
+        console.log('Score bij start Next scene:', this.engine.playerProgress.score);
 
         // Create player only once
         const player = new Player();
@@ -43,11 +47,20 @@ export class Next extends Scene {
         enemy5.pos = new Vector(81, -42);
         this.add(enemy5);
 
+        // Create portal rectangle
+        const portal = new Portal("final", new Vector(0, -538));
+        this.add(portal);
+
         // Add tilemap
         engine.middleLevelMap.addToScene(this);
 
-        this.ui = new UI(player)
+        this.ui = new UI()
         this.add(this.ui)
+
+        // const ui = this.scene.actors.find(actor => actor instanceof UI)
+        // if (ui) {
+        //     ui.updateScore();
+        // }
 
 
 
