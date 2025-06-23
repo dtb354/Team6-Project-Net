@@ -317,12 +317,19 @@ export class Player extends Actor {
     }
 
     increaseHealthOfPlayer() {
-        if (this.hitpoints === 10) {
+        console.log(this.hitpoints)
+        if (this.hitpoints > 11) {
             console.log("full health")
+            this.hitpoints--;
+            const percent = Math.max(this.hitpoints / 10, 0);
+            this.healthbar.scale = new Vector(percent, 1);
+            console.log(this.hitpoints)
         }
-        this.hitpoints++;
-        const percent = Math.max(this.hitpoints / 10, 0);
-        this.healthbar.scale = new Vector(percent, 1);
+        if (this.hitpoints < 11) {
+            this.hitpoints++;
+            const percent = Math.max(this.hitpoints / 10, 0);
+            this.healthbar.scale = new Vector(percent, 1);
+        }
 
     }
 
