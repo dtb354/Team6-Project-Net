@@ -46,7 +46,7 @@ export class Next extends Scene {
         // Add tilemap
         engine.middleLevelMap.addToScene(this);
 
-        this.ui = new UI()
+        this.ui = new UI(player)
         this.add(this.ui)
 
 

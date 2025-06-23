@@ -10,7 +10,7 @@ export class Enemy extends Actor {
     hitpoints;
     healthbar;
     counter;
-    value = 100; 
+    value = 100;
     isPurified = false;
 
     shootingTimer = 0;
