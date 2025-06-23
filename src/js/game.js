@@ -7,6 +7,7 @@ import { Enemy } from './enemy.js'
 import { TutorialScene } from './tutorialscene.js'
 import { Next } from './middle_stage_left.js'
 import { UI } from './ui.js'
+import { GameOver } from './gameover.js'
 
 
 export class Game extends Engine {
@@ -38,6 +39,8 @@ export class Game extends Engine {
         this.addScene("next", next);
         this.goToScene('tutorial');
 
+        const gameOver = new GameOver();
+        this.add('game-over', gameOver);
 
     }
 
