@@ -172,6 +172,7 @@ export class windEnemy extends Enemy {
         if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
             this.addPoint();
+            this.createWaterBottle()
             this.healthbar.kill()
         }
 

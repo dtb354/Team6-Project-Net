@@ -3,6 +3,7 @@ import { purifiedWater, waterAttackBack, waterAttacke, waterEnemyIdle, waterEnem
 import { Player } from "./player";
 import { Net } from "./net";
 import { waterball } from "./waterball";
+import { Waterbottle } from "./waterbottle";
 
 export class Enemy extends Actor {
 
@@ -188,9 +189,17 @@ export class Enemy extends Actor {
         if (this.hitpoints <= 0 && !this.isPurified) {
             this.purification()
             this.addPoint()
+            this.createWaterBottle()
             this.healthbar.kill()
         }
 
+    }
+
+    createWaterBottle() {
+        const waterBottle = new Waterbottle
+        // let offset = new Vector(0, -100)
+        waterBottle.pos = this.pos.add(new Vector(0, -100))
+        this.scene.add(waterBottle)
     }
 
     addPoint() {
