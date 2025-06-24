@@ -198,7 +198,7 @@ export class Enemy extends Actor {
     createWaterBottle() {
         const waterBottle = new Waterbottle
         // let offset = new Vector(0, -100)
-        waterBottle.pos = this.pos.add(new Vector(0, -100))
+        waterBottle.pos = this.pos.add(new Vector(0, 0))
         this.scene.add(waterBottle)
     }
 
