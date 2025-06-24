@@ -37,7 +37,6 @@ export class UI extends ScreenElement {
         this.AIcon = new Actor({
             pos: new Vector(1180, 600),
             anchor: new Vector(0.5, 0.48)
-
         })
 
         this.AIcon.graphics.use(Resources.aButton.toSprite());
@@ -46,7 +45,6 @@ export class UI extends ScreenElement {
         //b button icon
         this.BIcon = new Actor({
             pos: new Vector(1250, 600),
-
         })
 
         this.BIcon.graphics.use(Resources.bButton.toSprite());
@@ -57,7 +55,6 @@ export class UI extends ScreenElement {
             pos: new Vector(1180, 550),
             scale: new Vector(2, 2),
             rotation: Math.PI / 4,
-
         })
 
         this.netIcon.graphics.use(Resources.uiNet.toSprite());
@@ -67,13 +64,9 @@ export class UI extends ScreenElement {
         this.dodgeIcon = new Actor({
             pos: new Vector(1250, 545),
             scale: new Vector(0.1, 0.1),
-            rotation: Math.PI / 4,
-
         })
         this.dodgeIcon.graphics.use(Resources.uiDodge.toSprite());
-
         this.addChild(this.dodgeIcon)
-
     }
 
     updateScore() {
