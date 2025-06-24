@@ -18,7 +18,7 @@ export class FinalStage extends Scene {
             engine.mygamepad = connectevent.gamepad
         })
 
-        // this.camera.zoom = 1.5;
+        this.camera.zoom = 1.5;
     }
 
     onActivate(ctx) {
@@ -30,14 +30,14 @@ export class FinalStage extends Scene {
         // Add tilemap
         this.engine.finalLevelMap.addToScene(this);
 
-        // // Create player only once
-        // const player = new Player();
-        // player.pos = new Vector(0,);
-        // this.add(player);
+        // Create player only once
+        const player = new Player();
+        player.pos = new Vector(-11, -124);
+        this.add(player);
 
 
-        // // Setup camera
-        // this.camera.strategy.lockToActorAxis(player, Axis.X);
-        // this.camera.strategy.lockToActorAxis(player, Axis.Y);
+        // Setup camera
+        this.camera.strategy.lockToActorAxis(player, Axis.X);
+        this.camera.strategy.lockToActorAxis(player, Axis.Y);
     }
 }
