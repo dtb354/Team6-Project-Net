@@ -1,6 +1,7 @@
 import { Actor, Scene, Vector } from "excalibur";
 import { Resources } from "./resources";
 import { Enemy } from "./enemy";
+import { BossPillar } from "./bosspillar";
 
 export class Net extends Actor {
     constructor(player) {
@@ -45,8 +46,13 @@ export class Net extends Actor {
 
     hitSomething(event) {
         if (event.other.owner instanceof Enemy && this.rotation !== 0) {
-            event.other.owner.reduceHealth()
-            console.log("huh")
+            event.other.owner.reduceHealth();
+            console.log("huh");
+        }
+
+        if (event.other.owner instanceof BossPillar && this.rotation !== 0) {
+            event.other.owner.reduceHealth();
+            console.log("BossPillar hit by Net!");
         }
     }
 }   
