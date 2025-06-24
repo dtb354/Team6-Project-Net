@@ -25,6 +25,6 @@ export class Boss extends Actor {
     }
 
     victoryHandler() { //When pillarcount hits 0, something happens to show victory
-
+        console.log("All pillars are gone")
     }
 }
