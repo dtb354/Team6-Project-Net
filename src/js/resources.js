@@ -50,7 +50,7 @@ const Resources = {
 // boss
 const bossIdleMovement = SpriteSheet.fromImageSource({
     image: Resources.bossIdle,
-    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+    grid: { rows: 1, columns: 4, spriteHeight: 480, spriteWidth: 480 }
 })
 
 // water spritesheets

@@ -4,6 +4,7 @@ import { UI } from "./ui";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
 import { Portal } from "./portal";
+import { Boss } from "./boss";
 
 export class FinalStage extends Scene {
     game;
@@ -26,7 +27,7 @@ export class FinalStage extends Scene {
         this.addActorsToScene()
     }
 
-    addActorsToScene(){
+    addActorsToScene() {
         // Add tilemap
         this.engine.finalLevelMap.addToScene(this);
 
@@ -35,6 +36,9 @@ export class FinalStage extends Scene {
         player.pos = new Vector(-11, -124);
         this.add(player);
 
+        const boss = new Boss();
+        boss.pos = new Vector(-43, -2097);
+        this.add(boss)
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
