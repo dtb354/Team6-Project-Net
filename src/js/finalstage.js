@@ -5,6 +5,8 @@ import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
 import { Portal } from "./portal";
 import { Boss } from "./boss";
+import { BossPillar } from "./bosspillar";
+import { WindPillar } from "./windpillar";
 
 export class FinalStage extends Scene {
     game;
@@ -39,6 +41,7 @@ export class FinalStage extends Scene {
         const boss = new Boss();
         boss.pos = new Vector(-43, -2097);
         this.add(boss)
+
         const enemy1 = new Enemy();
         enemy1.pos = new Vector(-24, -355);
         this.add(enemy1);
@@ -74,6 +77,22 @@ export class FinalStage extends Scene {
         const enemy9 = new Enemy();
         enemy9.pos = new Vector(-327, -795);
         this.add(enemy9);
+
+        const pillar1 = new BossPillar();
+        pillar1.pos = new Vector(181, -1958);
+        this.add(pillar1);
+
+        const pillar2 = new BossPillar();
+        pillar2.pos = new Vector(140, -2164);
+        this.add(pillar2);
+
+        const pillar3 = new WindPillar();
+        pillar3.pos = new Vector(-239, -1998);
+        this.add(pillar3);
+
+        const pillar4 = new WindPillar();
+        pillar4.pos = new Vector(-332, -2164);
+        this.add(pillar4);
 
         this.ui = new UI();
         this.add(this.ui);
