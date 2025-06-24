@@ -31,7 +31,7 @@ export class Boss extends Actor {
         if (this.shootCooldown <= 0) {
             this.shootCooldown = 0;
             this.shoot(engine);
-            this.shootCooldown = 40;
+            this.shootCooldown = 30;
         }
 
         if (this.shootCooldown > 0) {

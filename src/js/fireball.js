@@ -30,7 +30,7 @@ export class Fireball extends Actor {
 
     hitSomething(event) {
         if (event.other.owner instanceof Player) {
-            event.other.owner.reduceHealthOfPlayer()
+            event.other.owner.bossReducesHealthOfPlayer()
             console.log("Speler geraakt")
             this.kill()
         }
