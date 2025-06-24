@@ -33,7 +33,7 @@ export class Game extends Engine {
         this.middleLevelMap = new TiledResource("/maps/level_1-1.tmx");
         ResourceLoader.addResource(this.middleLevelMap);
 
-        this.finalLevelMap = new TiledResource("/maps/final_stage(secondversion).tmx");
+        this.finalLevelMap = new TiledResource("/maps/finalstage_fixed.tmx");
         ResourceLoader.addResource(this.finalLevelMap);
 
         this.start(ResourceLoader).then(() => this.startGame())
@@ -41,10 +41,16 @@ export class Game extends Engine {
 
     startGame() {
 
+        // this.playerProgress = {
+        //     score: 0,
+        //     health: 10
+        // }
+
         this.playerProgress = {
             score: 0,
             health: 10
         }
+
 
 
         this.addScene('tutorial', new TutorialScene());

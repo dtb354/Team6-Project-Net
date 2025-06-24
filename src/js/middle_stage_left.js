@@ -19,6 +19,7 @@ export class Next extends Scene {
 
 
         console.log('Score bij start Next scene:', this.engine.playerProgress.score);
+        console.log('Health bij start Next scene:', this.engine.playerProgress.health)
 
         // Create player only once
         const player = new Player();

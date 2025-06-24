@@ -79,7 +79,8 @@ export class Player extends Actor {
 
 
         //healthbar
-        this.hitpoints = 10
+        this.hitpoints = 10;
+        this.scene.engine.playerProgress.health = this.hitpoints;
         this.healthbar = new Actor({
             pos: new Vector(0, -25), // 25 pixels boven zijn hoofd
             color: Color.Green,
@@ -381,6 +382,7 @@ export class Player extends Actor {
 
         // console.log(this.score)
         console.log(this.scene.engine.playerProgress.score);
+        console.log(this.scene.engine.playerProgress.health)
     }
 
     gameOver() {
