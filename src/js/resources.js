@@ -44,6 +44,7 @@ const Resources = {
     DodgeSound: new Sound('sounds/dbz-teleport-sound-thing-made-with-Voicemod.mp3'),
     PlayerWalkSound: new Sound('sounds/Minecraft-Walking-Sound-Effect-ProSounds.mp3'),
     tutorialBackgroundMusic: new Sound('sounds/tutorial_level.mp3'),
+    netSlash: new Sound('sounds/swing-whoosh-5-198498.mp3'),
 }
 
 // boss

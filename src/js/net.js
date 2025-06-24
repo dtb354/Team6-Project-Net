@@ -22,6 +22,7 @@ export class Net extends Actor {
 
     attack() {
         this.graphics.use(Resources.net.toSprite());
+        Resources.netSlash.play()
 
         this.graphics.flipHorizontal = false
         this.graphics.flipVertical = false

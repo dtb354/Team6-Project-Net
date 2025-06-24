@@ -59,10 +59,6 @@ export class TutorialScene extends Scene {
         this.add(portal);
 
 
-
-
-
-
         this.ui = new UI(player);
         this.add(this.ui)
         console.log(this.ui)
