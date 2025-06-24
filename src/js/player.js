@@ -27,6 +27,8 @@ export class Player extends Actor {
         this.scale = new Vector(1.5, 1.5);
         // this.net = new Net();
         // this.addChild(this.net)
+        this.lastDirection = "North";      // Default direction
+        this.attackDirection = "North";    // Default direction
 
     }
 
@@ -79,8 +81,7 @@ export class Player extends Actor {
 
 
         //healthbar
-        this.hitpoints = 10;
-        this.scene.engine.playerProgress.health = this.hitpoints;
+        this.hitpoints = 10
         this.healthbar = new Actor({
             pos: new Vector(0, -25), // 25 pixels boven zijn hoofd
             color: Color.Green,
@@ -303,63 +304,30 @@ export class Player extends Actor {
     }
 
     reduceHealthOfPlayer() {
-
         this.hitpoints--;
-
         const percent = Math.max(this.hitpoints / 10, 0);
-
         this.healthbar.scale = new Vector(percent, 1);
-
-
-        if (this.hitpoints <= 0) {
-            // this.idkDie?()
-            this.healthbar.kill()
-            this.gameOver()
-        }
-
-
         console.log("reduce the health ")
         console.log("hitpoints ", this.hitpoints)
-        console.log(this.hitpoints)
-    }
-
-    bossReducesHealthOfPlayer() {
-        this.hitpoints -= 2;
-
-        const percent = Math.max(this.hitpoints / 10, 0);
-
-        this.healthbar.scale = new Vector(percent, 1);
-
-
         if (this.hitpoints <= 0) {
             // this.idkDie?()
             this.healthbar.kill()
             this.gameOver()
         }
-
-        console.log("hitpoints ", this.hitpoints)
-
+        console.log(this.hitpoints)
     }
 
     increaseHealthOfPlayer() {
-
         console.log(this.hitpoints)
-
         if (this.hitpoints > 11) {
-
             console.log("full health")
-
             this.hitpoints--;
-
             const percent = Math.max(this.hitpoints / 10, 0);
             this.healthbar.scale = new Vector(percent, 1);
             console.log(this.hitpoints)
         }
-
         if (this.hitpoints < 11) {
-
             this.hitpoints++;
-
             const percent = Math.max(this.hitpoints / 10, 0);
             this.healthbar.scale = new Vector(percent, 1);
         }
@@ -415,7 +383,6 @@ export class Player extends Actor {
 
         // console.log(this.score)
         console.log(this.scene.engine.playerProgress.score);
-        console.log(this.scene.engine.playerProgress.health)
     }
 
     gameOver() {
