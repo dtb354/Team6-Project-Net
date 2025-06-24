@@ -2,6 +2,7 @@ import { Actor, Animation, CollisionType, range } from "excalibur";
 import { bossIdleMovement } from "./resources";
 
 export class Boss extends Actor {
+    pillarCount = 4;
 
     constructor() {
         super({
