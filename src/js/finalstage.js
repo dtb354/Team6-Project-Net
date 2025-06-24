@@ -94,6 +94,9 @@ export class FinalStage extends Scene {
         pillar4.pos = new Vector(-332, -2164);
         this.add(pillar4);
 
+        this.ui = new UI();
+        this.add(this.ui);
+
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);

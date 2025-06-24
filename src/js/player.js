@@ -303,30 +303,63 @@ export class Player extends Actor {
     }
 
     reduceHealthOfPlayer() {
+
         this.hitpoints--;
+
         const percent = Math.max(this.hitpoints / 10, 0);
+
         this.healthbar.scale = new Vector(percent, 1);
-        console.log("reduce the health ")
-        console.log("hitpoints ", this.hitpoints)
+
+
         if (this.hitpoints <= 0) {
             // this.idkDie?()
             this.healthbar.kill()
             this.gameOver()
         }
+
+
+        console.log("reduce the health ")
+        console.log("hitpoints ", this.hitpoints)
         console.log(this.hitpoints)
     }
 
+    bossReducesHealthOfPlayer() {
+        this.hitpoints -= 2;
+
+        const percent = Math.max(this.hitpoints / 10, 0);
+
+        this.healthbar.scale = new Vector(percent, 1);
+
+
+        if (this.hitpoints <= 0) {
+            // this.idkDie?()
+            this.healthbar.kill()
+            this.gameOver()
+        }
+
+        console.log("hitpoints ", this.hitpoints)
+
+    }
+
     increaseHealthOfPlayer() {
+
         console.log(this.hitpoints)
+
         if (this.hitpoints > 11) {
+
             console.log("full health")
+
             this.hitpoints--;
+
             const percent = Math.max(this.hitpoints / 10, 0);
             this.healthbar.scale = new Vector(percent, 1);
             console.log(this.hitpoints)
         }
+
         if (this.hitpoints < 11) {
+
             this.hitpoints++;
+
             const percent = Math.max(this.hitpoints / 10, 0);
             this.healthbar.scale = new Vector(percent, 1);
         }

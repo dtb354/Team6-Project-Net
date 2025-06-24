@@ -14,6 +14,7 @@ export class Boss extends Actor {
             collisionType: CollisionType.Fixed,
         })
 
+
         this.shootCooldown = 0;
         const bossIdle = Animation.fromSpriteSheet(bossIdleMovement, range(0, 3), 100)
         this.graphics.add("idle", bossIdle)
@@ -31,7 +32,7 @@ export class Boss extends Actor {
         if (this.shootCooldown <= 0) {
             this.shootCooldown = 0;
             this.shoot(engine);
-            this.shootCooldown = 40;
+            this.shootCooldown = 60;
         }
 
         if (this.shootCooldown > 0) {
@@ -53,11 +54,30 @@ export class Boss extends Actor {
     }
 
     shoot(engine) {
+        // const player = engine.currentScene.actors.find(actor => actor instanceof Player)
+        // if (!player) return
+
+        // const fireWeapon = new Fireball(this.pos.x, this.pos.y, player)
+        // engine.currentScene.add(fireWeapon)
+
         const player = engine.currentScene.actors.find(actor => actor instanceof Player)
         if (!player) return
 
-        const fireWeapon = new Fireball(this.pos.x, this.pos.y, player)
-        engine.currentScene.add(fireWeapon)
+        const origin = this.pos
+        const direction = player.pos.sub(origin).normalize()
+
+
+        // 3 richtingen: midden, links, rechts
+        const angles = [0, Math.PI / 12, -Math.PI / 12] // 0°, 15°, -15°
+
+        for (const angle of angles) {
+            const rotatedDirection = direction.rotate(angle).scale(150)
+            const fireball = new Fireball(origin.x, origin.y, rotatedDirection)
+            engine.currentScene.add(fireball)
+
+        }
+
+
     }
 
 }
