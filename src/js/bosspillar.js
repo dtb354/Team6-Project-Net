@@ -1,5 +1,7 @@
-import { Actor, CollisionType } from "excalibur";
+import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Shape, TextureLoader, Timer, Vector } from "excalibur";
 import { Boss } from "./boss";
+import { pillarWater } from "./resources";
+import { Net } from "./net";
 
 export class BossPillar extends Actor {
     hitpoints; 
@@ -7,6 +9,8 @@ export class BossPillar extends Actor {
 
     constructor() {
         super({
+            width: 32, // set width of collision box
+            height: 96, // set height of collision box
             collisionType: CollisionType.Fixed,  
         })
 
@@ -25,9 +29,21 @@ export class BossPillar extends Actor {
                     width: 20,
                     height: 4,
                     anchor: new Vector(0.5, 0.5),
+                    collisionType: CollisionType.PreventCollision,
                 });
 
         this.addChild(this.healthbar);
+
+        // Listen for collisions
+        this.on('collisionstart', (event) => this.handleCollision(event))
+    }
+
+    handleCollision(event) {
+        // Only react if hit by Net
+        if (event.other instanceof Net) {
+            this.reduceHealth()
+            console.log("BossPillar hit by Net!")
+        }
     }
 
     reduceHealth() {
