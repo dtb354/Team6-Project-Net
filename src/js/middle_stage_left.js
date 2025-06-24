@@ -21,6 +21,16 @@ export class Next extends Scene {
         console.log('Score bij start Next scene:', this.engine.playerProgress.score);
         console.log('Health bij start Next scene:', this.engine.playerProgress.health)
 
+
+        this.camera.zoom = 1.5;
+    }
+
+    onActivate(ctx) {
+        this.clear()
+        this.addActorsToScene()
+    }
+
+    addActorsToScene() {
         // Create player only once
         const player = new Player();
         player.pos = new Vector(13, 440);
@@ -53,7 +63,7 @@ export class Next extends Scene {
         this.add(portal);
 
         // Add tilemap
-        engine.middleLevelMap.addToScene(this);
+        this.engine.middleLevelMap.addToScene(this);
 
         this.ui = new UI()
         this.add(this.ui)
@@ -69,6 +79,6 @@ export class Next extends Scene {
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
         this.camera.strategy.lockToActorAxis(player, Axis.Y);
-        this.camera.zoom = 1.5;
+
     }
 }

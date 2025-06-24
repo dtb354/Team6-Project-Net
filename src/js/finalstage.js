@@ -83,4 +83,6 @@ export class FinalStage extends Scene {
         this.camera.strategy.lockToActorAxis(player, Axis.X);
         this.camera.strategy.lockToActorAxis(player, Axis.Y);
     }
+
+
 }
