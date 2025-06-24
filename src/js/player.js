@@ -102,6 +102,7 @@ export class Player extends Actor {
     onPreUpdate(engine) {
 
         this.lastDirectionHandler()
+        console.log(this.lastDirection);
 
         //handle attack direction
         switch (this.state) {
@@ -310,7 +311,11 @@ export class Player extends Actor {
         console.log("reduce the health ")
         console.log("hitpoints ", this.hitpoints)
         if (this.hitpoints <= 0) {
-            // this.idkDie?()
+
+            // reset movement so it doesnt lock movement when resetting the game
+            this.lastDirection = null;
+            this.attackDirection = null;
+
             this.healthbar.kill()
             this.gameOver()
         }
@@ -386,6 +391,7 @@ export class Player extends Actor {
     }
 
     gameOver() {
+        console.log("Game Over");
         this.engine.goToScene('game-over')
         this.scene.engine.playerProgress.score = this.scene.engine.playerProgress.score = 0;
     }
