@@ -36,6 +36,10 @@ const Resources = {
     attackingSouth: new ImageSource('images/player_attack/attack_full_sprite_South.png'),
     attackingWest: new ImageSource('images/player_attack/attack_full_sprite_West.png'),
 
+    // Pillar Resources
+    pillarWater: new ImageSource('images/boss/Pillar_water.png'),
+    pillarWind: new ImageSource('images/boss/Pillar_wind.png'),
+
     net: new ImageSource('images/net.png'),
 
     waterBottle: new ImageSource('images/water_bottle_spritesheet.png'),
@@ -57,6 +61,17 @@ const Resources = {
 const bossIdleMovement = SpriteSheet.fromImageSource({
     image: Resources.bossIdle,
     grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+// pillar animations
+const pillarWater = SpriteSheet.fromImageSource({
+    image: Resources.pillarWater,
+    grid: { rows:1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
+
+const pillarWind = SpriteSheet.fromImageSource({
+    image: Resources.pillarWind,
+    grid: { rows:1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
 })
 
 // water spritesheets
@@ -201,4 +216,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
+export { Resources, resourceLoader as ResourceLoader, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack, pillarWater, pillarWind }

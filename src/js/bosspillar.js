@@ -10,6 +10,9 @@ export class BossPillar extends Actor {
             collisionType: CollisionType.Fixed,  
         })
 
+        const waterPillar = Animation.fromSpriteSheet(pillarWater, range(0, 4), 100);
+        this.graphics.add("standing", waterPillar);
+        this.graphics.use("standing");
 
     }
 

@@ -18,7 +18,7 @@ export class FinalStage extends Scene {
             engine.mygamepad = connectevent.gamepad
         })
 
-        this.camera.zoom = 1.5;
+        this.camera.zoom = 0.5;
     }
 
     onActivate(ctx) {
