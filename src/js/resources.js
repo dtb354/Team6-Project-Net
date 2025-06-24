@@ -43,6 +43,12 @@ const Resources = {
     PlayerWalkSound: new Sound('sounds/Minecraft-Walking-Sound-Effect-ProSounds.mp3'),
     tutorialBackgroundMusic: new Sound('sounds/tutorial_level.mp3'),
     netSlash: new Sound('sounds/swing-whoosh-5-198498.mp3'),
+
+    //images
+    aButton: new ImageSource('images/A.png'),
+    bButton: new ImageSource('images/B.png'),
+    uiNet: new ImageSource('images/ui_net.png'),
+    uiDodge: new ImageSource('images/dodge.webp'),
 }
 
 // water spritesheets
