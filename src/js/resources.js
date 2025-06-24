@@ -3,6 +3,8 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 // voeg hier jouw eigen resources toe
 const Resources = {
 
+    bossIdle: new ImageSource('images/boss/Boss_idle.png'),
+
     //Sprites
     waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
     waterEnemyAttack: new ImageSource('images/water_enemy/corrupt_water_attack_front.png'),
@@ -43,6 +45,12 @@ const Resources = {
     PlayerWalkSound: new Sound('sounds/Minecraft-Walking-Sound-Effect-ProSounds.mp3'),
     tutorialBackgroundMusic: new Sound('sounds/tutorial_level.mp3'),
 }
+
+// boss
+const bossIdleMovement = SpriteSheet.fromImageSource({
+    image: Resources.bossIdle,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
+})
 
 // water spritesheets
 const waterEnemyIdle = SpriteSheet.fromImageSource({
@@ -186,4 +194,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
+export { Resources, resourceLoader as ResourceLoader, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
