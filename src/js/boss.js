@@ -42,6 +42,7 @@ export class Boss extends Actor {
 
     losePillar() {
         this.pillarCount--;
+        console.log("A pillar has been destroyed AAAAAAAAAAAAHHHHHHHHHH");
         console.log(this.pillarCount);
 
         if (this.pillarCount <= 0) {

@@ -47,6 +47,7 @@ export class BossPillar extends Actor {
     }
 
     reduceHealth() {
+        console.log("pillar health reduced");
         this.hitpoints--;
         const percent = Math.max(this.hitpoints / 10, 0);
         this.healthbar.scale = new Vector(percent, 1)
