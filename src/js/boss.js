@@ -14,4 +14,9 @@ export class Boss extends Actor {
 
         const bossIdle = Animation.fromSpriteSheet(bossIdleMovement, range(0, 3), 100)
     }
+
+    losePillar() {
+        this.pillarCount--;
+        console.log(this.pillarCount);
+    }
 }
