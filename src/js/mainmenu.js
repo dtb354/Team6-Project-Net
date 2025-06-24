@@ -21,7 +21,7 @@ export class Mainmenu extends Scene {
 
         })
         this.startGame = new Label({
-            text: `Press the A button to continu`,
+            text: `Press A to continue`,
             pos: new Vector(100, 400),
             font: new Font({
                 size: 80,
