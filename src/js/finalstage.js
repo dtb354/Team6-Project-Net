@@ -75,6 +75,9 @@ export class FinalStage extends Scene {
         enemy9.pos = new Vector(-327, -795);
         this.add(enemy9);
 
+        this.ui = new UI();
+        this.add(this.ui);
+
 
         // Setup camera
         this.camera.strategy.lockToActorAxis(player, Axis.X);
