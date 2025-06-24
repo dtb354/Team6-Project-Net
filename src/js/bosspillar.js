@@ -6,8 +6,7 @@ export class BossPillar extends Actor {
 
     constructor() {
         super({
-            collisionType: CollisionType.Active,
-            
+            collisionType: CollisionType.Active,  
         })
     }
 
