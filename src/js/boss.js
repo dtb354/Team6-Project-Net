@@ -14,4 +14,17 @@ export class Boss extends Actor {
 
         const bossIdle = Animation.fromSpriteSheet(bossIdleMovement, range(0, 3), 100)
     }
+
+    losePillar() {
+        this.pillarCount--;
+        console.log(this.pillarCount);
+
+        if (this.pillarCount <= 0) {
+            this.victoryHandler();
+        }
+    }
+
+    victoryHandler() { //When pillarcount hits 0, something happens to show victory
+        console.log("All pillars are gone")
+    }
 }
