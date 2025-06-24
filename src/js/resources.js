@@ -4,6 +4,7 @@ import { ImageSource, Sound, Resource, Loader, SpriteSheet } from 'excalibur'
 const Resources = {
 
     bossIdle: new ImageSource('images/boss/Boss_idle.png'),
+    bossBullet: new ImageSource('images/boss/Boss_Bullet.png'),
 
     //Sprites
     waterEnemyidle: new ImageSource('images/water_enemy/corrupt_water_idle.png'),
@@ -57,6 +58,11 @@ const Resources = {
 const bossIdleMovement = SpriteSheet.fromImageSource({
     image: Resources.bossIdle,
     grid: { rows: 1, columns: 4, spriteHeight: 480, spriteWidth: 480 }
+})
+
+const bossweapen = SpriteSheet.fromImageSource({
+    image: Resources.bossBullet,
+    grid: { rows: 1, columns: 4, spriteHeight: 96, spriteWidth: 96 }
 })
 
 // water spritesheets
@@ -201,4 +207,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
+export { Resources, resourceLoader as ResourceLoader, bossweapen, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack }
