@@ -1,6 +1,6 @@
 import { Actor, Animation, AnimationStrategy, CollisionType, Color, Engine, range, Shape, TextureLoader, Timer, Vector } from "excalibur";
 import { Boss } from "./boss";
-import { pillarWater } from "./resources";
+import { brokenPillarWater, pillarWater } from "./resources";
 import { Net } from "./net";
 
 export class BossPillar extends Actor {
@@ -17,6 +17,9 @@ export class BossPillar extends Actor {
         const waterPillar = Animation.fromSpriteSheet(pillarWater, range(0, 4), 100);
         this.graphics.add("standing", waterPillar);
         this.graphics.use("standing");
+
+        const brokenWaterPillar = Animation.fromSpriteSheet(brokenPillarWater, range(0, 9), 100);
+        this.graphics.add("broken", brokenWaterPillar);
 
     }
 
@@ -57,7 +60,7 @@ export class BossPillar extends Actor {
             if (boss) {
                 boss.losePillar();
             }
-            this.kill()
+            this.graphics.use("broken");
         }
     }
 }
