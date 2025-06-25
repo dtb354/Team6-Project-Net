@@ -25,6 +25,16 @@ export class VictoryScreen extends Scene {
             })
         })
         this.add(this.restartLabel)
+
+        this.winLabel = new Label({
+            text: `YOU HAVE WON`,
+            pos: new Vector(100, 200),
+            font: new Font({
+               size: 50,
+                color: Color.White,
+            })
+        })
+        this.add(this.winLabel)
     }
 
     onPreUpdate(engine) {
