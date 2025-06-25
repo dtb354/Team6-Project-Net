@@ -23,7 +23,8 @@ export class Boss extends Actor {
         this.scale = new Vector(0.7, 0.7);
     }
 
-    onInitialize() {
+    onInitialize(engine) {
+        this.engine = engine
         this.z = 3;
         this.shootCooldown = 0;
     }
@@ -52,6 +53,8 @@ export class Boss extends Actor {
 
     victoryHandler() { //When pillarcount hits 0, something happens to show victory
         console.log("All pillars are gone")
+        //Victory screen like l**gue of l*gends \/
+        this.engine.goToScene('victoryScreen');
     }
 
     shoot(engine) {

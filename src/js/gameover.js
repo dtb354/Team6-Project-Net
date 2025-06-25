@@ -1,4 +1,4 @@
-import { Color, Font, Keys, Label, Scene, Vector } from "excalibur";
+import { Buttons, Color, Font, Keys, Label, Scene, Vector } from "excalibur";
 
 export class GameOver extends Scene {
 
@@ -6,6 +6,13 @@ export class GameOver extends Scene {
     restartLabel;
 
     onInitialize(engine) {
+
+        this.input.gamepads.enabled = true
+        this.input.gamepads.on('connect', (connectevent) => {
+            console.log("gamepad detected")
+            engine.mygamepad = connectevent.gamepad
+        })
+
         this.backgroundColor = Color.Black;
         this.gameOverLabel = new Label({
             text: `GAME OVER`,
@@ -34,10 +41,11 @@ export class GameOver extends Scene {
 
     onPreUpdate(engine) {
         if (engine.input.keyboard.wasPressed(Keys.Enter)) {
-            console.log("terug naar tutorial")
-            engine.goToScene('tutorial');
+            window.location.reload();
+        }
 
-
+        if (engine.mygamepad && engine.mygamepad.wasButtonPressed(Buttons.Face1)) {
+            window.location.reload();
         }
     }
 
