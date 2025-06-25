@@ -72,7 +72,9 @@ const Resources = {
     uiNet: new ImageSource('images/ui_net.png'),
     uiDodge: new ImageSource('images/dodge.webp'),
     victoryBadge: new ImageSource('image/hxnor_victory.png'),
-    mainMenuBanner: new ImageSource('images/main_menu_banner.png')
+    mainMenuBanner: new ImageSource('images/main_menu_banner.png'),
+    gameOverBanner: new ImageSource('images/defeat_banner.png'),
+    victoryBanner: new ImageSource('images/victory_banner.png'),
 
 }
 

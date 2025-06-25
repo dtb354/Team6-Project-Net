@@ -16,6 +16,7 @@ export class FinalStage extends Scene {
 
     onInitialize(engine) {
 
+        this.engine.backgroundColor = Color.Black
         this.input.gamepads.enabled = true
         this.input.gamepads.on('connect', (connectevent) => {
             console.log("gamepad detected")
