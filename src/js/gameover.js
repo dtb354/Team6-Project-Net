@@ -36,8 +36,6 @@ export class GameOver extends Scene {
         if (engine.input.keyboard.wasPressed(Keys.Enter)) {
             console.log("terug naar tutorial")
             engine.goToScene('tutorial');
-
-
         }
     }
 

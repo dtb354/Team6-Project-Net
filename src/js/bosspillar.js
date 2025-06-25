@@ -21,7 +21,7 @@ export class BossPillar extends Actor {
     }
 
     onInitialize() {
-        this.hitpoints = 20;
+        this.hitpoints = 2;
 
         this.healthbar = new Actor({
                     pos: new Vector(0, -45), // 25 pixels boven zijn hoofd

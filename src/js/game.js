@@ -10,6 +10,7 @@ import { UI } from './ui.js'
 import { GameOver } from './gameover.js'
 import { FinalStage } from './finalstage.js'
 import { Mainmenu } from './mainmenu.js'
+import { VictoryScreen } from './victoryscene.js'
 
 
 export class Game extends Engine {
@@ -58,6 +59,7 @@ export class Game extends Engine {
         this.addScene("next", new Next());
         this.addScene("final", new FinalStage());
         this.addScene('game-over', new GameOver());
+        this.addScene('victoryScreen', new VictoryScreen());
         this.addScene('start-game', new Mainmenu());
 
         this.goToScene('start-game');
