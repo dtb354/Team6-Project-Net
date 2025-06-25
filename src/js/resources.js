@@ -22,6 +22,18 @@ const Resources = {
     windEnemyPurification: new ImageSource('images/wind_enemy/wind_enemy_purification.png'),
     purifiedWind: new ImageSource('images/wind_enemy/wind_enemy_purified_idle.png'),
 
+    //Shiny Sprites
+    waterShinyAttackBack: new ImageSource('images/water_shiny/ShinyAttackBack.png'),
+    waterShinyAttackFront: new ImageSource('images/water_shiny/ShinyAttackFront.png'),
+    waterShinyIdleBack: new ImageSource('images/water_shiny/ShinyAttackFront.png'),
+    waterShinyIdleFront: new ImageSource('images/water_shiny/ShinyAttackFront.png'),
+
+    windShinyAttackBack: new ImageSource('images/wind_shiny/WindShinyAttackBack.png'),
+    windShinyAttackFront: new ImageSource('images/wind_shiny/WindShinyAttackFront.png'),
+    windShinyIdleBack: new ImageSource('images/wind_shiny/WindShinyIdleBack.png'),
+    windShinyIdleFront: new ImageSource('images/wind_shiny/WindShinyIdleFront.png'),
+
+    //Player Sprites
     idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
     idleSouth: new ImageSource('images/player_idle/idle_full_sprite_South.png'),
@@ -148,6 +160,57 @@ const windEnemyPurified = SpriteSheet.fromImageSource({
 })
 
 
+
+//Shiny spritesheets
+//Water
+const waterShinyIdleFront = SpriteSheet.fromImageSource({
+    image: Resources.waterShinyIdleFront, // 4 frames, 1 rij
+    grid: { rows: 1, columns: 4, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const waterShinyIdleBack = SpriteSheet.fromImageSource({
+    image: Resources.waterShinyIdleBack, // 4 frames, 1 rij
+    grid: { rows: 1, columns: 4, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const waterShinyAttackFront = SpriteSheet.fromImageSource({
+    image: Resources.waterShinyAttackFront, // 5 frames, 1 rij
+    grid: { rows: 1, columns: 5, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const waterShinyAttackBack = SpriteSheet.fromImageSource({
+    image: Resources.waterShinyAttackBack, // 5 frames, 1 rij
+    grid: { rows: 1, columns: 5, spriteWidth: 96, spriteHeight: 96 }
+})
+
+// const waterprojectile = SpriteSheet.fromImageSource({
+//     image: Resources.waterEnemyProjectile, // It used to be waterEnemyPurification, make sure to use the right image :))
+//     grid: { rows: 1, columns: 2, spriteHeight: 96, spriteWidth: 96 }
+// })
+
+//Wind
+const windShinyIdleFront = SpriteSheet.fromImageSource({
+    image: Resources.windShinyIdleFront,
+    grid: { rows: 1, columns: 4, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const windShinyIdleBack = SpriteSheet.fromImageSource({
+    image: Resources.windShinyIdleBack,
+    grid: { rows: 1, columns: 4, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const windShinyAttackFront = SpriteSheet.fromImageSource({
+    image: Resources.windShinyAttackFront,
+    grid: { rows: 1, columns: 5, spriteWidth: 96, spriteHeight: 96 }
+})
+
+const windShinyAttackBack = SpriteSheet.fromImageSource({
+    image: Resources.windShinyAttackBack,
+    grid: { rows: 1, columns: 5, spriteWidth: 96, spriteHeight: 96 }
+})
+
+
+
 //idle spritesheets
 const playerIdleNorth = SpriteSheet.fromImageSource({
     image: Resources.idleNorth,
@@ -222,4 +285,4 @@ for (let res of Object.values(Resources)) {
     resourceLoader.addResource(res)
 }
 
-export { Resources, resourceLoader as ResourceLoader, bossweapen, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack, pillarWater, pillarWind }
+export { Resources, resourceLoader as ResourceLoader, bossweapen, bossIdleMovement, windEnemyPurified, windPurification, windIdleBack, windIdle, windAttackEnemy, windEnemyBackwardsAttack, waterAttackBack, waterEnemyIdleBack, purifiedWater, waterprojectile, waterpurification, waterAttacke, waterEnemyIdle, waterShinyAttackBack, waterShinyAttackFront, waterShinyIdleBack, waterShinyIdleFront, windShinyAttackBack, windShinyAttackFront, windShinyIdleBack, windShinyIdleFront, playerIdleNorth, playerIdleEast, playerIdleSouth, playerIdleWest, playerWalkingNorth, playerWalkingEast, playerWalkingSouth, playerWalkingWest, playerAttackingNorth, playerAttackingEast, playerAttackingSouth, playerAttackingWest, WaterBottleHealthPack, pillarWater, pillarWind }
