@@ -17,29 +17,6 @@ export class Mainmenu extends Scene {
         })
         banner.graphics.use(Resources.mainMenuBanner.toSprite())
         this.add(banner);
-
-        // this.backgroundColor = Color.Purple
-        // this.nameOfGame = new Label({
-        //     text: `Purify`,
-        //     pos: new Vector(100, 300),
-        //     font: new Font({
-        //         size: 80,
-        //         color: Color.Green
-        //     })
-
-        // })
-        // this.startGame = new Label({
-        //     text: `Press A to continue`,
-        //     pos: new Vector(100, 400),
-        //     font: new Font({
-        //         size: 80,
-        //         color: Color.Pink
-        //     })
-
-        // })
-
-        // this.add(this.nameOfGame);
-        // this.add(this.startGame);
     }
 
     onPreUpdate(engine) {
