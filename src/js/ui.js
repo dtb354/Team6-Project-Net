@@ -33,6 +33,18 @@ export class UI extends ScreenElement {
         this.z = 20;
         this.addChild(this.label);
 
+        // High score label
+        const highScore = Number(localStorage.getItem('highScore')) || 0
+        this.highScoreLabel = new Label({
+            text: `High Score: ${highScore}`,
+            pos: new Vector(20, 80),
+            font: new Font({
+                size: 28,
+                color: Color.Yellow,
+            })
+        })
+        this.addChild(this.highScoreLabel)
+
         //a button icon
         this.AIcon = new Actor({
             pos: new Vector(1180, 600),

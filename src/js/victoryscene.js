@@ -3,17 +3,6 @@ import { Resources, ResourceLoader, } from './resources.js'
 
 export class VictoryScreen extends Scene {
 
-    onActivate(ctx) {
-        // Get the player's score from the previous scene
-        const player = ctx.engine.player
-        if (player && typeof player.score === "number") {
-            const prevHighScore = Number(localStorage.getItem('highScore')) || 0
-            if (player.score > prevHighScore) {
-                localStorage.setItem('highScore', player.score)
-            }
-        }
-    }
-
 
     onInitialize(engine) {
 

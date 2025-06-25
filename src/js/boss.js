@@ -53,6 +53,11 @@ export class Boss extends Actor {
 
     victoryHandler() { //When pillarcount hits 0, something happens to show victory
         console.log("All pillars are gone")
+
+        const player = this.engine.currentScene.actors.find(actor => actor instanceof Player)
+        if (player) {
+            player.storeHighScore();
+        }
         //Victory screen like l**gue of l*gends \/
         this.engine.goToScene('victoryScreen');
     }

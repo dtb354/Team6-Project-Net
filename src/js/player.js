@@ -426,4 +426,15 @@ export class Player extends Actor {
         this.scene.engine.playerProgress.score = this.scene.engine.playerProgress.score = 0;
     }
 
+    storeHighScore() {
+        const score = this.scene.engine.playerProgress.score;
+    const prevHighScore = Number(localStorage.getItem('highScore')) || 0;
+    if (score > prevHighScore) {
+        localStorage.setItem('highScore', score);
+        console.log("New high score stored:", score);
+    } else {
+        console.log("Score not higher than high score.");
+    }
+    }
+
 }
