@@ -23,7 +23,20 @@ export class TutorialScene extends Scene {
 
 
 
-        Resources.tutorialBackgroundMusic.play();
+        // Play music on first user interaction to avoid browser autoplay restrictions
+        const playMusic = () => {
+            if (!Resources.tutorialBackgroundMusic.isPlaying()) {
+                Resources.tutorialBackgroundMusic.loop = true
+                Resources.tutorialBackgroundMusic.play()
+            }
+            // Remove listeners after first play
+            engine.input.keyboard.off('press', playMusic)
+            engine.input.pointers.off('down', playMusic)
+            this.input.gamepads.off('button', playMusic)
+        }
+        engine.input.keyboard.on('press', playMusic)
+        engine.input.pointers.on('down', playMusic)
+        this.input.gamepads.on('button', playMusic)
 
 
         this.camera.zoom = 1.5;
