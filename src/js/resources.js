@@ -22,20 +22,23 @@ const Resources = {
     windEnemyPurification: new ImageSource('images/wind_enemy/wind_enemy_purification.png'),
     purifiedWind: new ImageSource('images/wind_enemy/wind_enemy_purified_idle.png'),
 
-    idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
+    //player idle
+    idleNorth: new ImageSource('images/player_idle/netna_idle_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
-    idleSouth: new ImageSource('images/player_idle/idle_full_sprite_South.png'),
-    idleWest: new ImageSource('images/player_idle/idle_full_sprite_West.png'),
+    idleSouth: new ImageSource('images/player_idle/netna_idle_South.png'),
+    idleWest: new ImageSource('images/player_idle/netna_idle_West.png'),
 
-    walkingNorth: new ImageSource('images/player_walking/walk_complete_sprite_North.png'),
+    //player walking
+    walkingNorth: new ImageSource('images/player_walking/netna_walking_North.png'),
     walkingEast: new ImageSource('images/player_walking/walk_complete_sprite_East.png'),
-    walkingSouth: new ImageSource('images/player_walking/walk_complete_sprite_South.png'),
-    walkingWest: new ImageSource('images/player_walking/walk_complete_sprite_West.png'),
+    walkingSouth: new ImageSource('images/player_walking/netna_walking_South.png'),
+    walkingWest: new ImageSource('images/player_walking/netna_walking_West.png'),
 
-    attackingNorth: new ImageSource('images/player_attack/attack_full_sprite_North.png'),
+    //player attacking
+    attackingNorth: new ImageSource('images/player_attack/netna_attack_North.png'),
     attackingEast: new ImageSource('images/player_attack/attack_full_sprite_East.png'),
-    attackingSouth: new ImageSource('images/player_attack/attack_full_sprite_South.png'),
-    attackingWest: new ImageSource('images/player_attack/attack_full_sprite_West.png'),
+    attackingSouth: new ImageSource('images/player_attack/netna_attack_South.png'),
+    attackingWest: new ImageSource('images/player_attack/netna_attack_West.png'),
 
     // Pillar Resources
     pillarWater: new ImageSource('images/boss/Pillar_water.png'),
@@ -151,12 +154,12 @@ const windEnemyPurified = SpriteSheet.fromImageSource({
 //idle spritesheets
 const playerIdleNorth = SpriteSheet.fromImageSource({
     image: Resources.idleNorth,
-    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 12, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerIdleEast = SpriteSheet.fromImageSource({
     image: Resources.idleEast,
-    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 12, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerIdleSouth = SpriteSheet.fromImageSource({
@@ -166,7 +169,7 @@ const playerIdleSouth = SpriteSheet.fromImageSource({
 
 const playerIdleWest = SpriteSheet.fromImageSource({
     image: Resources.idleWest,
-    grid: { rows: 1, columns: 11, spriteHeight: 64, spriteWidth: 64 }
+    grid: { rows: 1, columns: 12, spriteHeight: 64, spriteWidth: 64 }
 })
 //walking spritesheets
 const playerWalkingNorth = SpriteSheet.fromImageSource({
@@ -191,22 +194,22 @@ const playerWalkingWest = SpriteSheet.fromImageSource({
 //attack spritesheets
 const playerAttackingNorth = SpriteSheet.fromImageSource({
     image: Resources.attackingNorth,
-    grid: { rows: 1, columns: 7, spriteHeight: 93, spriteWidth: 96 }
+    grid: { rows: 1, columns: 7, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerAttackingEast = SpriteSheet.fromImageSource({
     image: Resources.attackingEast,
-    grid: { rows: 1, columns: 7, spriteHeight: 93, spriteWidth: 96 }
+    grid: { rows: 1, columns: 7, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerAttackingSouth = SpriteSheet.fromImageSource({
     image: Resources.attackingSouth,
-    grid: { rows: 1, columns: 7, spriteHeight: 101, spriteWidth: 96 }
+    grid: { rows: 1, columns: 7, spriteHeight: 64, spriteWidth: 64 }
 })
 
 const playerAttackingWest = SpriteSheet.fromImageSource({
     image: Resources.attackingWest,
-    grid: { rows: 1, columns: 7, spriteHeight: 80, spriteWidth: 96 }
+    grid: { rows: 1, columns: 7, spriteHeight: 64, spriteWidth: 64 }
 })
 
 //waterBottle spritesheet

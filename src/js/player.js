@@ -36,25 +36,29 @@ export class Player extends Actor {
         this.engine = engine;
 
         //Idle
-        const playerIdleN = Animation.fromSpriteSheet(playerIdleNorth, range(0, 10), 70);
+        const playerIdleN = Animation.fromSpriteSheet(playerIdleNorth, range(0, 11), 70);
         this.graphics.add("playerIdleN", playerIdleN);
 
-        const playerIdleE = Animation.fromSpriteSheet(playerIdleEast, range(0, 10), 70);
-        this.graphics.add("playerIdleE", playerIdleE);
+        // const playerIdleE = Animation.fromSpriteSheet(playerIdleEast, range(0, 11), 70);
+        // this.graphics.add("playerIdleE", playerIdleE);
 
-        const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 10), 70);
+        const playerIdleS = Animation.fromSpriteSheet(playerIdleSouth, range(0, 11), 70);
         this.graphics.add("playerIdleS", playerIdleS);
         this.graphics.use("playerIdleS")
 
-        const playerIdleW = Animation.fromSpriteSheet(playerIdleWest, range(0, 10), 70);
+        const playerIdleW = Animation.fromSpriteSheet(playerIdleWest, range(0, 11), 70);
         this.graphics.add("playerIdleW", playerIdleW);
+
+        const playerIdleE = playerIdleW.clone()
+        playerIdleE.flipHorizontal = true;
+        this.graphics.add("playerIdleE", playerIdleE);
 
         //Walking
         const playerWalkingN = Animation.fromSpriteSheet(playerWalkingNorth, range(0, 7), 70);
         this.graphics.add("playerWalkingN", playerWalkingN);
 
-        const playerWalkingE = Animation.fromSpriteSheet(playerWalkingEast, range(0, 7), 70);
-        this.graphics.add("playerWalkingE", playerWalkingE);
+        // const playerWalkingE = Animation.fromSpriteSheet(playerWalkingEast, range(0, 7), 70);
+        // this.graphics.add("playerWalkingE", playerWalkingE);
 
         const playerWalkingS = Animation.fromSpriteSheet(playerWalkingSouth, range(0, 7), 70);
         this.graphics.add("playerWalkingS", playerWalkingS);
@@ -62,18 +66,26 @@ export class Player extends Actor {
         const playerWalkingW = Animation.fromSpriteSheet(playerWalkingWest, range(0, 7), 70);
         this.graphics.add("playerWalkingW", playerWalkingW);
 
+        const playerWalkingE = playerWalkingW.clone()
+        playerWalkingE.flipHorizontal = true;
+        this.graphics.add("playerWalkingE", playerWalkingE);
+
         //Attacking
         const playerAttackingN = Animation.fromSpriteSheet(playerAttackingNorth, range(0, 6), 70);
         this.graphics.add("playerAttackingN", playerAttackingN);
 
-        const playerAttackingE = Animation.fromSpriteSheet(playerAttackingEast, range(0, 6), 70);
-        this.graphics.add("playerAttackingE", playerAttackingE);
+        // const playerAttackingE = Animation.fromSpriteSheet(playerAttackingEast, range(0, 6), 70);
+        // this.graphics.add("playerAttackingE", playerAttackingE);
 
         const playerAttackingS = Animation.fromSpriteSheet(playerAttackingSouth, range(0, 6), 70);
         this.graphics.add("playerAttackingS", playerAttackingS);
 
         const playerAttackingW = Animation.fromSpriteSheet(playerAttackingWest, range(0, 6), 70);
         this.graphics.add("playerAttackingW", playerAttackingW);
+
+        const playerAttackingE = playerAttackingW.clone()
+        playerAttackingE.flipHorizontal = true;
+        this.graphics.add("playerAttackingE", playerAttackingE);
 
         // Zet a higher z value for the player to appear on top
         this.z = 3;
