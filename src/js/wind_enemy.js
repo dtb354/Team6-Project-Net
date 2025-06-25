@@ -49,7 +49,7 @@ export class windEnemy extends Enemy {
         this.state = "idle"
         this.hitpoints = 10
 
-        const hitbox = Shape.Box(70, 90, Vector.Half, new Vector(0, 8));
+        const hitbox = Shape.Box(50, 90, Vector.Half, new Vector(0, 8));
         this.collider.set(hitbox)
 
 
