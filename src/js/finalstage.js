@@ -7,6 +7,7 @@ import { Portal } from "./portal";
 import { Boss } from "./boss";
 import { BossPillar } from "./bosspillar";
 import { WindPillar } from "./windpillar";
+import { Resources } from "./resources";
 
 export class FinalStage extends Scene {
     game;
@@ -23,7 +24,7 @@ export class FinalStage extends Scene {
 
         this.camera.zoom = 1.5;
 
-        
+        Resources.bossFightMusic.play();
     }
 
     onActivate(ctx) {
