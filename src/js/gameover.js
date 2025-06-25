@@ -1,4 +1,5 @@
-import { Buttons, Color, Font, Keys, Label, Scene, Vector } from "excalibur";
+import { Actor, Buttons, Color, Font, Keys, Label, Scene, Vector } from "excalibur";
+import { Resources } from "./resources";
 
 export class GameOver extends Scene {
 
@@ -13,29 +14,12 @@ export class GameOver extends Scene {
             engine.mygamepad = connectevent.gamepad
         })
 
-        this.backgroundColor = Color.Black;
-        this.gameOverLabel = new Label({
-            text: `GAME OVER`,
-            pos: new Vector(300, 250),
-            font: new Font({
-                size: 100,
-                color: Color.Red
-            })
+        const banner = new Actor({
+            pos: new Vector(610, 360),
 
         })
-
-        this.restartLabel = new Label({
-            text: `PRESS ENTER TO RESTART GAME`,
-            pos: new Vector(350, 400),
-            font: new Font({
-                size: 50,
-                color: Color.White
-            })
-        })
-
-        this.add(this.restartLabel);
-        this.add(this.gameOverLabel);
-
+        banner.graphics.use(Resources.gameOverBanner.toSprite())
+        this.add(banner);
 
     }
 
