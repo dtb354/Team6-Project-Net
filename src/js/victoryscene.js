@@ -1,5 +1,5 @@
 import { Color, Scene, Actor, Vector, Font, Label, Keys } from "excalibur";
-import { Resources, ResourceLoader } from './resources.js'
+import { Resources, ResourceLoader, } from './resources.js'
 
 export class VictoryScreen extends Scene {
 

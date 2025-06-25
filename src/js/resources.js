@@ -57,7 +57,7 @@ const Resources = {
     uiNet: new ImageSource('images/ui_net.png'),
     uiDodge: new ImageSource('images/dodge.webp'),
 
-    victoryBadge: new ImageSource('image/l_ague_victory.png'),
+    victoryBadge: new ImageSource('image/hxnor_victory.png'),
 }
 
 // boss

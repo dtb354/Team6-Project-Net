@@ -1,7 +1,7 @@
 import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource, Axis, SolverStrategy } from "excalibur"
 import { TiledResource } from '@excaliburjs/plugin-tiled'
-import { Resources, ResourceLoader } from './resources.js'
+import { Resources, ResourceLoader, } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './tutorialscene.js'
