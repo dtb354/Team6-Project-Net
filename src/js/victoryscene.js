@@ -40,7 +40,7 @@ export class VictoryScreen extends Scene {
     onPreUpdate(engine) {
         if (engine.input.keyboard.wasPressed(Keys.Enter)) {
             console.log("terug naar main menu");
-            engine.goToScene('start-game');
+            window.location.reload()
         }
     }
 
