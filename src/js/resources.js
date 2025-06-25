@@ -34,7 +34,7 @@ const Resources = {
     windShinyIdleFront: new ImageSource('images/wind_shiny/WindShinyIdleFront.png'),
 
     //Player Sprites
-    idleNorth: new ImageSource('images/player_idle/idle_full_sprite_North.png'),
+    idleNorth: new ImageSource('images/player_idle/netna_idle_North.png'),
     idleEast: new ImageSource('images/player_idle/idle_full_sprite_East.png'),
     idleSouth: new ImageSource('images/player_idle/netna_idle_South.png'),
     idleWest: new ImageSource('images/player_idle/netna_idle_West.png'),
