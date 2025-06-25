@@ -60,8 +60,9 @@ const Resources = {
     bButton: new ImageSource('images/B.png'),
     uiNet: new ImageSource('images/ui_net.png'),
     uiDodge: new ImageSource('images/dodge.webp'),
-
     victoryBadge: new ImageSource('image/hxnor_victory.png'),
+    mainMenuBanner: new ImageSource('images/main_menu_banner.png')
+
 }
 
 // boss

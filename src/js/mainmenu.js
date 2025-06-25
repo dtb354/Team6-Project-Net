@@ -1,4 +1,5 @@
-import { Buttons, Color, Font, Keys, Label, Scene, Vector } from "excalibur";
+import { Actor, Buttons, Color, Font, Graphic, Keys, Label, Scene, Vector } from "excalibur";
+import { Resources } from "./resources";
 
 export class Mainmenu extends Scene {
 
@@ -10,28 +11,35 @@ export class Mainmenu extends Scene {
             engine.mygamepad = connectevent.gamepad
         })
 
-        this.backgroundColor = Color.Purple
-        this.nameOfGame = new Label({
-            text: `Purify`,
-            pos: new Vector(100, 300),
-            font: new Font({
-                size: 80,
-                color: Color.Green
-            })
+        const banner = new Actor({
+            pos: new Vector(610, 360),
 
         })
-        this.startGame = new Label({
-            text: `Press A to continue`,
-            pos: new Vector(100, 400),
-            font: new Font({
-                size: 80,
-                color: Color.Pink
-            })
+        banner.graphics.use(Resources.mainMenuBanner.toSprite())
+        this.add(banner);
 
-        })
+        // this.backgroundColor = Color.Purple
+        // this.nameOfGame = new Label({
+        //     text: `Purify`,
+        //     pos: new Vector(100, 300),
+        //     font: new Font({
+        //         size: 80,
+        //         color: Color.Green
+        //     })
 
-        this.add(this.nameOfGame);
-        this.add(this.startGame);
+        // })
+        // this.startGame = new Label({
+        //     text: `Press A to continue`,
+        //     pos: new Vector(100, 400),
+        //     font: new Font({
+        //         size: 80,
+        //         color: Color.Pink
+        //     })
+
+        // })
+
+        // this.add(this.nameOfGame);
+        // this.add(this.startGame);
     }
 
     onPreUpdate(engine) {
