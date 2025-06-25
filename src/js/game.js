@@ -1,7 +1,7 @@
 import '../css/style.css'
 import { Actor, Engine, Vector, DisplayMode, Loader, ImageSource, Axis, SolverStrategy } from "excalibur"
 import { TiledResource } from '@excaliburjs/plugin-tiled'
-import { Resources, ResourceLoader } from './resources.js'
+import { Resources, ResourceLoader, } from './resources.js'
 import { Player } from './player.js'
 import { Enemy } from './enemy.js'
 import { TutorialScene } from './tutorialscene.js'
@@ -10,6 +10,7 @@ import { UI } from './ui.js'
 import { GameOver } from './gameover.js'
 import { FinalStage } from './finalstage.js'
 import { Mainmenu } from './mainmenu.js'
+import { VictoryScreen } from './victoryscene.js'
 
 
 export class Game extends Engine {
@@ -58,6 +59,7 @@ export class Game extends Engine {
         this.addScene("next", new Next());
         this.addScene("final", new FinalStage());
         this.addScene('game-over', new GameOver());
+        this.addScene('victoryScreen', new VictoryScreen());
         this.addScene('start-game', new Mainmenu());
 
         this.goToScene('start-game');
