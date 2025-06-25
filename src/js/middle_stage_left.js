@@ -45,31 +45,31 @@ export class Next extends Scene {
 
         // Create Enemies
 
-        const enemy1 = Math.random() < 1 / 50
+        const enemy1 = Math.random() < 1 / 20
             ? new ShinyWaterEnemy()
             : new Enemy();
         enemy1.pos = new Vector(-320, 325);
         this.add(enemy1);
 
-        const enemy2 = Math.random() < 1 / 50
+        const enemy2 = Math.random() < 1 / 20
             ? new ShinyWindEnemy()
             : new windEnemy();
         enemy2.pos = new Vector(-145, 190);
         this.add(enemy2);
 
-        const enemy3 = Math.random() < 1 / 50
+        const enemy3 = Math.random() < 1 / 20
             ? new ShinyWaterEnemy()
             : new Enemy();
         enemy3.pos = new Vector(225, 255);
         this.add(enemy3);
 
-        const enemy4 = Math.random() < 1 / 50
+        const enemy4 = Math.random() < 1 / 20
             ? new ShinyWaterEnemy()
             : new Enemy();
         enemy4.pos = new Vector(441, 128);
         this.add(enemy4);
 
-        const enemy5 = Math.random() < 1 / 50
+        const enemy5 = Math.random() < 1 / 20
             ? new ShinyWindEnemy()
             : new windEnemy();
         enemy5.pos = new Vector(81, -42);

@@ -1,8 +1,12 @@
 import { Animation, range } from "excalibur"
 import { Enemy } from "./enemy"
 import { waterShinyIdleFront, waterShinyIdleBack, waterShinyAttackFront, waterShinyAttackBack } from "./resources"
+import { Player } from "./player";
 
 export class ShinyWaterEnemy extends Enemy {
+
+    value = 1000;
+
     onInitialize(engine) {
         // Idle animatie vooraanzicht
         const idle = Animation.fromSpriteSheet(waterShinyIdleFront, range(0, 3), 100)
@@ -23,4 +27,23 @@ export class ShinyWaterEnemy extends Enemy {
         this.graphics.use("idle")
         super.onInitialize(engine)
     }
+
+    addPoint() {
+
+        const player = this.scene.actors.find(actor => actor instanceof Player)
+        if (player) {
+            player.getPoints(this.value)
+        }
+    }
+
+    reduceHealth() {
+
+        this.hitpoints--
+        if (this.hitpoints <= 0) {
+            this.addPoint()
+
+            this.kill()
+        }
+    }
+
 }

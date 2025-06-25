@@ -1,8 +1,16 @@
 import { Animation, range } from "excalibur"
 import { windShinyIdleFront, windShinyIdleBack, windShinyAttackFront, windShinyAttackBack } from "./resources"
 import { windEnemy } from "./wind_enemy"
+import { Player } from "./player";
 
 export class ShinyWindEnemy extends windEnemy {
+
+    value = 1500;
+
+    constructor() {
+        super();
+    }
+
     onInitialize(engine) {
 
         const idle = Animation.fromSpriteSheet(windShinyIdleFront, range(0, 3), 100)
@@ -19,5 +27,23 @@ export class ShinyWindEnemy extends windEnemy {
 
         this.graphics.use("idle")
         super.onInitialize(engine)
+    }
+
+    addPoint() {
+
+        const player = this.scene.actors.find(actor => actor instanceof Player)
+        if (player) {
+            player.getPoints(this.value)
+        }
+    }
+
+    reduceHealth() {
+
+        this.hitpoints--
+        if (this.hitpoints <= 0) {
+            this.addPoint()
+
+            this.kill()
+        }
     }
 }
