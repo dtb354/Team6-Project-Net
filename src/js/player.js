@@ -21,7 +21,7 @@ export class Player extends Actor {
     constructor() {
         super({
             width: 20,
-            height: 33,
+            height: 25,
             collisionType: CollisionType.Active,
         })
         this.scale = new Vector(1.5, 1.5);
