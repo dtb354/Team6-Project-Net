@@ -22,6 +22,8 @@ export class FinalStage extends Scene {
         })
 
         this.camera.zoom = 1.5;
+
+        
     }
 
     onActivate(ctx) {

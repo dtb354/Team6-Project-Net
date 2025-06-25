@@ -4,6 +4,7 @@ import { UI } from "./ui";
 import { Enemy } from "./enemy";
 import { windEnemy } from "./wind_enemy";
 import { Portal } from "./portal";
+import { Resources } from "./resources.js";
 
 export class Next extends Scene {
     game;
@@ -28,6 +29,10 @@ export class Next extends Scene {
     onActivate(ctx) {
         this.clear()
         this.addActorsToScene()
+    }
+
+    onDeactivate() {
+        Resources.tutorialBackgroundMusic.stop();
     }
 
     addActorsToScene() {

@@ -34,6 +34,7 @@ export class TutorialScene extends Scene {
         this.addActorsToScene()
     }
 
+
     addActorsToScene() {
         // Add tilemap
         this.engine.tutorialMap.addToScene(this);
