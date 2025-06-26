@@ -29,13 +29,13 @@ export class Game extends Engine {
             displayMode: DisplayMode.FitScreen,
         })
         // todo deze code hoort in resources.js
-        this.tutorialMap = new TiledResource("/maps/tutorial_area_v1.tmx");
+        this.tutorialMap = new TiledResource("maps/tutorial_area_v1.tmx");
         ResourceLoader.addResource(this.tutorialMap);
 
-        this.middleLevelMap = new TiledResource("/maps/level_1-1.tmx");
+        this.middleLevelMap = new TiledResource("maps/level_1-1.tmx");
         ResourceLoader.addResource(this.middleLevelMap);
 
-        this.finalLevelMap = new TiledResource("/maps/finalstage_fixed.tmx");
+        this.finalLevelMap = new TiledResource("maps/finalstage_fixed.tmx");
         ResourceLoader.addResource(this.finalLevelMap);
 
         this.start(ResourceLoader).then(() => this.startGame())
